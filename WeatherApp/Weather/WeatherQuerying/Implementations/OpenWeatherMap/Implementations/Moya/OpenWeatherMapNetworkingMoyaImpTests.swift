@@ -1,0 +1,77 @@
+//
+//  OpenWeatherMapNetworkingMoyaImpTests.swift
+//  WeatherApp
+//
+//  Created by Grigory Entin on 04/05/2018.
+//  Copyright © 2018 Grigory Entin. All rights reserved.
+//
+
+@testable import WeatherApp
+
+import Moya
+import Result
+
+class OpenWeatherMapNetworkingMoyaImp_QueryWeather_T : QuickSpec {
+    override func spec() {
+        context("with good network") {
+            var networking: OpenWeatherMapNetworking!
+            beforeEach {
+                let moyaProvider = OpenWeatherMapNetworkingMoyaImp.MoyaProvider(stubClosure: MoyaProvider.immediatelyStub)
+                networking = OpenWeatherMapNetworkingMoyaImp(moyaProvider: moyaProvider)
+            }
+            for (locationContext, locationPredicate) in locationPredicatesWithContext {
+                context("when location is \(locationContext)") {
+                    it("should succeed") {
+                        var weatherRequestResult: OpenWeatherMapNetworking.WeatherQueryResult!
+                        networking.queryWeather(for: locationPredicate, completion: { (result) in
+                            weatherRequestResult = result
+                        })
+                        expect(weatherRequestResult).notTo(beNil())
+                        var response: OpenWeatherMapWeatherResponse!
+                        expect { response = try weatherRequestResult.dematerialize() }.notTo(throwError())
+                        expect(response.main.temp).to(beGreaterThan(0/*kelvins*/))
+                    }
+                }
+            }
+        }
+    }
+}
+
+class OpenWeatherMapNetworkingMoyaImp_QueryWeather_ET : QuickSpec {
+    override func spec() {
+        context("with bad network") {
+            let sampleResponseClosuresWithFailureContext: [(String, Endpoint.SampleResponseClosure)] = [
+                ("http 404", {.networkResponse(404, Data())}),
+                ("user cancelled", {.networkError(NSError(domain: NSCocoaErrorDomain, code: NSUserCancelledError))}),
+                ("timed out", {.networkError(NSError(domain: NSURLErrorDomain, code: NSURLErrorTimedOut))})
+            ]
+            for (failureContext, sampleResponseClosure) in sampleResponseClosuresWithFailureContext {
+                context("due \(failureContext)") {
+                    var networking: OpenWeatherMapNetworking!
+                    beforeEach {
+                        let endpointClosure = { (target: OpenWeatherMapMoyaTarget) -> Endpoint in
+                            let url = URL(target: target).absoluteString
+                            return Endpoint(url: url, sampleResponseClosure: sampleResponseClosure, method: target.method, task: target.task, httpHeaderFields: target.headers)
+                        }
+                        let moyaProvider = OpenWeatherMapNetworkingMoyaImp.MoyaProvider(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub)
+                        networking = OpenWeatherMapNetworkingMoyaImp(moyaProvider: moyaProvider)
+                    }
+                    for (locationContext, locationPredicate) in locationPredicatesWithContext {
+                        context("when location is \(locationContext)") {
+                            it("should error") {
+                                var weatherQueryResult: OpenWeatherMapNetworking.WeatherQueryResult!
+                                networking.queryWeather(for: locationPredicate, completion: { (result) in
+                                    weatherQueryResult = result
+                                })
+                                expect(weatherQueryResult).notTo(beNil())
+                                expect { try weatherQueryResult.dematerialize() }.to(throwError())
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+private let locationPredicatesWithContext = openWeatherMapLocationPredicateSamplesWithContext

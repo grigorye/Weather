@@ -6,8 +6,9 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+@testable import WeatherApp
+
 import XCTest
-@testable import Weather
 
 class WeatherTests: XCTestCase {
     
