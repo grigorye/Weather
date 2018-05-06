@@ -10,6 +10,7 @@ PODS:
   - Result (3.2.4)
   - SwiftLint (0.25.1)
   - Swinject (2.4.0)
+  - Then (2.3.0)
 
 DEPENDENCIES:
   - Moya (~> 11.0.2)
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - Result
   - SwiftLint (~> 0.25.1)
   - Swinject (~> 2.4.0)
+  - Then (~> 2.3.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -28,6 +30,7 @@ SPEC REPOS:
     - Result
     - SwiftLint
     - Swinject
+    - Then
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
@@ -37,7 +40,8 @@ SPEC CHECKSUMS:
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
   Swinject: a1364b0f66c2736bb03c1c7cab54809e16df25da
+  Then: ee21c97b85ff6062b9b0080c9abb1eea46743345
 
-PODFILE CHECKSUM: 296925a859bc1fa8f2957ff8ac0fc28893ab115d
+PODFILE CHECKSUM: 80a9d16d07b5680589aeef69a963ad2cc6b2c3d3
 
 COCOAPODS: 1.5.0
