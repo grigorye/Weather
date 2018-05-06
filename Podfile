@@ -15,6 +15,7 @@ target 'WeatherApp' do
     
     pod 'Quick', '~> 1.3.0'
     pod 'Nimble', '~> 7.1.1'
+    pod 'SwiftLint', '~> 0.25.1'
   end
 
   target 'WeatherAppUITests' do
