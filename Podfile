@@ -2,7 +2,6 @@ workspace 'WeatherApp.xcworkspace'
 
 platform :ios, '11.3'
 
-# Comment the next line if you're not using Swift and don't want to use dynamic frameworks
 use_frameworks!
 
 def all_non_test_pods
@@ -19,7 +18,7 @@ def all_test_pods
 end
 
 target 'WeatherApp' do
-  project 'WeatherApp/WeatherApp.xcodeproj'
+  project 'Modules/WeatherApp/WeatherApp.xcodeproj'
   
   all_non_test_pods
 
@@ -35,7 +34,7 @@ target 'WeatherApp' do
 end
 
 target 'OpenWeatherMapKit' do
-  project 'OpenWeatherMapKit/OpenWeatherMapKit.xcodeproj'
+  project 'Modules/OpenWeatherMapKit/OpenWeatherMapKit.xcodeproj'
 
   all_non_test_pods
   
