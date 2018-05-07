@@ -10,6 +10,8 @@ def all_non_test_pods
   pod 'Swinject', '~> 2.4.0'
   pod 'Then', '~> 2.3.0'
   pod 'SwiftLint', '~> 0.25.1'
+  pod 'GZIP', '~> 1.2.1'
+  pod 'RxSwift', '~> 4.1.2'
 end
 
 def all_test_pods
