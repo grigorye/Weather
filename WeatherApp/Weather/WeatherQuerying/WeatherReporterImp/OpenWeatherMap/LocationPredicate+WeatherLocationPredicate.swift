@@ -6,7 +6,9 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-extension OpenWeatherMap$.LocationPredicate {
+import OpenWeatherMapKit
+
+extension OpenWeatherMapKit.LocationPredicate {
     
     init(_ canonicPredicate: WeatherLocationPredicate) {
         switch canonicPredicate {

@@ -1,16 +1,17 @@
 //
 //  MoyaNetworkingTests.swift
-//  WeatherApp/OpenWeatherMap/NetworkingImp/Moya
+//  OpenWeatherMapKit/NetworkingImp/Moya
 //
 //  Created by Grigory Entin on 04/05/2018.
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-@testable import WeatherApp
-
+@testable import OpenWeatherMapKit
+import Quick
+import Nimble
 import Moya
 
-class OpenWeatherMap_NetworkingImp_Moya_MoyaNetworking_QueryWeather_T : QuickSpec, OpenWeatherMap_NetworkingImp_Moya$$ {
+class NetworkingImp_Moya_MoyaNetworking_QueryWeather_T : QuickSpec, NetworkingImp_Moya$$ {
     override func spec() {
         context("with good network") {
             var networking: Networking!
@@ -36,7 +37,7 @@ class OpenWeatherMap_NetworkingImp_Moya_MoyaNetworking_QueryWeather_T : QuickSpe
     }
 }
 
-class OpenWeatherMap_NetworkingImp_Moya_MoyaNetworking_QueryWeather_ET : QuickSpec, OpenWeatherMap_NetworkingImp_Moya$$ {
+class NetworkingImp_Moya_MoyaNetworking_QueryWeather_ET : QuickSpec, NetworkingImp_Moya$$ {
     override func spec() {
         context("with bad network") {
             let sampleResponseClosuresWithFailureContext: [(String, Endpoint.SampleResponseClosure)] = [

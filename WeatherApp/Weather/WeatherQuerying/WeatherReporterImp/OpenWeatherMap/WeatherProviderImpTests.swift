@@ -7,7 +7,7 @@
 //
 
 @testable import WeatherApp
-
+import OpenWeatherMapKit
 import Result
 
 class OpenWeatherMap_WeatherProviderImp_QueryWeather_T : QuickSpec, OpenWeatherMap$$ {

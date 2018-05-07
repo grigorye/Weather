@@ -1,14 +1,14 @@
 //
 //  LocationPredicate+Codable.swift
-//  WeatherApp/OpenWeatherMap
+//  OpenWeatherMapKit
 //
 //  Created by Grigory Entin on 04/05/2018.
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-extension OpenWeatherMap$.LocationPredicate : Codable {
+extension LocationPredicate : Codable {
     
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
         switch self {
@@ -23,7 +23,7 @@ extension OpenWeatherMap$.LocationPredicate : Codable {
         }
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         enum DecodingError : Error {
             case unrecognized(dump: String)
         }
@@ -35,22 +35,22 @@ extension OpenWeatherMap$.LocationPredicate : Codable {
         }
         
         let key = keys[0]
-        self = try {
-            switch key {
-            case .cityName:
-                let cityName = try values.decode(String.self, forKey: key)
-                return .cityName(cityName)
-            case .cityId:
-                let cityId = try values.decode(Int.self, forKey: key)
-                return .cityId(cityId)
-            case .coordinate:
-                let coordinate = try values.decode(Coordinate.self, forKey: key)
-                return .coordinate(coordinate)
-            case .zipCodeAndCountryCode:
-                let value = try values.decode(ZipCodeAndCountryCode.self, forKey: key)
-                return .zipCode(value.zipCode, countryCode: value.countryCode)
-            }
-            }()
+        let resolvedSelf: LocationPredicate
+        switch key {
+        case .cityName:
+            let cityName = try values.decode(String.self, forKey: key)
+            resolvedSelf = .cityName(cityName)
+        case .cityId:
+            let cityId = try values.decode(Int.self, forKey: key)
+            resolvedSelf = .cityId(cityId)
+        case .coordinate:
+            let coordinate = try values.decode(Coordinate.self, forKey: key)
+            resolvedSelf = .coordinate(coordinate)
+        case .zipCodeAndCountryCode:
+            let value = try values.decode(ZipCodeAndCountryCode.self, forKey: key)
+            resolvedSelf = .zipCode(value.zipCode, countryCode: value.countryCode)
+        }
+        self = resolvedSelf
     }
     
     struct ZipCodeAndCountryCode : Codable, Equatable {

@@ -6,11 +6,14 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+import OpenWeatherMapKit
 import Result
 
 extension OpenWeatherMap$ {
     
     struct WeatherProviderImp : WeatherProvider {
+        
+        typealias Networking = OpenWeatherMapKit.Networking
         
         var networking: Networking!
         

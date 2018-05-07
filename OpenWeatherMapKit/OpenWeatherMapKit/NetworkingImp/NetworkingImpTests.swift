@@ -1,16 +1,17 @@
 //
 //  NetworkingImpTests.swift
-//  WeatherApp/OpenWeatherMap/NetworkingImp
+//  OpenWeatherMapKit/NetworkingImp
 //
 //  Created by Grigory Entin on 04/05/2018.
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-@testable import WeatherApp
-
+@testable import OpenWeatherMapKit
+import Quick
+import Nimble
 import Result
 
-class OpenWeatherMap_NetworkingImp_QueryWeather_IT : QuickSpec, OpenWeatherMap_NetworkingImp$$ {
+class NetworkingImp_QueryWeather_IT : QuickSpec, NetworkingImp$$ {
     override func spec() {
         let networking = container.resolve(Networking.self)!
         for (locationContext, locationPredicate) in locationPredicateSamplesWithContext {
@@ -37,7 +38,7 @@ class OpenWeatherMap_NetworkingImp_QueryWeather_IT : QuickSpec, OpenWeatherMap_N
     }
 }
 
-class OpenWeatherMap_NetworkingImp_QueryWeather_MissingIT : QuickSpec, OpenWeatherMap_NetworkingImp$$ {
+class NetworkingImp_QueryWeather_MissingIT : QuickSpec, NetworkingImp$$ {
     override func spec() {
         let networking = container.resolve(Networking.self)!
         for (locationContext, locationPredicate) in missingLocationPredicateSamplesWithContext {

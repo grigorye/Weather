@@ -1,14 +1,16 @@
 //
 //  LocationPredicate+CodableTests.swift
-//  WeatherApp/OpenWeatherMap
+//  OpenWeatherMapKit
 //
 //  Created by Grigory Entin on 04/05/2018.
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-@testable import WeatherApp
+@testable import OpenWeatherMapKit
+import Quick
+import Nimble
 
-class OpenWeatherMap_LocationPredicate_Codable_T : QuickSpec, OpenWeatherMap$$ {
+class LocationPredicate_Codable_T : QuickSpec {
     override func spec() {
         for (locationContext, locationPredicate) in locationPredicateSamplesWithContext {
             context(locationContext) {
@@ -26,7 +28,7 @@ class OpenWeatherMap_LocationPredicate_Codable_T : QuickSpec, OpenWeatherMap$$ {
     }
 }
 
-class OpenWeatherMap_LocationPredicate_Codable_ET : QuickSpec, OpenWeatherMap$$ {
+class LocationPredicate_Codable_ET : QuickSpec {
     override func spec() {
         context("should error when") {
             it("decoded from empty data") {
