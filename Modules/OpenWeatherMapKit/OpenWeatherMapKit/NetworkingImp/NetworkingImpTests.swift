@@ -13,7 +13,7 @@ import Result
 
 class NetworkingImp_QueryWeather_IT : QuickSpec, NetworkingImp$$ {
     override func spec() {
-        let networking = container.resolve(Networking.self)!
+        let networking = NetworkingImp$.container.resolve(Networking.self)!
         for (locationContext, locationPredicate) in locationPredicateSamplesWithContext {
             context("when location is \(locationContext)") {
                 it("should succeed unless there's connectivity issue") {
@@ -40,7 +40,7 @@ class NetworkingImp_QueryWeather_IT : QuickSpec, NetworkingImp$$ {
 
 class NetworkingImp_QueryWeather_MissingIT : QuickSpec, NetworkingImp$$ {
     override func spec() {
-        let networking = container.resolve(Networking.self)!
+        let networking = NetworkingImp$.container.resolve(Networking.self)!
         for (locationContext, locationPredicate) in missingLocationPredicateSamplesWithContext {
             context("when location is missing \(locationContext)") {
                 it("should result in 404 unless there's connectivity issue") {

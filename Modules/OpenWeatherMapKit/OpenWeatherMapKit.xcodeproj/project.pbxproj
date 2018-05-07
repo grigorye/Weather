@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		3C1CAFD5626D7ED9EBEDFEFC /* Pods_OpenWeatherMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784782CB941A6D09D7563A95 /* Pods_OpenWeatherMapKit.framework */; };
+		C440003C20A057A400808CC9 /* DefaultNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C440003B20A057A400808CC9 /* DefaultNetworking.swift */; };
+		C498C3C220A0712A00D63DB3 /* CityQuerying.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498C3C120A0712A00D63DB3 /* CityQuerying.swift */; };
+		C498C3C420A0726E00D63DB3 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498C3C320A0726E00D63DB3 /* Coordinate.swift */; };
+		C498C3D420A0776900D63DB3 /* CityQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498C3D320A0776900D63DB3 /* CityQueryResult.swift */; };
+		C498C3D620A077B900D63DB3 /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498C3D520A077B900D63DB3 /* CityInfo.swift */; };
+		C498C3DB20A07B4000D63DB3 /* DefaultCityQuerying.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498C3DA20A07B1100D63DB3 /* DefaultCityQuerying.swift */; };
+		C498C3DC20A07B5300D63DB3 /* CityQueryingImp$.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498C3D820A079EF00D63DB3 /* CityQueryingImp$.swift */; };
+		C498C3DD20A07EA000D63DB3 /* CityQueryingImpContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498C3D920A07A1100D63DB3 /* CityQueryingImpContainer.swift */; };
+		C498C3E020A07EED00D63DB3 /* CityListJson$.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498C3DF20A07EB700D63DB3 /* CityListJson$.swift */; };
+		C498C3E220A07F3E00D63DB3 /* CityListJsonCityQuerying.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498C3E120A07F3E00D63DB3 /* CityListJsonCityQuerying.swift */; };
+		C498C3E420A083A600D63DB3 /* city.list.json.gz in Resources */ = {isa = PBXBuildFile; fileRef = C498C3E320A083A600D63DB3 /* city.list.json.gz */; };
+		C498C3E820A0984100D63DB3 /* CityListJsonCityQueryingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498C3E620A0970100D63DB3 /* CityListJsonCityQueryingTests.swift */; };
 		C49E3973209F9A7A0010EBAF /* OpenWeatherMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C49E3969209F9A7A0010EBAF /* OpenWeatherMapKit.framework */; };
 		C49E3978209F9A7A0010EBAF /* OpenWeatherMapKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49E3977209F9A7A0010EBAF /* OpenWeatherMapKitTests.swift */; };
 		C49E397A209F9A7A0010EBAF /* OpenWeatherMapKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C49E396C209F9A7A0010EBAF /* OpenWeatherMapKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -49,6 +61,18 @@
 		9832F7F5CCD6DDFDB3172680 /* Pods-OpenWeatherMapKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenWeatherMapKitTests.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-OpenWeatherMapKitTests/Pods-OpenWeatherMapKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7F3C064E022D8D1011E41D8 /* Pods-OpenWeatherMapKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenWeatherMapKit.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-OpenWeatherMapKit/Pods-OpenWeatherMapKit.release.xcconfig"; sourceTree = "<group>"; };
 		B0AED5E9B103A4988ADF894F /* Pods_OpenWeatherMapKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenWeatherMapKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C440003B20A057A400808CC9 /* DefaultNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworking.swift; sourceTree = "<group>"; };
+		C498C3C120A0712A00D63DB3 /* CityQuerying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityQuerying.swift; sourceTree = "<group>"; };
+		C498C3C320A0726E00D63DB3 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		C498C3D320A0776900D63DB3 /* CityQueryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityQueryResult.swift; sourceTree = "<group>"; };
+		C498C3D520A077B900D63DB3 /* CityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
+		C498C3D820A079EF00D63DB3 /* CityQueryingImp$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityQueryingImp$.swift; sourceTree = "<group>"; };
+		C498C3D920A07A1100D63DB3 /* CityQueryingImpContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityQueryingImpContainer.swift; sourceTree = "<group>"; };
+		C498C3DA20A07B1100D63DB3 /* DefaultCityQuerying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCityQuerying.swift; sourceTree = "<group>"; };
+		C498C3DF20A07EB700D63DB3 /* CityListJson$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListJson$.swift; sourceTree = "<group>"; };
+		C498C3E120A07F3E00D63DB3 /* CityListJsonCityQuerying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListJsonCityQuerying.swift; sourceTree = "<group>"; };
+		C498C3E320A083A600D63DB3 /* city.list.json.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = city.list.json.gz; sourceTree = "<group>"; };
+		C498C3E620A0970100D63DB3 /* CityListJsonCityQueryingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListJsonCityQueryingTests.swift; sourceTree = "<group>"; };
 		C49E3969209F9A7A0010EBAF /* OpenWeatherMapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenWeatherMapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C49E396C209F9A7A0010EBAF /* OpenWeatherMapKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenWeatherMapKit.h; sourceTree = "<group>"; };
 		C49E396D209F9A7A0010EBAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,7 +98,7 @@
 		C49E3997209F9A990010EBAF /* MoyaNetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaNetworkingTests.swift; sourceTree = "<group>"; };
 		C49E3998209F9A990010EBAF /* MoyaTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaTarget.swift; sourceTree = "<group>"; };
 		C49E3999209F9A990010EBAF /* APIKeyPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyPlugin.swift; sourceTree = "<group>"; };
-		C49E39AD209F9FB30010EBAF /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		C49E39AD209F9FB30010EBAF /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Bundle.swift; path = ../GEShared/Bundle.swift; sourceTree = "<group>"; };
 		C49E39B9209FAAD40010EBAF /* MoyaResponse+NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaResponse+NetworkingError.swift"; sourceTree = "<group>"; };
 		CF39F51EE3D5E2DD8823423E /* Pods-OpenWeatherMapKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenWeatherMapKit.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-OpenWeatherMapKit/Pods-OpenWeatherMapKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,10 +138,33 @@
 		41AAEDAEBBF20567664A2059 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C49E39AD209F9FB30010EBAF /* Bundle.swift */,
 				784782CB941A6D09D7563A95 /* Pods_OpenWeatherMapKit.framework */,
 				B0AED5E9B103A4988ADF894F /* Pods_OpenWeatherMapKitTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C498C3D720A079D000D63DB3 /* CityQueryingImp */ = {
+			isa = PBXGroup;
+			children = (
+				C498C3D820A079EF00D63DB3 /* CityQueryingImp$.swift */,
+				C498C3D920A07A1100D63DB3 /* CityQueryingImpContainer.swift */,
+				C498C3DA20A07B1100D63DB3 /* DefaultCityQuerying.swift */,
+				C498C3DE20A07EAB00D63DB3 /* CityListJson */,
+			);
+			path = CityQueryingImp;
+			sourceTree = "<group>";
+		};
+		C498C3DE20A07EAB00D63DB3 /* CityListJson */ = {
+			isa = PBXGroup;
+			children = (
+				C498C3E320A083A600D63DB3 /* city.list.json.gz */,
+				C498C3DF20A07EB700D63DB3 /* CityListJson$.swift */,
+				C498C3E120A07F3E00D63DB3 /* CityListJsonCityQuerying.swift */,
+				C498C3E620A0970100D63DB3 /* CityListJsonCityQueryingTests.swift */,
+			);
+			path = CityListJson;
 			sourceTree = "<group>";
 		};
 		C49E395F209F9A7A0010EBAF = {
@@ -145,8 +192,8 @@
 			children = (
 				C49E396C209F9A7A0010EBAF /* OpenWeatherMapKit.h */,
 				C49E3991209F9A980010EBAF /* Concepts */,
+				C498C3D720A079D000D63DB3 /* CityQueryingImp */,
 				C49E399B209F9A990010EBAF /* NetworkingImp */,
-				C49E39AD209F9FB30010EBAF /* Bundle.swift */,
 				C49E396D209F9A7A0010EBAF /* Info.plist */,
 			);
 			path = OpenWeatherMapKit;
@@ -174,10 +221,13 @@
 		C49E3990209F9A980010EBAF /* Primitives */ = {
 			isa = PBXGroup;
 			children = (
+				C498C3D520A077B900D63DB3 /* CityInfo.swift */,
 				C49E3985209F9A980010EBAF /* WeatherResponse.swift */,
 				C49E3986209F9A980010EBAF /* WeatherQueryResult.swift */,
+				C498C3D320A0776900D63DB3 /* CityQueryResult.swift */,
 				C49E3987209F9A980010EBAF /* NetworkingError.swift */,
 				C49E3988209F9A980010EBAF /* LocationPredicate.swift */,
+				C498C3C320A0726E00D63DB3 /* Coordinate.swift */,
 				C49E398A209F9A980010EBAF /* LocationPredicate+Codable.swift */,
 				C49E398B209F9A980010EBAF /* LocationPredicate+CodableTests.swift */,
 				C49E398F209F9A980010EBAF /* Samples */,
@@ -190,6 +240,7 @@
 			children = (
 				C49E3983209F9A980010EBAF /* README.md */,
 				C49E3984209F9A980010EBAF /* Networking.swift */,
+				C498C3C120A0712A00D63DB3 /* CityQuerying.swift */,
 				C49E3990209F9A980010EBAF /* Primitives */,
 			);
 			path = Concepts;
@@ -214,6 +265,7 @@
 				C49E3992209F9A990010EBAF /* NetworkingImp$.swift */,
 				C49E3993209F9A990010EBAF /* NetworkingImpContainer.swift */,
 				C49E3994209F9A990010EBAF /* NetworkingImpTests.swift */,
+				C440003B20A057A400808CC9 /* DefaultNetworking.swift */,
 				C49E399A209F9A990010EBAF /* Moya */,
 			);
 			path = NetworkingImp;
@@ -314,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C49E39AF209FA07A0010EBAF /* WeatherResponseSample+OpenWeatherMap.json in Resources */,
+				C498C3E420A083A600D63DB3 /* city.list.json.gz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,8 +408,10 @@
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GZIP/GZIP.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 			);
@@ -365,8 +420,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GZIP.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 			);
@@ -402,17 +459,27 @@
 			files = (
 				C49E39A7209F9B3F0010EBAF /* Moya$.swift in Sources */,
 				C49E39BA209FAAD40010EBAF /* MoyaResponse+NetworkingError.swift in Sources */,
+				C498C3D420A0776900D63DB3 /* CityQueryResult.swift in Sources */,
 				C49E39AE209F9FB30010EBAF /* Bundle.swift in Sources */,
 				C49E39A0209F9AED0010EBAF /* LocationPredicate+Codable.swift in Sources */,
+				C498C3DD20A07EA000D63DB3 /* CityQueryingImpContainer.swift in Sources */,
 				C49E399F209F9AED0010EBAF /* LocationPredicate.swift in Sources */,
+				C498C3DB20A07B4000D63DB3 /* DefaultCityQuerying.swift in Sources */,
 				C49E39AC209F9EAA0010EBAF /* Networking.swift in Sources */,
 				C49E39AA209F9B3F0010EBAF /* APIKeyPlugin.swift in Sources */,
 				C49E39A5209F9B340010EBAF /* NetworkingImpContainer.swift in Sources */,
+				C498C3E020A07EED00D63DB3 /* CityListJson$.swift in Sources */,
 				C49E399D209F9AED0010EBAF /* WeatherQueryResult.swift in Sources */,
 				C49E399E209F9AED0010EBAF /* NetworkingError.swift in Sources */,
+				C498C3C220A0712A00D63DB3 /* CityQuerying.swift in Sources */,
+				C498C3DC20A07B5300D63DB3 /* CityQueryingImp$.swift in Sources */,
+				C440003C20A057A400808CC9 /* DefaultNetworking.swift in Sources */,
+				C498C3D620A077B900D63DB3 /* CityInfo.swift in Sources */,
 				C49E399C209F9AED0010EBAF /* WeatherResponse.swift in Sources */,
 				C49E39A4209F9B340010EBAF /* NetworkingImp$.swift in Sources */,
 				C49E39A9209F9B3F0010EBAF /* MoyaTarget.swift in Sources */,
+				C498C3E220A07F3E00D63DB3 /* CityListJsonCityQuerying.swift in Sources */,
+				C498C3C420A0726E00D63DB3 /* Coordinate.swift in Sources */,
 				C49E39A8209F9B3F0010EBAF /* MoyaNetworking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C49E39AB209F9B420010EBAF /* MoyaNetworkingTests.swift in Sources */,
+				C498C3E820A0984100D63DB3 /* CityListJsonCityQueryingTests.swift in Sources */,
 				C49E39A6209F9B390010EBAF /* NetworkingImpTests.swift in Sources */,
 				C49E3978209F9A7A0010EBAF /* OpenWeatherMapKitTests.swift in Sources */,
 				C49E39A2209F9AF80010EBAF /* LocationPredicateSamples.swift in Sources */,

@@ -12,15 +12,4 @@ public enum LocationPredicate : Equatable {
     case cityId(Int)
     case coordinate(Coordinate)
     case zipCode(String, countryCode: String)
-    
-    public struct Coordinate : Codable, Equatable {
-        
-        public let lat: Double
-        public let lon: Double
-        
-        public init(lat: Double, lon: Double) {
-            self.lat = lat
-            self.lon = lon
-        }
-    }
 }
