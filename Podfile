@@ -23,6 +23,8 @@ target 'WeatherApp' do
   project 'Modules/WeatherApp/WeatherApp.xcodeproj'
   
   all_non_test_pods
+  
+  pod 'LHSKeyboardAdjusting', '~> 2.0.1'
 
   target 'WeatherAppTests' do
     inherit! :search_paths
@@ -47,11 +49,59 @@ target 'OpenWeatherMapKit' do
   end
 end
 
+target 'GenerateOpenWeatherMapPersistentCityInfos' do
+  project 'Modules/OpenWeatherMapKit/OpenWeatherMapKit.xcodeproj'
+
+  platform :osx, '10.13'
+
+  all_non_test_pods
+end
+
+# Enforce support for macOS for everything.
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |configuration|
-      configuration.build_settings['CLANG_ENABLE_CODE_COVERAGE'] = 'NO'
-      configuration.build_settings['SWIFT_EXEC'] = '$(SRCROOT)/../Tools/SWIFT_EXEC-no-coverage'
+      configuration.build_settings['CONFIGURATION_BUILD_DIR'] = '${PODS_CONFIGURATION_BUILD_DIR}'
+      if target.name =~ /^Pods-/
+        configuration.build_settings['SUPPORTED_PLATFORMS'] = 'iphoneos iphonesimulator macosx'
+        configuration.build_settings['VALID_ARCHS'] = 'arm64 armv7 armv7s i386 x86_64'
+      end
+      xcconfig_path = configuration.base_configuration_reference.real_path
+      xcconfig = Xcodeproj::Config.new(xcconfig_path).to_hash
+
+      #
+      frameworkSearchPaths = xcconfig['FRAMEWORK_SEARCH_PATHS']
+      if frameworkSearchPaths == "XXX" && xcconfig_path.basename.to_s =~ /(debug|release).xcconfig$/
+        puts(frameworkSearchPaths)
+        macosFrameworkSearchPaths = frameworkSearchPaths.gsub(/"(\$\{PODS_CONFIGURATION_BUILD_DIR\}\/[.a-zA-Z0-9_-]+)-iOS"( |$)/, '"\1-macOS"\2')
+
+        xcconfig['FRAMEWORK_SEARCH_PATHS'] = ''
+        xcconfig['FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]'] = frameworkSearchPaths
+        xcconfig['FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]'] = frameworkSearchPaths
+        xcconfig['FRAMEWORK_SEARCH_PATHS[sdk=macosx*]'] = macosFrameworkSearchPaths
+      end
+
+      #
+      # Remove framework search paths not existing when building (dynamic) frameworks
+      #
+      frameworkSearchPaths = xcconfig['FRAMEWORK_SEARCH_PATHS']
+      if frameworkSearchPaths != nil
+        frameworkSearchPaths = frameworkSearchPaths.gsub(/"\$\{PODS_CONFIGURATION_BUILD_DIR\}\/[.a-zA-Z0-9_-]+"( |$)/, '')
+        xcconfig['FRAMEWORK_SEARCH_PATHS'] = frameworkSearchPaths
+      end
+
+
+      File.open(xcconfig_path, "w") { |file|
+        xcconfig.each do |key,value|
+          file.puts "#{key} = #{value}"
+        end
+      }
+    end
+  end
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |configuration|
+      #configuration.build_settings['CLANG_ENABLE_CODE_COVERAGE'] = 'NO'
+      #configuration.build_settings['SWIFT_EXEC'] = '$(SRCROOT)/../Tools/SWIFT_EXEC-no-coverage'
     end
   end
 end
