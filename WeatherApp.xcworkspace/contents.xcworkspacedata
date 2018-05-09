@@ -4,16 +4,9 @@
    <Group
       location = "container:"
       name = "Modules">
-      <Group
-         location = "group:Modules/GEShared"
-         name = "GEShared">
-         <FileRef
-            location = "group:KeyboardAwareViewController.swift">
-         </FileRef>
-         <FileRef
-            location = "group:BundledPersistentContainer.swift">
-         </FileRef>
-      </Group>
+      <FileRef
+         location = "group:Modules/Shared">
+      </FileRef>
       <FileRef
          location = "group:Modules/WeatherApp/WeatherApp.xcodeproj">
       </FileRef>
