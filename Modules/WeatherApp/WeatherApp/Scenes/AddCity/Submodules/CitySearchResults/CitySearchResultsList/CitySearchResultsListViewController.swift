@@ -8,12 +8,19 @@
 
 import UIKit
 
+protocol CitySearchResultsListViewDelegate : class {
+    
+    func didSelectCity(_: CityInfo)
+}
+
 protocol CitySearchResultsListView : class {
     
     var searchResults: [CityInfo] { get set }
 }
 
 class CitySearchResultsListViewController : UITableViewController, CitySearchResultsListView {
+    
+    weak var viewDelegate: CitySearchResultsListViewDelegate!
     
     var searchResults: [CityInfo] = [] {
         didSet {
@@ -30,6 +37,15 @@ class CitySearchResultsListViewController : UITableViewController, CitySearchRes
     func configureCell(_ cell: UITableViewCell, with city: CityInfo) {
         cell.textLabel!.text = city.name
     }
+    
+    // MARK: - UITableViewDelegate
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let city = searchResults[indexPath.row]
+        viewDelegate.didSelectCity(city)
+    }
+    
+    // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
