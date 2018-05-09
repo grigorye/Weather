@@ -10,15 +10,6 @@ import GZIP
 import RxSwift
 import Then
 
-func decodeCityListJson() throws -> [CityInfo] {
-    let bundle: Bundle = .current
-    let pathToGZ = bundle.url(forResource: "city.list.json", withExtension: "gz")!
-    let dataGZ = try Data(contentsOf: pathToGZ)
-    let data = (dataGZ as NSData).gunzipped()!
-    let decoded = try JSONDecoder().decode([CityInfo].self, from: data)
-    return decoded
-}
-
 extension Observable : Then {}
 
 private let defaultCityInfos = Observable<[CityInfo]>.create({ observer in
