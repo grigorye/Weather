@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ffv-w4-IRS">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Placeholder-->
+        <scene sceneID="zoA-5g-D06">
+            <objects>
+                <viewController id="ffv-w4-IRS" userLabel="Placeholder" customClass="KeyboardAwareViewController" customModule="WeatherApp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JnQ-is-K8Z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8qv-XA-uNB" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XfC-e7-dGH">
+                                        <rect key="frame" x="0.0" y="323" width="375" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="XfC-e7-dGH" firstAttribute="leading" secondItem="9xu-1c-1ev" secondAttribute="leading" id="NgU-7F-kRK"/>
+                                    <constraint firstItem="XfC-e7-dGH" firstAttribute="trailing" secondItem="9xu-1c-1ev" secondAttribute="trailing" id="PM9-rc-xE3"/>
+                                    <constraint firstItem="XfC-e7-dGH" firstAttribute="centerY" secondItem="8qv-XA-uNB" secondAttribute="centerY" id="nGq-X0-RFB"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="9xu-1c-1ev"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8qv-XA-uNB" firstAttribute="bottom" secondItem="APg-Qe-r08" secondAttribute="bottom" priority="750" id="8uV-mO-o10"/>
+                            <constraint firstItem="8qv-XA-uNB" firstAttribute="top" secondItem="JnQ-is-K8Z" secondAttribute="top" id="FLa-08-RzT"/>
+                            <constraint firstItem="8qv-XA-uNB" firstAttribute="trailing" secondItem="APg-Qe-r08" secondAttribute="trailing" id="GFs-RN-Jx9"/>
+                            <constraint firstItem="8qv-XA-uNB" firstAttribute="leading" secondItem="APg-Qe-r08" secondAttribute="leading" id="zOi-5V-o3O"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="APg-Qe-r08"/>
+                    </view>
+                    <connections>
+                        <outlet property="keyboardAdjustedView" destination="8qv-XA-uNB" id="yjn-f7-EQP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QrU-9Y-Vzn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-362.39999999999998" y="-116.49175412293854"/>
+        </scene>
+    </scenes>
+</document>

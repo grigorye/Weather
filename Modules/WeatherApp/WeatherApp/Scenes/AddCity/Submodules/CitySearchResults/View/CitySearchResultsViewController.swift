@@ -11,21 +11,24 @@ import UIKit
 enum CitySearchResultsViewState {
     
     case loading
-    case list
+    case list([CityInfo])
     case error(Error)
 }
 
-protocol CitySearchResultsView : class {
+protocol CitySearchResultsView : AnyObject {
     
     var state: CitySearchResultsViewState { get set }
 }
 
-class CitySearchResultsViewController : UIViewController, CitySearchResultsView, CitySearchResultsConsumerProvider {
+class CitySearchResultsViewController : ModuleViewController, CitySearchResultsView {
     
-    var interactor: CitySearchResultsInteractor = CitySearchResultsInteractorImp()
+    var presenter: CitySearchResultsPresenter!
     
     var state: CitySearchResultsViewState = .loading {
         didSet {
+            if case .list(let cityInfos) = state {
+                childListView.searchResults = cityInfos
+            }
             configureView()
         }
     }
@@ -37,7 +40,6 @@ class CitySearchResultsViewController : UIViewController, CitySearchResultsView,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        interactor.view = self
         configureView()
     }
 
@@ -63,19 +65,15 @@ class CitySearchResultsViewController : UIViewController, CitySearchResultsView,
         switchingViewToShow.isHidden = false
     }
     
+    private var childListView: CitySearchResultsListView!
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
         switch segue.identifier {
-        case "listView"?:
-            interactor.listView = (segue.destination as! CitySearchResultsListView)
+        case "list"?:
+            childListView = forceCasted(segue.destination)
         default: ()
         }
-    }
-    
-    // MARK: - CitySearchResultsConsumerProvider
-    
-    var citySearchResultsConsumer: CitySearchResultsConsumer {
-        return interactor
     }
 }

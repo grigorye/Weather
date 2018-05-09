@@ -24,24 +24,21 @@
                                     <constraint firstAttribute="height" constant="56" id="4cg-ZJ-iLE"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="dAL-C7-Hh3" kind="embed" identifier="citySearchInput" id="5Lo-Zi-gKr"/>
+                                    <segue destination="dAL-C7-Hh3" kind="embed" identifier="searchInput" id="5Lo-Zi-gKr"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHX-2s-UJw" userLabel="Results">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gse-sH-bch">
                                 <rect key="frame" x="0.0" y="76" width="414" height="660"/>
-                                <connections>
-                                    <segue destination="QnM-Wa-gUc" kind="embed" identifier="citySearchResults" id="hnN-L9-FvU"/>
-                                </connections>
-                            </containerView>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bHX-2s-UJw" firstAttribute="leading" secondItem="8PD-jt-ecv" secondAttribute="leading" id="4A7-bp-xgY"/>
-                            <constraint firstItem="bHX-2s-UJw" firstAttribute="bottom" secondItem="8PD-jt-ecv" secondAttribute="bottom" id="AHk-ZU-6UD"/>
+                            <constraint firstItem="gse-sH-bch" firstAttribute="top" secondItem="b50-m5-LbV" secondAttribute="bottom" id="90Q-FU-v6f"/>
+                            <constraint firstItem="gse-sH-bch" firstAttribute="trailing" secondItem="8PD-jt-ecv" secondAttribute="trailing" id="9Nv-pF-zOo"/>
                             <constraint firstItem="b50-m5-LbV" firstAttribute="top" secondItem="8PD-jt-ecv" secondAttribute="top" id="Bom-SK-11t"/>
-                            <constraint firstItem="bHX-2s-UJw" firstAttribute="top" secondItem="b50-m5-LbV" secondAttribute="bottom" id="VV6-q4-K60"/>
+                            <constraint firstItem="gse-sH-bch" firstAttribute="bottom" secondItem="8PD-jt-ecv" secondAttribute="bottom" id="R1c-AK-Lbd"/>
+                            <constraint firstItem="gse-sH-bch" firstAttribute="leading" secondItem="8PD-jt-ecv" secondAttribute="leading" id="hgA-9H-eI5"/>
                             <constraint firstItem="b50-m5-LbV" firstAttribute="trailing" secondItem="uic-PR-1qf" secondAttribute="trailing" id="nLh-Nz-B6y"/>
-                            <constraint firstItem="bHX-2s-UJw" firstAttribute="trailing" secondItem="8PD-jt-ecv" secondAttribute="trailing" id="pf0-o9-Huf"/>
                             <constraint firstItem="b50-m5-LbV" firstAttribute="leading" secondItem="uic-PR-1qf" secondAttribute="leading" id="w7o-Za-N1P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8PD-jt-ecv"/>
@@ -49,6 +46,9 @@
                     <navigationItem key="navigationItem" id="zqB-pF-NNp">
                         <nil key="title"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchResultsContainerView" destination="gse-sH-bch" id="HqR-Dq-6Pt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kpn-FE-r1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,14 +61,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYa-zc-ECW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="426" y="6"/>
-        </scene>
-        <!--CitySearchResults-->
-        <scene sceneID="PlN-pb-f8F">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="CitySearchResults" storyboardName="CitySearchResults" id="QnM-Wa-gUc" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dBI-mk-A6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-227" y="425"/>
         </scene>
     </scenes>
 </document>

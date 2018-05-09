@@ -8,19 +8,19 @@
 
 import UIKit
 
-protocol CitySearchInputDelegate : class {
+protocol CitySearchInputViewDelegate : class {
     
     func citySearchInputDidChange(_ text: String)
 }
 
-protocol CitySearchInputProvider : class {
+protocol CitySearchInputView : class {
     
-    var delegate: CitySearchInputDelegate! { get set }
+    var delegate: CitySearchInputViewDelegate! { get set }
 }
 
-class CitySearchInputViewController : UIViewController, CitySearchInputProvider {
+class CitySearchInputViewController : UIViewController, CitySearchInputView {
     
-    weak var delegate: CitySearchInputDelegate!
+    weak var delegate: CitySearchInputViewDelegate!
     
     @IBOutlet private var searchBar: UISearchBar!
     
@@ -32,19 +32,6 @@ class CitySearchInputViewController : UIViewController, CitySearchInputProvider 
 
         searchBar.becomeFirstResponder()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
 }
 
 extension CitySearchInputViewController : UISearchBarDelegate {
@@ -54,6 +41,6 @@ extension CitySearchInputViewController : UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        delegate?.citySearchInputDidChange(searchText)
+        delegate.citySearchInputDidChange(searchText)
     }
 }

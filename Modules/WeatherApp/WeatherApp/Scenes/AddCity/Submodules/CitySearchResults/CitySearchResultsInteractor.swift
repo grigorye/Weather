@@ -6,44 +6,36 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-protocol CitySearchResultsInteractor : CitySearchResultsConsumer {
+protocol CitySearchResultsInteractor {
     
-    var listView: CitySearchResultsListView! { get set }
-    var view: CitySearchResultsView! { get set }
+    func queryCity(matching text: String, completion: @escaping (CityQueryResult) -> Void)
 }
 
 class CitySearchResultsInteractorImp : CitySearchResultsInteractor {
     
-    weak var view: CitySearchResultsView!
-
-    var listView: CitySearchResultsListView!
+    // MARK: - <CitySearchResultsInteractor>
     
-    var searchResults: CitySearchResults! {
-        didSet {
-            configureView()
-        }
-    }
-    
-    private func updateViewState() {
-        let newState: CitySearchResultsViewState
-        switch searchResults {
-        case nil:
-            newState = .loading
-        case .cities?:
-            newState = .list
-        case .error(let error)?:
-            newState = .error(error)
-        }
-        view.state = newState
-    }
-    
-    private func configureView() {
-        switch searchResults {
-        case .cities(let cityInfos)?:
-            listView.searchResults = cityInfos
-        default: ()
-        }
+    func queryCity(matching text: String, completion: @escaping (CityQueryResult) -> Void) {
         
-        updateViewState()
+        self.disposableCityQuery = cityProvider.queryCity(matching: text, completion: completion)
     }
+    
+    // MARK: -
+    
+    init(weatherProvider: WeatherProvider, cityProvider: CityProvider) {
+        
+        self.weatherProvider = weatherProvider
+        self.cityProvider = cityProvider
+    }
+    
+    // MARK: -
+    
+    private let weatherProvider: WeatherProvider
+    private let cityProvider: CityProvider
+    
+    private var disposableCityQuery: CityProvider.DisposableQuery!
+    
+    // MARK: -
+    
+    deinit {()}
 }

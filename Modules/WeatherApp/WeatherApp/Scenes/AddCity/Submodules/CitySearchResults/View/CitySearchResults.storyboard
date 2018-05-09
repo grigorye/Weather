@@ -14,23 +14,23 @@
         <scene sceneID="zvs-7H-jXr">
             <objects>
                 <viewController id="dK2-Hr-WTU" customClass="CitySearchResultsViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="A1w-8O-5vA">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="A1w-8O-5vA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQH-Ds-F0E">
+                            <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQH-Ds-F0E">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
-                                    <segue destination="vVL-ZU-Ujd" kind="embed" identifier="listView" id="hgf-YP-cQr"/>
+                                    <segue destination="vVL-ZU-Ujd" kind="embed" identifier="list" id="hgf-YP-cQr"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUy-7E-1yD">
+                            <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUy-7E-1yD">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
                                     <segue destination="hta-hO-AjG" kind="embed" id="MQZ-F1-lpT"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3AK-Kf-GyQ">
+                            <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AK-Kf-GyQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
                                     <segue destination="gHX-aj-hOt" kind="embed" id="Ufa-JX-mhG"/>
@@ -39,20 +39,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jQH-Ds-F0E" firstAttribute="top" secondItem="A1w-8O-5vA" secondAttribute="top" id="2VW-ZJ-bxm"/>
-                            <constraint firstItem="jQH-Ds-F0E" firstAttribute="trailing" secondItem="GZY-N9-MFE" secondAttribute="trailing" id="8hU-zC-b0h"/>
-                            <constraint firstItem="3AK-Kf-GyQ" firstAttribute="top" secondItem="A1w-8O-5vA" secondAttribute="top" id="E0c-Y9-UTi"/>
-                            <constraint firstItem="jQH-Ds-F0E" firstAttribute="bottom" secondItem="GZY-N9-MFE" secondAttribute="bottom" id="O4g-Tu-P8c"/>
-                            <constraint firstItem="3AK-Kf-GyQ" firstAttribute="bottom" secondItem="GZY-N9-MFE" secondAttribute="bottom" id="ZK2-Sw-MHo"/>
-                            <constraint firstItem="CUy-7E-1yD" firstAttribute="leading" secondItem="GZY-N9-MFE" secondAttribute="leading" id="b6U-bP-jgn"/>
-                            <constraint firstItem="CUy-7E-1yD" firstAttribute="bottom" secondItem="GZY-N9-MFE" secondAttribute="bottom" id="dqS-tR-cQL"/>
-                            <constraint firstItem="jQH-Ds-F0E" firstAttribute="leading" secondItem="GZY-N9-MFE" secondAttribute="leading" id="iwv-QB-xBW"/>
-                            <constraint firstItem="3AK-Kf-GyQ" firstAttribute="trailing" secondItem="GZY-N9-MFE" secondAttribute="trailing" id="oYi-9a-7cI"/>
-                            <constraint firstItem="CUy-7E-1yD" firstAttribute="trailing" secondItem="GZY-N9-MFE" secondAttribute="trailing" id="tTa-dg-YM4"/>
-                            <constraint firstItem="3AK-Kf-GyQ" firstAttribute="leading" secondItem="GZY-N9-MFE" secondAttribute="leading" id="viP-Gx-vyI"/>
-                            <constraint firstItem="CUy-7E-1yD" firstAttribute="top" secondItem="A1w-8O-5vA" secondAttribute="top" id="zkH-Mz-D2D"/>
+                            <constraint firstItem="jQH-Ds-F0E" firstAttribute="leading" secondItem="A1w-8O-5vA" secondAttribute="leading" id="5n6-cc-f0I"/>
+                            <constraint firstItem="3AK-Kf-GyQ" firstAttribute="bottom" secondItem="A1w-8O-5vA" secondAttribute="bottom" id="8Pm-yP-Q9H"/>
+                            <constraint firstItem="3AK-Kf-GyQ" firstAttribute="trailing" secondItem="A1w-8O-5vA" secondAttribute="trailing" id="Rb6-ay-bwp"/>
+                            <constraint firstItem="CUy-7E-1yD" firstAttribute="bottom" secondItem="A1w-8O-5vA" secondAttribute="bottom" id="ThN-mF-kKI"/>
+                            <constraint firstItem="CUy-7E-1yD" firstAttribute="trailing" secondItem="A1w-8O-5vA" secondAttribute="trailing" id="YcR-61-pWy"/>
+                            <constraint firstItem="jQH-Ds-F0E" firstAttribute="trailing" secondItem="A1w-8O-5vA" secondAttribute="trailing" id="b0r-wK-IyN"/>
+                            <constraint firstItem="CUy-7E-1yD" firstAttribute="top" secondItem="A1w-8O-5vA" secondAttribute="top" id="j5S-P4-Ws3"/>
+                            <constraint firstItem="jQH-Ds-F0E" firstAttribute="bottom" secondItem="A1w-8O-5vA" secondAttribute="bottom" id="kGf-Jl-bfN"/>
+                            <constraint firstItem="3AK-Kf-GyQ" firstAttribute="leading" secondItem="A1w-8O-5vA" secondAttribute="leading" id="kPx-Xl-8rE"/>
+                            <constraint firstItem="3AK-Kf-GyQ" firstAttribute="top" secondItem="A1w-8O-5vA" secondAttribute="top" id="mUh-Q0-jI4"/>
+                            <constraint firstItem="jQH-Ds-F0E" firstAttribute="top" secondItem="A1w-8O-5vA" secondAttribute="top" id="wYZ-7H-J9i"/>
+                            <constraint firstItem="CUy-7E-1yD" firstAttribute="leading" secondItem="A1w-8O-5vA" secondAttribute="leading" id="zMq-cI-Fu1"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="GZY-N9-MFE"/>
+                        <viewLayoutGuide key="safeArea" id="NSf-rT-jFK"/>
                     </view>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
@@ -71,7 +71,7 @@
                 <viewControllerPlaceholder storyboardName="CitySearchResultsList" id="vVL-ZU-Ujd" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bje-3t-HeQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48" y="-34"/>
+            <point key="canvasLocation" x="48" y="-58"/>
         </scene>
         <!--Loading-->
         <scene sceneID="7Dj-fj-81y">
@@ -79,7 +79,7 @@
                 <viewControllerPlaceholder storyboardName="Loading" id="gHX-aj-hOt" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zu-sD-Vf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29" y="34"/>
+            <point key="canvasLocation" x="48" y="-5"/>
         </scene>
         <!--Error-->
         <scene sceneID="VcA-0v-emb">
@@ -87,7 +87,7 @@
                 <viewControllerPlaceholder storyboardName="Error" id="hta-hO-AjG" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBJ-eq-13E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-526" y="375"/>
+            <point key="canvasLocation" x="-425" y="382"/>
         </scene>
     </scenes>
 </document>
