@@ -21,7 +21,7 @@ extension CityProviderImp_OpenWeatherMap$ {
              self.cityQuerying = cityQuerying
         }
 
-        func queryCity(matching text: String, completion: @escaping (CityProvider.CityQueryResult) -> Void) -> DisposableQuery {
+        func queryCity(matching text: String, completion: @escaping (CityQueryResult) -> Void) -> DisposableQuery {
             return cityQuerying.queryCity(matching: text) { (result) in
                 switch result {
                 case .failure(let error):

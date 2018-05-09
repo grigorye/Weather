@@ -8,9 +8,10 @@
 
 import Result
 
+typealias CityQueryResult = Result<[CityInfo], AnyError>
+
 protocol CityProvider {
     
-    typealias CityQueryResult = Result<[CityInfo], AnyError>
     typealias DisposableQuery = AnyObject
     
     func queryCity(matching text: String, completion: @escaping (CityQueryResult) -> Void) -> DisposableQuery
