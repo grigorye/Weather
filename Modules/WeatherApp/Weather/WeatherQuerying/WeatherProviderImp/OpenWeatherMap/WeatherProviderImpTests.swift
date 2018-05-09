@@ -10,7 +10,7 @@
 import OpenWeatherMapKit
 import Result
 
-class OpenWeatherMap_WeatherProviderImp_QueryWeather_T : QuickSpec, OpenWeatherMap$$ {
+class WeatherProviderImp_OpenWeatherMap_WeatherProviderImp_QueryWeather_T : QuickSpec, WeatherProviderImp_OpenWeatherMap$$ {
     override func spec() {
         context("with good network") {
             var WeatherProvider: WeatherProvider!
@@ -41,7 +41,7 @@ class OpenWeatherMap_WeatherProviderImp_QueryWeather_T : QuickSpec, OpenWeatherM
     }
 }
 
-class OpenWeatherMap_WeatherProviderImp_QueryWeather_ET : QuickSpec, OpenWeatherMap$$ {
+class WeatherProviderImp_OpenWeatherMap_WeatherProviderImp_QueryWeather_ET : QuickSpec, WeatherProviderImp_OpenWeatherMap$$ {
     override func spec() {
         context("with bad network") {
             var WeatherProvider: WeatherProvider!

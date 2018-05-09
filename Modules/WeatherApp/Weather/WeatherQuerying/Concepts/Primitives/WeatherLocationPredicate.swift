@@ -6,15 +6,18 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-struct WeatherCoordinate {
+struct CityCoordinate {
     
     let latitude: Double
     let longitude: Double
 }
 
-enum WeatherLocationPredicate {
+enum CityPredicate {
     
     case cityName(String)
     case coordinate(WeatherCoordinate)
     case zipCode(String, countryCode: String)
 }
+
+typealias WeatherLocationPredicate = CityPredicate
+typealias WeatherCoordinate = CityCoordinate

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v0h-gX-jtt">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add City View Controller-->
+        <scene sceneID="gyc-dN-Kxe">
+            <objects>
+                <viewController id="v0h-gX-jtt" customClass="AddCityViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uic-PR-1qf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="b50-m5-LbV" userLabel="Input">
+                                <rect key="frame" x="0.0" y="20" width="414" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="4cg-ZJ-iLE"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="dAL-C7-Hh3" kind="embed" identifier="citySearchInput" id="5Lo-Zi-gKr"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHX-2s-UJw" userLabel="Results">
+                                <rect key="frame" x="0.0" y="76" width="414" height="660"/>
+                                <connections>
+                                    <segue destination="QnM-Wa-gUc" kind="embed" identifier="citySearchResults" id="hnN-L9-FvU"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bHX-2s-UJw" firstAttribute="leading" secondItem="8PD-jt-ecv" secondAttribute="leading" id="4A7-bp-xgY"/>
+                            <constraint firstItem="bHX-2s-UJw" firstAttribute="bottom" secondItem="8PD-jt-ecv" secondAttribute="bottom" id="AHk-ZU-6UD"/>
+                            <constraint firstItem="b50-m5-LbV" firstAttribute="top" secondItem="8PD-jt-ecv" secondAttribute="top" id="Bom-SK-11t"/>
+                            <constraint firstItem="bHX-2s-UJw" firstAttribute="top" secondItem="b50-m5-LbV" secondAttribute="bottom" id="VV6-q4-K60"/>
+                            <constraint firstItem="b50-m5-LbV" firstAttribute="trailing" secondItem="uic-PR-1qf" secondAttribute="trailing" id="nLh-Nz-B6y"/>
+                            <constraint firstItem="bHX-2s-UJw" firstAttribute="trailing" secondItem="8PD-jt-ecv" secondAttribute="trailing" id="pf0-o9-Huf"/>
+                            <constraint firstItem="b50-m5-LbV" firstAttribute="leading" secondItem="uic-PR-1qf" secondAttribute="leading" id="w7o-Za-N1P"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8PD-jt-ecv"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zqB-pF-NNp">
+                        <nil key="title"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kpn-FE-r1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-226.84729064039411" y="5.5999999999999996"/>
+        </scene>
+        <!--CitySearchInput-->
+        <scene sceneID="oPk-eZ-HQ8">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CitySearchInput" storyboardName="CitySearchInput" referencedIdentifier="CitySearchInput" id="dAL-C7-Hh3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vYa-zc-ECW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="426" y="6"/>
+        </scene>
+        <!--CitySearchResults-->
+        <scene sceneID="PlN-pb-f8F">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CitySearchResults" storyboardName="CitySearchResults" id="QnM-Wa-gUc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dBI-mk-A6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-227" y="425"/>
+        </scene>
+    </scenes>
+</document>

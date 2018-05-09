@@ -16,6 +16,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(UINib(nibName: "CityListCell", bundle: .current), forCellReuseIdentifier: "Cell")
         // Do any additional setup after loading the view, typically from a nib.
         navigationItem.leftBarButtonItem = editButtonItem
         
@@ -70,6 +72,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
     }
     
+    @IBAction func unwindFromCitySearchInput(_ segue: UIStoryboardSegue) {
+    }
+    
     // MARK: - Table View
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -110,7 +115,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
     
     func configureCell(_ cell: UITableViewCell, withEvent event: Event) {
-        cell.textLabel!.text = event.timestamp!.description
+        let viewModel = CityViewModel(city: "London", temperature: "31°")
+        (cell as! CityView).model = viewModel
     }
     
     // MARK: - Fetched results controller

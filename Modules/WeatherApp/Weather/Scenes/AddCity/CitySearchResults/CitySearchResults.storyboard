@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dK2-Hr-WTU">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--City Search Results View Controller-->
+        <scene sceneID="zvs-7H-jXr">
+            <objects>
+                <viewController id="dK2-Hr-WTU" customClass="CitySearchResultsViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A1w-8O-5vA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQH-Ds-F0E">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="vVL-ZU-Ujd" kind="embed" identifier="listView" id="hgf-YP-cQr"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUy-7E-1yD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="hta-hO-AjG" kind="embed" id="MQZ-F1-lpT"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3AK-Kf-GyQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="gHX-aj-hOt" kind="embed" id="Ufa-JX-mhG"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jQH-Ds-F0E" firstAttribute="top" secondItem="A1w-8O-5vA" secondAttribute="top" id="2VW-ZJ-bxm"/>
+                            <constraint firstItem="jQH-Ds-F0E" firstAttribute="trailing" secondItem="GZY-N9-MFE" secondAttribute="trailing" id="8hU-zC-b0h"/>
+                            <constraint firstItem="3AK-Kf-GyQ" firstAttribute="top" secondItem="A1w-8O-5vA" secondAttribute="top" id="E0c-Y9-UTi"/>
+                            <constraint firstItem="jQH-Ds-F0E" firstAttribute="bottom" secondItem="GZY-N9-MFE" secondAttribute="bottom" id="O4g-Tu-P8c"/>
+                            <constraint firstItem="3AK-Kf-GyQ" firstAttribute="bottom" secondItem="GZY-N9-MFE" secondAttribute="bottom" id="ZK2-Sw-MHo"/>
+                            <constraint firstItem="CUy-7E-1yD" firstAttribute="leading" secondItem="GZY-N9-MFE" secondAttribute="leading" id="b6U-bP-jgn"/>
+                            <constraint firstItem="CUy-7E-1yD" firstAttribute="bottom" secondItem="GZY-N9-MFE" secondAttribute="bottom" id="dqS-tR-cQL"/>
+                            <constraint firstItem="jQH-Ds-F0E" firstAttribute="leading" secondItem="GZY-N9-MFE" secondAttribute="leading" id="iwv-QB-xBW"/>
+                            <constraint firstItem="3AK-Kf-GyQ" firstAttribute="trailing" secondItem="GZY-N9-MFE" secondAttribute="trailing" id="oYi-9a-7cI"/>
+                            <constraint firstItem="CUy-7E-1yD" firstAttribute="trailing" secondItem="GZY-N9-MFE" secondAttribute="trailing" id="tTa-dg-YM4"/>
+                            <constraint firstItem="3AK-Kf-GyQ" firstAttribute="leading" secondItem="GZY-N9-MFE" secondAttribute="leading" id="viP-Gx-vyI"/>
+                            <constraint firstItem="CUy-7E-1yD" firstAttribute="top" secondItem="A1w-8O-5vA" secondAttribute="top" id="zkH-Mz-D2D"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GZY-N9-MFE"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="errorView" destination="CUy-7E-1yD" id="SrO-e3-ift"/>
+                        <outlet property="listView" destination="jQH-Ds-F0E" id="miI-5r-7sb"/>
+                        <outlet property="loadingView" destination="3AK-Kf-GyQ" id="jti-da-Abo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WHw-HD-tes" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-525.60000000000002" y="-33.733133433283363"/>
+        </scene>
+        <!--CitySearchResultsList-->
+        <scene sceneID="JGV-PX-wkv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CitySearchResultsList" id="vVL-ZU-Ujd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bje-3t-HeQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="48" y="-34"/>
+        </scene>
+        <!--Loading-->
+        <scene sceneID="7Dj-fj-81y">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Loading" id="gHX-aj-hOt" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3zu-sD-Vf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="29" y="34"/>
+        </scene>
+        <!--Error-->
+        <scene sceneID="VcA-0v-emb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Error" id="hta-hO-AjG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JBJ-eq-13E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-526" y="375"/>
+        </scene>
+    </scenes>
+</document>
