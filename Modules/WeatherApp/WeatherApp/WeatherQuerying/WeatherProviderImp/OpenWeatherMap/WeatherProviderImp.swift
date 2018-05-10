@@ -20,7 +20,7 @@ extension WeatherProviderImp_OpenWeatherMap$ {
         init(networking: Networking) {
             self.networking = networking
         }
-        
+                
         func queryWeather(for canonicPredicate: WeatherLocationPredicate, completion: @escaping (Result<WeatherInfo, AnyError>) -> Void) {
             let locationPredicate = LocationPredicate(canonicPredicate)
             networking.queryWeather(for: locationPredicate) { (result) in
@@ -29,7 +29,7 @@ extension WeatherProviderImp_OpenWeatherMap$ {
                     completion(.failure(AnyError(error)))
                     return
                 case .success(let networkWeatherInfo):
-                    let temperature = Measurement(value: networkWeatherInfo.main.temp, unit: UnitTemperature.celsius)
+                    let temperature = Measurement(value: networkWeatherInfo.main.temp, unit: UnitTemperature.kelvin)
                     let weatherInfo = WeatherInfo(temperature: temperature)
                     completion(.success(weatherInfo))
                 }

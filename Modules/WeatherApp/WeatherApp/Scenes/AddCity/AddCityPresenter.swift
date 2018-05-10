@@ -6,11 +6,11 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-protocol AddCityPresenter : CitySearchInputViewDelegate {
+protocol AddCityPresenter : AddCityViewDelegate {
 }
 
 class AddCityPresenterImp : AddCityPresenter {
-    
+
     let router: AddCityRouter
     let interactor: AddCityInteractor
     
@@ -19,7 +19,7 @@ class AddCityPresenterImp : AddCityPresenter {
         self.router = router
     }
     
-    // MARK: - <CitySearchInputDelegate>
+    // MARK: - <AddCityViewDelegate>
     
     func citySearchInputDidChange(_ text: String) {
         

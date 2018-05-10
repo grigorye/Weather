@@ -7,6 +7,7 @@
 
 import CoreData
 
+/// Provides access to persistent stores residing inside the *current* bundle. Should be compiled into the caller bundle.
 class BundledPersistentContainer : NSPersistentContainer {
     
     override class func defaultDirectoryURL() -> URL {

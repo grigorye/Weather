@@ -14,6 +14,7 @@ struct CityCoordinate {
 
 enum CityPredicate {
     
+    case cityId(String)
     case cityName(String)
     case coordinate(WeatherCoordinate)
     case zipCode(String, countryCode: String)

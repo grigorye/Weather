@@ -47,7 +47,7 @@
                         <nil key="title"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchResultsContainerView" destination="gse-sH-bch" id="HqR-Dq-6Pt"/>
+                        <outlet property="_searchContainerView" destination="gse-sH-bch" id="UnX-RJ-r1N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kpn-FE-r1g" userLabel="First Responder" sceneMemberID="firstResponder"/>

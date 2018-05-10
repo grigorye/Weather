@@ -8,18 +8,6 @@
 
 import UIKit
 
-extension CitySearchResultsViewController {
-    
-    override func loadPresenter() {
-        
-        super.loadPresenter()
-        
-        let interactor = CitySearchResultsInteractorImp(weatherProvider: defaultWeatherProvider(), cityProvider: defaultCityProvider())
-        let presenter = CitySearchResultsPresenterImp(view: self, interactor: interactor)
-        self.presenter = presenter
-    }
-}
-
 func newCityNoSearchViewController() -> UIViewController {
     
     let storyboard = UIStoryboard(name: "CityNoSearch", bundle: .current)
@@ -29,10 +17,15 @@ func newCityNoSearchViewController() -> UIViewController {
 func newCitySearchViewController(for text: String) -> UIViewController {
     
     let storyboard = UIStoryboard(name: "CitySearchResults", bundle: .current)
-    let viewControllerObject = storyboard.instantiateInitialViewController()!
-    let viewController = viewControllerObject as! CitySearchResultsViewController
-    viewController.loadViewIfNeeded()
-    let presenter = viewController.presenter!
+    let viewController = storyboard.instantiateInitialViewController()!
+
+    let searchResultsContainerView = (viewController as! CitySearchResultsViewController).searchResultsContainerView
+    
+    let interactor: CitySearchResultsInteractor = CitySearchResultsInteractorImp(weatherProvider: defaultWeatherProvider(), cityProvider: defaultCityProvider())
+    let router: CitySearchResultsRouter = CitySearchResultsRouterImp(viewController: viewController, searchResultsContainerView: searchResultsContainerView)
+    let presenter: CitySearchResultsPresenter = CitySearchResultsPresenterImp(interactor: interactor, router: router)
+
+    viewController.retainObject(presenter)
     
     presenter.loadContent(forSearchMatch: text)
     

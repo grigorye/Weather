@@ -6,33 +6,33 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-protocol CitySearchResultsPresenter {
+protocol CitySearchResultsPresenter : class {
 
     func loadContent(forSearchMatch text: String)
 }
 
 class CitySearchResultsPresenterImp : CitySearchResultsPresenter {
     
-    let view: CitySearchResultsView
     let interactor: CitySearchResultsInteractor
+    let router: CitySearchResultsRouter
 
-    init(view: CitySearchResultsView, interactor: CitySearchResultsInteractor) {
+    init(interactor: CitySearchResultsInteractor, router: CitySearchResultsRouter) {
         
-        self.view = view
         self.interactor = interactor
+        self.router = router
     }
     
     // MARK: - <CitySearchResultsPresenter>
     
     func loadContent(forSearchMatch text: String) {
         
-        view.state = .loading
-        interactor.queryCity(matching: text) { [view] (result) in
+        router.routeToLoading()
+        interactor.queryCity(matching: text) { [router] (result) in
             switch result {
             case .failure(let error):
-                view.state = .error(error)
+                router.routeToError(error)
             case .success(let cityInfos):
-                view.state = .list(cityInfos)
+                router.routeToList(cityInfos)
             }
         }
     }

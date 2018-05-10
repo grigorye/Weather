@@ -17,31 +17,31 @@ protocol AddCityRouter : class {
 class AddCityRouterImp : AddCityRouter {
     
     weak var viewController: UIViewController!
-    let searchResultsContainerView: UIStackView
+    let searchContainerView: UIStackView
     
-    init(viewController: UIViewController, searchResultsContainerView: UIStackView) {
+    init(viewController: UIViewController, searchContainerView: UIStackView) {
         self.viewController = viewController
-        self.searchResultsContainerView = searchResultsContainerView
+        self.searchContainerView = searchContainerView
     }
     
-    var searchResultsViewController: UIViewController? {
+    var searchViewController: UIViewController? {
         willSet {
-            if let searchResultsViewController = searchResultsViewController {
-                viewController.removeChildViewController(searchResultsViewController, from: searchResultsContainerView)
+            if let searchViewController = searchViewController {
+                viewController.removeChildViewController(searchViewController, from: searchContainerView)
             }
         }
         didSet {
-            if let searchResultsViewController = searchResultsViewController {
-                viewController.addChildViewController(searchResultsViewController, to: searchResultsContainerView)
+            if let searchViewController = searchViewController {
+                viewController.addChildViewController(searchViewController, to: searchContainerView)
             }
         }
     }
     
     func routeToNoSearch() {
-        self.searchResultsViewController = newCityNoSearchViewController()
+        self.searchViewController = newCityNoSearchViewController()
     }
     
     func routeToSearch(for text: String) {
-        self.searchResultsViewController = newCitySearchViewController(for: text)
+        self.searchViewController = newCitySearchViewController(for: text)
     }
 }

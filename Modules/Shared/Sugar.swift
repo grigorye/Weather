@@ -8,3 +8,5 @@
 func forceCasted<T>(_ x: Any) -> T {
     return x as! T
 }
+
+let defaultCellReuseIdentifier = "Cell"

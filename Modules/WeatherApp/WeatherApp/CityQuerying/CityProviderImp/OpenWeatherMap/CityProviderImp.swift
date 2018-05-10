@@ -28,7 +28,7 @@ extension CityProviderImp_OpenWeatherMap$ {
                     completion(.failure(AnyError(error)))
                     return
                 case .success(let openWeatherCityInfos):
-                    let cityInfos = openWeatherCityInfos.map { CityInfo(name: $0.name) }
+                    let cityInfos = openWeatherCityInfos.map { CityInfo(cityId: "\($0.id)", cityName: $0.name) }
                     completion(.success(cityInfos))
                 }
             }

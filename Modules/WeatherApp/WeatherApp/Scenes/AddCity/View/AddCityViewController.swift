@@ -8,20 +8,40 @@
 
 import UIKit
 
-class AddCityViewController : ModuleViewController {
+protocol AddCityViewDelegate : class {
+
+    func citySearchInputDidChange(_ text: String)
+}
+
+protocol AddCityView : class {
     
-    var presenter: AddCityPresenter!
+    var delegate: AddCityViewDelegate! { get set }
+}
+
+class AddCityViewController : UIViewController, AddCityView, CitySearchInputViewDelegate {
     
-    override func presenterDidLoad() {
-        
-        super.presenterDidLoad()
-        
-        childSearchInputView.delegate = presenter!
+    deinit {()}
+    
+    // MARK: - <AddCityView>
+    
+    weak var delegate: AddCityViewDelegate!
+    
+    // MARK: - <CitySearchInputViewDelegate>
+    
+    func citySearchInputDidChange(_ text: String) {
+        delegate.citySearchInputDidChange(text)
     }
     
-    @IBOutlet var searchResultsContainerView: UIStackView!
+    // MARK: -
     
-    var childSearchInputView: CitySearchInputView!
+    @IBOutlet private var _searchContainerView: UIStackView!
+    
+    var searchContainerView: UIStackView {
+        _ = view
+        return _searchContainerView
+    }
+    
+    // MARK: -
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -29,7 +49,8 @@ class AddCityViewController : ModuleViewController {
         
         switch segue.identifier {
         case "searchInput":
-            childSearchInputView = forceCasted(segue.destination)
+            let childSearchInputView = segue.destination as! CitySearchInputView
+            childSearchInputView.delegate = self
         default: ()
         }
     }

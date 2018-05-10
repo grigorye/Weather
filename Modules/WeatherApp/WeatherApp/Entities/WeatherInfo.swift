@@ -6,7 +6,7 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-import Foundation
+import Foundation.NSUnit
 
 /// Minimum bit of information about a weather.
 struct WeatherInfo {

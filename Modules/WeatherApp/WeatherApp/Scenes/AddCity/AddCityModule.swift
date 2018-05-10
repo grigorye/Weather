@@ -6,18 +6,24 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-extension AddCityViewController {
+import UIKit
+
+func newAddCityViewController() -> UIViewController {
     
-    override func loadPresenter() {
-        
-        super.loadPresenter()
-        
-        let router: AddCityRouter = AddCityRouterImp(viewController: self, searchResultsContainerView: searchResultsContainerView)
-        
-        let presenter: AddCityPresenter = AddCityPresenterImp(interactor: AddCityInteractorImp(), router: router)
-        
-        self.presenter = presenter
-        
-        router.routeToNoSearch()
-    }
+    let storyboard = UIStoryboard(name: "AddCity", bundle: .current)
+    let viewController = storyboard.instantiateInitialViewController()!
+    let view = viewController as! AddCityView
+    
+    let searchContainerView = (viewController as! AddCityViewController).searchContainerView
+    
+    let router: AddCityRouter = AddCityRouterImp(viewController: viewController, searchContainerView: searchContainerView)
+
+    let interactor = AddCityInteractorImp()
+    let presenter: AddCityPresenter = AddCityPresenterImp(interactor: interactor, router: router)
+    view.delegate = presenter
+    viewController.retainObject(presenter)
+    
+    router.routeToNoSearch()
+
+    return viewController
 }
