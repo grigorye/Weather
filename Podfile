@@ -4,7 +4,7 @@ platform :ios, '11.3'
 
 use_frameworks!
 
-def all_non_test_pods
+def shared_non_test_pods
   pod 'Result'
   pod 'Moya', '~> 11.0.2'
   pod 'Swinject', '~> 2.4.0'
@@ -22,8 +22,12 @@ end
 target 'WeatherApp' do
   project 'Modules/WeatherApp/WeatherApp.xcodeproj'
   
-  all_non_test_pods
-  
+  shared_non_test_pods
+
+  pod 'RxDataSources'
+  pod 'RxCocoa'
+  pod 'RxCoreData'
+
   pod 'LHSKeyboardAdjusting', '~> 2.0.1'
 
   target 'WeatherAppTests' do
@@ -40,7 +44,7 @@ end
 target 'OpenWeatherMapKit' do
   project 'Modules/OpenWeatherMapKit/OpenWeatherMapKit.xcodeproj'
 
-  all_non_test_pods
+  shared_non_test_pods
   
   target 'OpenWeatherMapKitTests' do
     inherit! :search_paths
@@ -54,7 +58,7 @@ target 'GenerateOpenWeatherMapPersistentCityInfos' do
 
   platform :osx, '10.13'
 
-  all_non_test_pods
+  shared_non_test_pods
 end
 
 # Enforce support for macOS for everything.
