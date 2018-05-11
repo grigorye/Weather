@@ -17,7 +17,7 @@ protocol CitySearchResultsRouter {
 
 class CitySearchResultsRouterImp : CitySearchResultsRouter {
     
-    weak var viewController: UIViewController!
+    weak var viewController: UIViewController?
     let searchResultsContainerView: UIStackView
     
     init(viewController: UIViewController, searchResultsContainerView: UIStackView) {
@@ -28,12 +28,12 @@ class CitySearchResultsRouterImp : CitySearchResultsRouter {
     var searchResultsViewController: UIViewController? {
         willSet {
             if let searchResultsViewController = searchResultsViewController {
-                viewController.removeChildViewController(searchResultsViewController, from: searchResultsContainerView)
+                viewController?.removeChildViewController(searchResultsViewController, from: searchResultsContainerView)
             }
         }
         didSet {
             if let searchResultsViewController = searchResultsViewController {
-                viewController.addChildViewController(searchResultsViewController, to: searchResultsContainerView)
+                viewController?.addChildViewController(searchResultsViewController, to: searchResultsContainerView)
             }
         }
     }
