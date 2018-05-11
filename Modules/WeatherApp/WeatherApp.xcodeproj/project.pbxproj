@@ -664,7 +664,6 @@
 				C4CFD0EC20A4442000A87DCC /* UserCityListInteractor.swift */,
 				C4AA101520A542E000EF1368 /* UserCityWithWeather.swift */,
 				C4CFD0E820A43DFB00A87DCC /* UserCityListModule.swift */,
-				C49E39C7209FE0150010EBAF /* Footer */,
 				C4CFD0E720A43DB100A87DCC /* View */,
 			);
 			path = UserCityList;
@@ -742,6 +741,7 @@
 		C4CFD0E720A43DB100A87DCC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C49E39C7209FE0150010EBAF /* Footer */,
 				C49E39CE209FE3930010EBAF /* UserCityListItemViewModel.swift */,
 				C49E39C4209FDF920010EBAF /* UserCityListCell */,
 				C49E39BD209FDB060010EBAF /* UserCityList.storyboard */,
