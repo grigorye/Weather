@@ -28,9 +28,11 @@ class CoreDataUserCitiesProvider : UserCitiesProvider {
     
     // MARK: -
     
-    private lazy var persistentContainer = NSPersistentContainer(name: "UserCities").then {
-        $0.loadPersistentStores { (_, error) in
-            assert(nil == error)
+    private lazy var persistentContainer = NSPersistentContainer(name: "UserCities").then { (container) in
+        container.loadPersistentStoresDestroyingStoreOnMigrationError { (storeDescription, error) in
+            if let error = error {
+                fatalError("error: \(error), persistentStore: \(storeDescription)")
+            }
         }
     }
     
