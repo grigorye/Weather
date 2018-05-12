@@ -19,12 +19,20 @@ protocol UserCityListViewDelegate : class {
     
     func selected(_: UserCityListItemViewModel)
     func deleted(_: UserCityListItemViewModel)
+    
+    func triggeredRefresh()
 }
 
 protocol UserCityListView : class {
     
     var delegate: UserCityListViewDelegate! { get set }
+    
     var itemViewModels: Observable<[UserCityListItemViewModel]>! { get set }
+
+    var refreshPrompt: String? { get set }
+    
+    func beginRefreshing()
+    func endRefreshing()
 }
 
 class UserCityListViewController : UITableViewController, UserCityListView, UserCityListFooterViewDelegate {
@@ -80,6 +88,26 @@ class UserCityListViewController : UITableViewController, UserCityListView, User
         animatedDataSource.canMoveRowAtIndexPath = { _, _  in
             return false
         }
+    }
+    
+    // MARK: - Refresh
+    
+    var refreshPrompt: String? {
+        didSet {
+            refreshControl?.attributedTitle = refreshPrompt.flatMap { NSAttributedString(string: $0) } ?? nil
+        }
+    }
+    
+    @IBAction func refresh(_ sender: Any) {
+        delegate.triggeredRefresh()
+    }
+
+    func beginRefreshing() {
+        refreshControl?.beginRefreshing()
+    }
+    
+    func endRefreshing() {
+        refreshControl?.endRefreshing()
     }
     
     // MARK: - <UserCityListView>

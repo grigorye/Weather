@@ -66,14 +66,31 @@ class UserCityListPresenterImp : UserCityListPresenter {
         self.router = router
     }
     
+    private var loadedWeatherRefresher: (() -> Void)!
+
     // MARK: - <UserCityListPresenter>
     
     func loadContent() {
+        let (userCitiesWithWeather, weatherRefresher) = interactor.userCitiesWithWeatherAndRefresher()
+        
+        var refreshing = false
         view.itemViewModels =
-            interactor.userCitiesWithWeather
-                .map({
-                    $0.map { UserCityListItemViewModel($0, temperatureUnit: .celsius) }
+            userCitiesWithWeather
+                .do(onNext: { [weak self] (_) in
+                    refreshing.toggle()
+                    if refreshing {
+                        self?.view.beginRefreshing()
+                    } else {
+                        self?.view.endRefreshing()
+                    }
                 })
+                .map({
+                    $0.map {
+                        UserCityListItemViewModel($0, temperatureUnit: .celsius)
+                    }
+                })
+        
+        self.loadedWeatherRefresher = weatherRefresher
     }
     
     // MARK: - <UserCityListViewDelegate>
@@ -88,5 +105,9 @@ class UserCityListPresenterImp : UserCityListPresenter {
     
     func selected(_ viewModel: UserCityListItemViewModel) {
         router.routeToUserCityWithWeather(viewModel.userCityWithWeather)
+    }
+    
+    func triggeredRefresh() {
+        loadedWeatherRefresher()
     }
 }
