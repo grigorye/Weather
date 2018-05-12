@@ -1,0 +1,10 @@
+#! /bin/sh -xe
+
+wd=$(dirname "$0")
+
+for i in "${wd:?}"/svg/*.svg
+do
+    bnI=$(basename "${i:?}")
+    outputI="${wd:?}"/pdf/"$(echo ${bnI:?}|sed 's/.svg/.pdf/')"
+    svg2pdf -w 32 "${i:?}" "${outputI:?}"
+done

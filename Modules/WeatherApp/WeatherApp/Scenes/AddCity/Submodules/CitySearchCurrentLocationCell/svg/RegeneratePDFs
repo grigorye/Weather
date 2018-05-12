@@ -1,3 +1,0 @@
-#! /bin/sh -xe
-
-for i in *.svg; do svg2pdf -w 32 $i $(echo $i|sed 's/.svg/.pdf/'); done
