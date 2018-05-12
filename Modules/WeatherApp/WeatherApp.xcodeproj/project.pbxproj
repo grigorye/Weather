@@ -455,7 +455,7 @@
 				C4A1534C20A011B0003D2170 /* AddCityInteractor.swift */,
 				C4C1DFD220A1BE1300C11C62 /* AddCityPresenter.swift */,
 				C4C1DFF920A28FCB00C11C62 /* AddCityModule.swift */,
-				C4C1DFF520A2769100C11C62 /* Router */,
+				C4C1DFF320A2768400C11C62 /* AddCityRouter.swift */,
 				C4C1DFEF20A2570A00C11C62 /* View */,
 				C4C1DFD420A1BE5100C11C62 /* Submodules */,
 			);
@@ -587,14 +587,6 @@
 				C4A1535420A04CC1003D2170 /* CitySearchResultsViewController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		C4C1DFF520A2769100C11C62 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				C4C1DFF320A2768400C11C62 /* AddCityRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		C4C8F0E1209B6AFE00E081B4 = {
