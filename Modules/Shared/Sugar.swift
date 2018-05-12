@@ -10,3 +10,9 @@ func forceCasted<T>(_ x: Any) -> T {
 }
 
 let defaultCellReuseIdentifier = "Cell"
+
+extension Bool {
+    mutating func toggle() {
+        self = !self
+    }
+}
