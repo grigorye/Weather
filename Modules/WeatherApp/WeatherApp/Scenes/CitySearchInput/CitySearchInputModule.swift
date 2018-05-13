@@ -8,18 +8,28 @@
 
 import UIKit
 
-extension CitySearchInputViewController : CitySearchInputView {}
-
-enum CitySearchInputModule : ModuleStoryboarding {
+enum CitySearchInputModule : ViewModule {
     
-    typealias View = CitySearchInputView
-    typealias ViewController = CitySearchInputViewController
-    
-    static let storyboardName = "CitySearchInput"
-    
-    static func bind(_ viewController: UIViewController, viewDelegate: CitySearchInputViewDelegate) {
+    static func bind(_ viewController: UIViewController, delegate: CitySearchInputDelegate) {
         
         let view = viewController as! View
-        view.delegate = viewDelegate
+        
+        let interactor: Interactor = CitySearchInputInteractorImp()
+        let presenter: Presenter = CitySearchInputPresenterImp(view: view, interactor: interactor, delegate: delegate)
+        
+        viewController.retainObject(presenter)
+        view.delegate = presenter
+        
+        presenter.loadContent()
     }
+    
+    // MARK: -
+    
+    typealias View = CitySearchInputView
+    typealias Interactor = CitySearchInputInteractor
+    typealias Presenter = CitySearchInputPresenter
+    typealias Router = ()
+    typealias ViewController = CitySearchInputViewController
+
+    static let storyboardName = "CitySearchInput"
 }

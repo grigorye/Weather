@@ -11,7 +11,7 @@ import UIKit
 protocol AddCityRouter {
     
     func routeToNoSearch()
-    func routeToSearch(for text: String)
+    func routeToSearch(for text: String, type: CitySearchInputType)
     func routeToCancelSearch()
     func routeToAddedCity()
 }
@@ -55,7 +55,7 @@ class AddCityRouterImp : AddCityRouter {
         )
     }
     
-    func routeToSearch(for text: String) {
+    func routeToSearch(for text: String, type: CitySearchInputType) {
         self.searchViewController = newCitySearchViewController(
             for: text,
             selectionHandler: cityInfoSelectionHandler

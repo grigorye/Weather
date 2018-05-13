@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" verticalCompressionResistancePriority="1000" placeholder="City or postcode" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDe-bR-9zz">
+                            <searchBar contentMode="redraw" verticalCompressionResistancePriority="1000" placeholder="City or postcode" showsBookmarkButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDe-bR-9zz" customClass="StatusBarCoveringSearchBar" customModule="WeatherApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>

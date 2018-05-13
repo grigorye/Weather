@@ -6,7 +6,7 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-protocol AddCityPresenter : CitySearchInputViewDelegate {
+protocol AddCityPresenter : CitySearchInputDelegate {
 
     func cityInfoSelectionHandler(_ cityInfo: CityInfo)
     func coordinateSelectionHandler(_ coordinate: CityCoordinate)
@@ -42,12 +42,11 @@ class AddCityPresenterImp : AddCityPresenter {
 
     // MARK: - <CitySearchInputViewDelegate>
     
-    func citySearchInputDidChange(_ text: String) {
-        
+    func citySearchInputDidChange(_ text: String, type: CitySearchInputType) {
         if text.isEmpty {
             router.routeToNoSearch()
         } else {
-            router.routeToSearch(for: text)
+            router.routeToSearch(for: text, type: type)
         }
     }
     

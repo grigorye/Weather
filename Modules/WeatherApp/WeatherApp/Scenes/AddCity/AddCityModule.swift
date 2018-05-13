@@ -55,7 +55,7 @@ enum AddCityModule : ContainerViewModule {
 
         router.routeToNoSearch()
         
-        CitySearchInputModule.bind(searchInputViewController, viewDelegate: presenter)
+        CitySearchInputModule.bind(searchInputViewController, delegate: presenter)
         
         return navigationController
     }
