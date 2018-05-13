@@ -11,17 +11,19 @@ import RxCocoa
 import RxDataSources
 import Then
 
-protocol UserCityListViewDelegate : class {
+class UserCityListViewController : UITableViewController, UserCityListView {
     
-    func selectedAddCity()
+    // MARK: - <UserCityListView>
     
-    func selected(_: UserCityListItemViewModel)
-    func deleted(_: UserCityListItemViewModel)
-    
-    func triggeredRefresh()
-}
+    weak var delegate: UserCityListViewDelegate!
 
-class UserCityListViewController : UITableViewController, UserCityListFooterViewDelegate {
+    var itemViewModels: Observable<[UserCityListItemViewModel]>! {
+        didSet {
+            configureView()
+        }
+    }
+    
+    // MARK: -
     
     override func viewDidLoad() {
         
@@ -31,6 +33,8 @@ class UserCityListViewController : UITableViewController, UserCityListFooterView
         
         navigationItem.leftBarButtonItem = editButtonItem
     }
+    
+    // MARK: -
     
     private let disposeBag = DisposeBag()
     
@@ -82,41 +86,12 @@ class UserCityListViewController : UITableViewController, UserCityListFooterView
     @IBAction func refresh(_ sender: Any) {
         delegate.triggeredRefresh()
     }
-
+    
     func beginRefreshing() {
         refreshControl?.beginRefreshing()
     }
     
     func endRefreshing() {
         refreshControl?.endRefreshing()
-    }
-    
-    // MARK: - <UserCityListView>
-    
-    weak var delegate: UserCityListViewDelegate!
-
-    var itemViewModels: Observable<[UserCityListItemViewModel]>! {
-        didSet {
-            configureView()
-        }
-    }
-
-    // MARK: - <UserCityListFooterViewDelegate>
-
-    func selectedAddCity() {
-        delegate.selectedAddCity()
-    }
-
-    // MARK: -
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        switch segue.identifier {
-        case "footer"?:
-            let footerView = segue.destination as! UserCityListFooterView
-            footerView.delegate = self
-        default: ()
-        }
     }
 }

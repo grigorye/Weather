@@ -95,10 +95,6 @@ class UserCityListPresenterImp : UserCityListPresenter {
     
     // MARK: - <UserCityListViewDelegate>
     
-    func selectedAddCity() {
-        router.routeToAddCity()
-    }
-    
     func deleted(_ viewModel: UserCityListItemViewModel) {
         interactor.delete(.init(from: viewModel))
     }

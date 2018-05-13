@@ -8,29 +8,50 @@
 
 import UIKit
 
-extension UserCityListViewController : UserCityListView {}
-
 func newUserCityListViewController() -> UIViewController {
     
-    let storyboard = UIStoryboard(name: "UserCityList", bundle: .current)
-    
-    let viewController = storyboard.instantiateInitialViewController()!
-    let view = viewController as! UserCityListView
+    return UserCityListModule.newViewController()
+}
 
-    let router: UserCityListRouter = UserCityListRouterImp(viewController: viewController)
-
-    let userCitiesProvider: UserCitiesProvider = defaultUserCitiesProvider()
-    let weatherProvider: WeatherProvider = defaultWeatherProvider()
-    let interactor: UserCityListInteractor = UserCityListInteractorImp(userCitiesProvider: userCitiesProvider, weatherProvider: weatherProvider)
+enum UserCityListModule : ViewModule {
     
-    let presenter: UserCityListPresenter = UserCityListPresenterImp(view: view, interactor: interactor, router: router)
+    static func prepare(_ viewController: UIViewController) {
+        
+        let view = viewController as! UserCityListView
+        
+        let router: Router = UserCityListRouterImp(viewController: viewController)
+        
+        let userCitiesProvider: UserCitiesProvider = defaultUserCitiesProvider()
+        let weatherProvider: WeatherProvider = defaultWeatherProvider()
+        
+        let interactor: Interactor = UserCityListInteractorImp(userCitiesProvider: userCitiesProvider, weatherProvider: weatherProvider)
+        
+        let presenter: Presenter = UserCityListPresenterImp(view: view, interactor: interactor, router: router)
+        
+        view.delegate = presenter
+        viewController.retainObject(presenter)
+        
+        presenter.loadContent()
+    }
     
-    view.delegate = presenter
-    viewController.retainObject(presenter)
-
-    presenter.loadContent()
+    static func newViewController() -> UIViewController {
+        
+        let viewController = instantiateViewController()
+        
+        prepare(viewController)
+        
+        return viewController
+    }
     
-    return viewController
+    // MARK: -
+    
+    typealias View = UserCityListView
+    typealias Interactor = UserCityListInteractor
+    typealias Presenter = UserCityListPresenter
+    typealias Router = UserCityListRouter
+    typealias ViewController = UserCityListViewController
+    
+    static let storyboardName = "UserCityList"
 }
 
 extension UserCityListViewController /* Routing via Unwind Segues */ {

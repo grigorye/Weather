@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--User City List View Controller-->
+        <!--User Cities View Controller-->
         <scene sceneID="smW-Zh-WAh">
             <objects>
-                <tableViewController id="7bK-jq-Zjz" customClass="UserCityListViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="7bK-jq-Zjz" customClass="UserCitiesViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,10 +69,10 @@
             </objects>
             <point key="canvasLocation" x="708" y="-630.13493253373315"/>
         </scene>
-        <!--UserCityListFooter-->
+        <!--UserCitiesActions-->
         <scene sceneID="sDp-zh-Cqv">
             <objects>
-                <viewControllerPlaceholder storyboardName="UserCityListFooter" id="wL2-NS-qfn" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="UserCitiesActions" id="wL2-NS-qfn" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YWz-QW-4IQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1377" y="-750"/>

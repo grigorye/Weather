@@ -11,12 +11,11 @@ import UIKit
 protocol UserCityListRouter {
     
     func routeToUserCityWithWeather(_: UserCityWithWeather)
-    func routeToAddCity()
 }
 
 struct UserCityListRouterImp : UserCityListRouter {
     
-    var viewController: UIViewController
+    let viewController: UIViewController
     
     // MARK: - <UserCityListRouter>
     
@@ -26,10 +25,5 @@ struct UserCityListRouterImp : UserCityListRouter {
         
         let navigationController = viewController.navigationController!
         navigationController.pushViewController(weatherDetailViewController, animated: true)
-    }
-    
-    func routeToAddCity() {
-        let addCityViewController = newAddCityViewController()
-        viewController.present(addCityViewController, animated: true)
     }
 }

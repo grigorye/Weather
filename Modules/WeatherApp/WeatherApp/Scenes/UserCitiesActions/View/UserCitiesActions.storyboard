@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--User City List Footer View Controller-->
+        <!--User Cities Actions View Controller-->
         <scene sceneID="xcI-rC-wDS">
             <objects>
-                <viewController id="bMI-D2-08h" customClass="UserCityListFooterViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bMI-D2-08h" customClass="UserCitiesActionsViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ihJ-6K-NGJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -8,7 +8,7 @@
 
 import RxSwift
 
-protocol UserCityListView : class {
+protocol UserCityListView : View {
     
     var delegate: UserCityListViewDelegate! { get set }
     
@@ -16,4 +16,12 @@ protocol UserCityListView : class {
     
     func beginRefreshing()
     func endRefreshing()
+}
+
+protocol UserCityListViewDelegate : class {
+    
+    func selected(_: UserCityListItemViewModel)
+    func deleted(_: UserCityListItemViewModel)
+    
+    func triggeredRefresh()
 }

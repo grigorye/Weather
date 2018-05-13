@@ -17,10 +17,10 @@ func newMainViewController() -> UIViewController {
     
     let containerView = viewController as! MainContainerView
     
-    let userCityListViewController = newUserCityListViewController()
+    let userCitiesViewController = newUserCitiesViewController()
     
     let masterNavigationController = containerView.masterNavigationController
-    masterNavigationController.viewControllers = [userCityListViewController]
+    masterNavigationController.viewControllers = [userCitiesViewController]
 
     return viewController
 }
