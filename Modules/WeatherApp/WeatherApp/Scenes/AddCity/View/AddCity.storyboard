@@ -55,7 +55,7 @@
                         <nil key="title"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchContainerViewImp" destination="gse-sH-bch" id="iGG-YB-pMg"/>
+                        <outlet property="_searchContainerView" destination="gse-sH-bch" id="1Zx-tT-W22"/>
                         <segue destination="bXd-Oz-ylu" kind="unwind" identifier="unwindFromAddCity" unwindAction="unwindFromAddCity:" id="Iun-p6-fjy"/>
                     </connections>
                 </viewController>

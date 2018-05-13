@@ -12,29 +12,31 @@ class AddCityViewController : UIViewController {
     
     deinit {()}
     
-    // MARK: -
-    
-    var childSearchInputViewController: UIViewController {
-        _ = view
-        return childSearchInputViewControllerImp
-    }
-    private var childSearchInputViewControllerImp: UIViewController!
+    // MARK: - <AddCityContainerView>
     
     var searchContainerView: UIStackView {
         _ = view
-        return searchContainerViewImp
+        return _searchContainerView
     }
-    @IBOutlet private var searchContainerViewImp: UIStackView!
+    
+    var searchInputViewController: UIViewController {
+        _ = view
+        return _searchInputViewController
+    }
     
     // MARK: -
     
+    @IBOutlet private var _searchContainerView: UIStackView!
+    
+    private var _searchInputViewController: UIViewController!
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         super.prepare(for: segue, sender: sender)
         
         switch segue.identifier {
         case "searchInput":
-            childSearchInputViewControllerImp = segue.destination
+            _searchInputViewController = segue.destination
         default: ()
         }
     }
