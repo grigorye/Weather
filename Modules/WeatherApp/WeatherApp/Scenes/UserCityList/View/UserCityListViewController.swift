@@ -21,21 +21,10 @@ protocol UserCityListViewDelegate : class {
     func triggeredRefresh()
 }
 
-protocol UserCityListView : class {
-    
-    var delegate: UserCityListViewDelegate! { get set }
-    
-    var itemViewModels: Observable<[UserCityListItemViewModel]>! { get set }
-
-    var refreshPrompt: String? { get set }
-    
-    func beginRefreshing()
-    func endRefreshing()
-}
-
-class UserCityListViewController : UITableViewController, UserCityListView, UserCityListFooterViewDelegate {
+class UserCityListViewController : UITableViewController, UserCityListFooterViewDelegate {
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "UserCityListCell", bundle: .current), forCellReuseIdentifier: "UserCityListCell")
@@ -90,12 +79,6 @@ class UserCityListViewController : UITableViewController, UserCityListView, User
     
     // MARK: - Refresh
     
-    var refreshPrompt: String? {
-        didSet {
-            refreshControl?.attributedTitle = refreshPrompt.flatMap { NSAttributedString(string: $0) } ?? nil
-        }
-    }
-    
     @IBAction func refresh(_ sender: Any) {
         delegate.triggeredRefresh()
     }
@@ -125,6 +108,7 @@ class UserCityListViewController : UITableViewController, UserCityListView, User
     }
 
     // MARK: -
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         

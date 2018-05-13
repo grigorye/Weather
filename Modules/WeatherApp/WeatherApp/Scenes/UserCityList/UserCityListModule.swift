@@ -8,6 +8,8 @@
 
 import UIKit
 
+extension UserCityListViewController : UserCityListView {}
+
 func newUserCityListViewController() -> UIViewController {
     
     let storyboard = UIStoryboard(name: "UserCityList", bundle: .current)
