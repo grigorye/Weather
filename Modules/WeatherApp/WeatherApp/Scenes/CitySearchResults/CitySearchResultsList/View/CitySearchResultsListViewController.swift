@@ -8,17 +8,6 @@
 
 import UIKit
 
-struct CitySearchResultsItem {
-    
-    let cityName: String
-    let userInfo: Any!
-}
-
-protocol CitySearchResultsListViewDelegate : class {
-    
-    func didSelectCity(for: CitySearchResultsItem)
-}
-
 class CitySearchResultsListViewController : UITableViewController {
 
     override func viewDidLoad() {

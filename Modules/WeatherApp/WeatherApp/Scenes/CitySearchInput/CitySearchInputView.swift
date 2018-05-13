@@ -10,3 +10,9 @@ protocol CitySearchInputView : View {
     
     var delegate: CitySearchInputViewDelegate! { get set }
 }
+
+protocol CitySearchInputViewDelegate : class {
+    
+    func citySearchInputDidChange(_ text: String)
+    func citySearchInputDidCancel()
+}

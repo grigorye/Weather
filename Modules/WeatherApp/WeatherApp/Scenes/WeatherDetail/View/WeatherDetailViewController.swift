@@ -8,17 +8,6 @@
 
 import UIKit
 
-struct WeatherDetailViewModel {
-    
-    let temperature: String
-    let cityName: String
-}
-
-protocol WeatherDetailView : class {
-    
-    var model: WeatherDetailViewModel! { get set }
-}
-
 class WeatherDetailViewController : UIViewController, WeatherDetailView {
 
     deinit {()}

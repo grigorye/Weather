@@ -8,12 +8,6 @@
 
 import UIKit
 
-protocol CitySearchInputViewDelegate : class {
-    
-    func citySearchInputDidChange(_ text: String)
-    func citySearchInputDidCancel()
-}
-
 class CitySearchInputViewController : UIViewController {
     
     weak var delegate: CitySearchInputViewDelegate!

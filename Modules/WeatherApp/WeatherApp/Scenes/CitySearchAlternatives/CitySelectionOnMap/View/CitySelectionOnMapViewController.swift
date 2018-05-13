@@ -9,12 +9,6 @@
 import MapKit
 import UIKit
 
-protocol CitySelectionOnMapViewDelegate : class {
-    
-    func didSelect(_ coordinate: CityCoordinate)
-    func didCancel()
-}
-
 class CitySelectionOnMapViewController: UIViewController {
 
     // MARK: -

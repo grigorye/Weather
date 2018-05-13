@@ -10,3 +10,9 @@ protocol CitySelectionOnMapView : View {
     
     var delegate: CitySelectionOnMapViewDelegate! { get set }
 }
+
+protocol CitySelectionOnMapViewDelegate : class {
+    
+    func didSelect(_ coordinate: CityCoordinate)
+    func didCancel()
+}
