@@ -10,16 +10,15 @@ import UIKit
 
 class MainViewController : UISplitViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        masterNavigationController = forceCasted(viewControllers[0])
-        detailNavigationController = forceCasted(viewControllers[1])
-        
-        let userCityListViewController = newUserCityListViewController()
-        masterNavigationController.viewControllers = [userCityListViewController]
+    // MARK: - <MainContainerView>
+    
+    var masterNavigationController: UINavigationController {
+        _ = view
+        return forceCasted(viewControllers[0])
     }
     
-    private var masterNavigationController: UINavigationController!
-    private var detailNavigationController: UINavigationController!
+    var detailNavigationController: UINavigationController {
+        _ = view
+        return forceCasted(viewControllers[1])
+    }
 }

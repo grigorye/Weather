@@ -8,10 +8,19 @@
 
 import UIKit
 
+extension MainViewController : MainContainerView {}
+
 func newMainViewController() -> UIViewController {
-    let storyboard = UIStoryboard(name: "Main", bundle: .current)
     
+    let storyboard = UIStoryboard(name: "Main", bundle: .current)
     let viewController = storyboard.instantiateInitialViewController()!
     
+    let containerView = viewController as! MainContainerView
+    
+    let userCityListViewController = newUserCityListViewController()
+    
+    let masterNavigationController = containerView.masterNavigationController
+    masterNavigationController.viewControllers = [userCityListViewController]
+
     return viewController
 }
