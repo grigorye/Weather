@@ -8,7 +8,7 @@
 
 import UIKit
 
-func newCitySearchViewController(for text: String, selectionHandler: @escaping (CityInfo) -> Void) -> UIViewController {
+func newCitySearchResultsViewController(for text: String, selectionHandler: @escaping (CityInfo) -> Void) -> UIViewController {
     
     return CitySearchResultsModule.newViewController(for: text, selectionHandler: selectionHandler)
 }

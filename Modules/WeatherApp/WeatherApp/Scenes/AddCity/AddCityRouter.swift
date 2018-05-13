@@ -56,10 +56,21 @@ class AddCityRouterImp : AddCityRouter {
     }
     
     func routeToSearch(for text: String, type: CitySearchInputType) {
-        self.searchViewController = newCitySearchViewController(
-            for: text,
-            selectionHandler: cityInfoSelectionHandler
-        )
+        let searchViewController: UIViewController = {
+            switch type {
+            case .cityName:
+                return newCitySearchResultsViewController(
+                    for: text,
+                    selectionHandler: cityInfoSelectionHandler
+                )
+            case .zipCode:
+                return newCityZipSearchResultsViewController(
+                    for: text,
+                    selectionHandler: cityInfoSelectionHandler
+                )
+            }
+        }()
+        self.searchViewController = searchViewController
     }
     
     func routeToCancelSearch() {
