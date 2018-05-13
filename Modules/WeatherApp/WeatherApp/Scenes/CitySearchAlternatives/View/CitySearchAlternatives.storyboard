@@ -34,7 +34,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="icons8-near_me_filled" id="c6S-HH-BXX">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="icons8-near_me" highlightedImage="icons8-near_me_filled" id="c6S-HH-BXX" customClass="TemplateRespectingImageView" customModule="WeatherApp" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="5" width="32" height="32"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -66,7 +66,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="icons8-map_marker_filled" id="uxm-M2-s9e">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="icons8-map_marker" highlightedImage="icons8-map_marker_filled" id="uxm-M2-s9e" customClass="TemplateRespectingImageView" customModule="WeatherApp" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="5" width="32" height="32"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -102,7 +102,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icons8-map_marker" width="32" height="32"/>
         <image name="icons8-map_marker_filled" width="32" height="32"/>
+        <image name="icons8-near_me" width="32" height="32"/>
         <image name="icons8-near_me_filled" width="32" height="32"/>
     </resources>
 </document>
