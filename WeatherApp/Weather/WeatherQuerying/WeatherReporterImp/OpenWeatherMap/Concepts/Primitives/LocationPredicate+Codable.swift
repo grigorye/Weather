@@ -1,12 +1,12 @@
 //
-//  OpenWeatherMapLocationPredicate+Codable.swift
-//  WeatherApp
+//  LocationPredicate+Codable.swift
+//  WeatherApp/OpenWeatherMap
 //
 //  Created by Grigory Entin on 04/05/2018.
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-extension OpenWeatherMapLocationPredicate /* Codable */ {
+extension OpenWeatherMap$.LocationPredicate : Codable {
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -54,11 +54,13 @@ extension OpenWeatherMapLocationPredicate /* Codable */ {
     }
     
     struct ZipCodeAndCountryCode : Codable, Equatable {
+        
         let zipCode: String
         let countryCode: String
     }
     
     private enum CodingKeys: String, CodingKey {
+        
         case coordinate
         case cityId
         case zipCodeAndCountryCode

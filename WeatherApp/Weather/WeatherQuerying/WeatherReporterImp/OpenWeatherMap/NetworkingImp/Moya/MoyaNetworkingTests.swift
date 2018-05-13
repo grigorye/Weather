@@ -1,6 +1,6 @@
 //
-//  OpenWeatherMapNetworkingMoyaImpTests.swift
-//  WeatherApp
+//  MoyaNetworkingTests.swift
+//  WeatherApp/OpenWeatherMap/NetworkingImp/Moya
 //
 //  Created by Grigory Entin on 04/05/2018.
 //  Copyright © 2018 Grigory Entin. All rights reserved.
@@ -9,25 +9,24 @@
 @testable import WeatherApp
 
 import Moya
-import Result
 
-class OpenWeatherMapNetworkingMoyaImp_QueryWeather_T : QuickSpec {
+class OpenWeatherMap_NetworkingImp_Moya_MoyaNetworking_QueryWeather_T : QuickSpec, OpenWeatherMap_NetworkingImp_Moya$$ {
     override func spec() {
         context("with good network") {
-            var networking: OpenWeatherMapNetworking!
+            var networking: Networking!
             beforeEach {
-                let moyaProvider = OpenWeatherMapNetworkingMoyaImp.MoyaProvider(stubClosure: MoyaProvider.immediatelyStub)
-                networking = OpenWeatherMapNetworkingMoyaImp(moyaProvider: moyaProvider)
+                let moyaProvider = MoyaNetworking.MoyaProvider(stubClosure: MoyaProvider.immediatelyStub)
+                networking = MoyaNetworking(moyaProvider: moyaProvider)
             }
-            for (locationContext, locationPredicate) in locationPredicatesWithContext {
+            for (locationContext, locationPredicate) in locationPredicateSamplesWithContext {
                 context("when location is \(locationContext)") {
                     it("should succeed") {
-                        var weatherRequestResult: OpenWeatherMapNetworking.WeatherQueryResult!
+                        var weatherRequestResult: WeatherQueryResult!
                         networking.queryWeather(for: locationPredicate, completion: { (result) in
                             weatherRequestResult = result
                         })
                         expect(weatherRequestResult).notTo(beNil())
-                        var response: OpenWeatherMapWeatherResponse!
+                        var response: WeatherResponse!
                         expect { response = try weatherRequestResult.dematerialize() }.notTo(throwError())
                         expect(response.main.temp).to(beGreaterThan(0/*kelvins*/))
                     }
@@ -37,29 +36,29 @@ class OpenWeatherMapNetworkingMoyaImp_QueryWeather_T : QuickSpec {
     }
 }
 
-class OpenWeatherMapNetworkingMoyaImp_QueryWeather_ET : QuickSpec {
+class OpenWeatherMap_NetworkingImp_Moya_MoyaNetworking_QueryWeather_ET : QuickSpec, OpenWeatherMap_NetworkingImp_Moya$$ {
     override func spec() {
         context("with bad network") {
             let sampleResponseClosuresWithFailureContext: [(String, Endpoint.SampleResponseClosure)] = [
-                ("http 404", {.networkResponse(404, Data())}),
-                ("user cancelled", {.networkError(NSError(domain: NSCocoaErrorDomain, code: NSUserCancelledError))}),
-                ("timed out", {.networkError(NSError(domain: NSURLErrorDomain, code: NSURLErrorTimedOut))})
+                ("http 404", { .networkResponse(404, Data()) }),
+                ("user cancelled", { .networkError(NSError(domain: NSCocoaErrorDomain, code: NSUserCancelledError)) }),
+                ("timed out", { .networkError(NSError(domain: NSURLErrorDomain, code: NSURLErrorTimedOut)) })
             ]
             for (failureContext, sampleResponseClosure) in sampleResponseClosuresWithFailureContext {
                 context("due \(failureContext)") {
-                    var networking: OpenWeatherMapNetworking!
+                    var networking: Networking!
                     beforeEach {
-                        let endpointClosure = { (target: OpenWeatherMapMoyaTarget) -> Endpoint in
+                        let endpointClosure = { (target: MoyaTarget) -> Endpoint in
                             let url = URL(target: target).absoluteString
                             return Endpoint(url: url, sampleResponseClosure: sampleResponseClosure, method: target.method, task: target.task, httpHeaderFields: target.headers)
                         }
-                        let moyaProvider = OpenWeatherMapNetworkingMoyaImp.MoyaProvider(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub)
-                        networking = OpenWeatherMapNetworkingMoyaImp(moyaProvider: moyaProvider)
+                        let moyaProvider = MoyaNetworking.MoyaProvider(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub)
+                        networking = MoyaNetworking(moyaProvider: moyaProvider)
                     }
-                    for (locationContext, locationPredicate) in locationPredicatesWithContext {
+                    for (locationContext, locationPredicate) in locationPredicateSamplesWithContext {
                         context("when location is \(locationContext)") {
                             it("should error") {
-                                var weatherQueryResult: OpenWeatherMapNetworking.WeatherQueryResult!
+                                var weatherQueryResult: WeatherQueryResult!
                                 networking.queryWeather(for: locationPredicate, completion: { (result) in
                                     weatherQueryResult = result
                                 })
@@ -73,5 +72,3 @@ class OpenWeatherMapNetworkingMoyaImp_QueryWeather_ET : QuickSpec {
         }
     }
 }
-
-private let locationPredicatesWithContext = openWeatherMapLocationPredicateSamplesWithContext
