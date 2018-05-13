@@ -271,6 +271,8 @@
 		C4AE4058209DCD2F002772A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C4AE4059209DCE0D002772A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C4AE405C20A335EE002772A6 /* BundledPersistentContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundledPersistentContainer.swift; sourceTree = "<group>"; };
+		C4BCE90A20A8DE56004B8589 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C4BCE90B20A8DEC2004B8589 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C4C1DFC620A14D3C00C11C62 /* Placeholder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Placeholder.storyboard; sourceTree = "<group>"; };
 		C4C1DFC820A1588900C11C62 /* KeyboardAwareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAwareViewController.swift; sourceTree = "<group>"; };
 		C4C1DFCB20A1602500C11C62 /* CitySearchAlternatives.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CitySearchAlternatives.storyboard; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 		C42B3DF220A868C30011E016 /* UserCities */ = {
 			isa = PBXGroup;
 			children = (
+				C4BCE90A20A8DE56004B8589 /* README.md */,
 				C42B3DF320A869210011E016 /* UserCitiesContainerView.swift */,
 				C42B3E0520A871300011E016 /* UserCitiesPresenter.swift */,
 				C42B3E0720A871670011E016 /* UserCitiesRouter.swift */,
@@ -577,6 +580,7 @@
 		C49E39BC209FDAA90010EBAF /* AddCity */ = {
 			isa = PBXGroup;
 			children = (
+				C4BCE90B20A8DEC2004B8589 /* README.md */,
 				C42B3DE020A7C9570011E016 /* AddCityContainerView.swift */,
 				C4A136D620A75D0B00AD9FA9 /* AddCityRouter.swift */,
 				C4A136D320A75C5D00AD9FA9 /* AddCityPresenter.swift */,
