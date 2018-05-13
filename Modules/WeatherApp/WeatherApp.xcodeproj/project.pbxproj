@@ -94,6 +94,9 @@
 		C4AA101A20A5986500EF1368 /* NSPersistentContainer+DestroyingStoreOnMigrationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA101920A5986500EF1368 /* NSPersistentContainer+DestroyingStoreOnMigrationError.swift */; };
 		C4AE404F209D1320002772A6 /* WeatherLocationPredicateSamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AE404D209D129A002772A6 /* WeatherLocationPredicateSamples.swift */; };
 		C4AE405D20A335EE002772A6 /* BundledPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AE405C20A335EE002772A6 /* BundledPersistentContainer.swift */; };
+		C4BCE90F20A8E445004B8589 /* CityZipSearchResults.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BCE90E20A8E445004B8589 /* CityZipSearchResults.storyboard */; };
+		C4BCE91120A8E565004B8589 /* CityZipSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BCE91020A8E565004B8589 /* CityZipSearchResultsViewController.swift */; };
+		C4BCE91420A8E599004B8589 /* CityZipSearchResultsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BCE91320A8E599004B8589 /* CityZipSearchResultsModule.swift */; };
 		C4C1DFC720A14EC200C11C62 /* Placeholder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4C1DFC620A14D3C00C11C62 /* Placeholder.storyboard */; };
 		C4C1DFC920A1588900C11C62 /* KeyboardAwareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C1DFC820A1588900C11C62 /* KeyboardAwareViewController.swift */; };
 		C4C1DFCC20A1602500C11C62 /* CitySearchAlternatives.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4C1DFCB20A1602500C11C62 /* CitySearchAlternatives.storyboard */; };
@@ -273,6 +276,10 @@
 		C4AE405C20A335EE002772A6 /* BundledPersistentContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundledPersistentContainer.swift; sourceTree = "<group>"; };
 		C4BCE90A20A8DE56004B8589 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C4BCE90B20A8DEC2004B8589 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C4BCE90D20A8E1AA004B8589 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C4BCE90E20A8E445004B8589 /* CityZipSearchResults.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CityZipSearchResults.storyboard; sourceTree = "<group>"; };
+		C4BCE91020A8E565004B8589 /* CityZipSearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityZipSearchResultsViewController.swift; sourceTree = "<group>"; };
+		C4BCE91320A8E599004B8589 /* CityZipSearchResultsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityZipSearchResultsModule.swift; sourceTree = "<group>"; };
 		C4C1DFC620A14D3C00C11C62 /* Placeholder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Placeholder.storyboard; sourceTree = "<group>"; };
 		C4C1DFC820A1588900C11C62 /* KeyboardAwareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAwareViewController.swift; sourceTree = "<group>"; };
 		C4C1DFCB20A1602500C11C62 /* CitySearchAlternatives.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CitySearchAlternatives.storyboard; sourceTree = "<group>"; };
@@ -676,6 +683,24 @@
 			path = Loading;
 			sourceTree = "<group>";
 		};
+		C4BCE90C20A8E0BF004B8589 /* CityZipSearchResults */ = {
+			isa = PBXGroup;
+			children = (
+				C4BCE91320A8E599004B8589 /* CityZipSearchResultsModule.swift */,
+				C4BCE91220A8E586004B8589 /* View */,
+			);
+			path = CityZipSearchResults;
+			sourceTree = "<group>";
+		};
+		C4BCE91220A8E586004B8589 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4BCE90E20A8E445004B8589 /* CityZipSearchResults.storyboard */,
+				C4BCE91020A8E565004B8589 /* CityZipSearchResultsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C4C1DFC520A14D0000C11C62 /* Placeholder */ = {
 			isa = PBXGroup;
 			children = (
@@ -827,6 +852,7 @@
 				C4A15339209FEE4D003D2170 /* CitySearchInput */,
 				C4C1DFCA20A15FE800C11C62 /* CitySearchAlternatives */,
 				C4A1534420A00846003D2170 /* CitySearchResults */,
+				C4BCE90C20A8E0BF004B8589 /* CityZipSearchResults */,
 				C42B3DF220A868C30011E016 /* UserCities */,
 				C4C8F120209B72BC00E081B4 /* UserCityList */,
 				C49E39C4209FDF920010EBAF /* UserCityListItem */,
@@ -882,6 +908,7 @@
 		C4CFD0F020A45DE600A87DCC /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C4BCE90D20A8E1AA004B8589 /* README.md */,
 				C4CFD0F520A45EFC00A87DCC /* MainModule.swift */,
 				C42B3DDE20A7C6F00011E016 /* MainContainerView.swift */,
 				C4CFD0F720A45F0300A87DCC /* View */,
@@ -1043,6 +1070,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4BCE90F20A8E445004B8589 /* CityZipSearchResults.storyboard in Resources */,
 				C47BAB7E20A7070A00EC3FF1 /* CitySelectionOnMap.storyboard in Resources */,
 				C440003A20A0554200808CC9 /* Loading.storyboard in Resources */,
 				C4A1535120A049DB003D2170 /* Error.storyboard in Resources */,
@@ -1244,6 +1272,7 @@
 				C4CFD0EF20A451FC00A87DCC /* UserCitiesProviderImp.swift in Sources */,
 				C4AE405D20A335EE002772A6 /* BundledPersistentContainer.swift in Sources */,
 				C4A1535520A04CC1003D2170 /* CitySearchResultsViewController.swift in Sources */,
+				C4BCE91420A8E599004B8589 /* CityZipSearchResultsModule.swift in Sources */,
 				C42B3DF720A869A50011E016 /* UserCitiesModule.swift in Sources */,
 				C42B3DE920A7CFF70011E016 /* CitySearchResultsContainerView.swift in Sources */,
 				C47BAB8720A717A600EC3FF1 /* CitySelectionOnMapRouter.swift in Sources */,
@@ -1291,6 +1320,7 @@
 				C4A1533D209FEF48003D2170 /* AddCityViewController.swift in Sources */,
 				C4CFD0E620A439B700A87DCC /* UserCity+Persistable.swift in Sources */,
 				C43985E520A8CDD6002F07B7 /* CitySearchInputInteractor.swift in Sources */,
+				C4BCE91120A8E565004B8589 /* CityZipSearchResultsViewController.swift in Sources */,
 				C43985CD20A89DAE002F07B7 /* WeatherDetailView.swift in Sources */,
 				C4A136D020A74D0800AD9FA9 /* CityId.swift in Sources */,
 				C4A136D220A75AF100AD9FA9 /* CitySearchInputModule.swift in Sources */,
