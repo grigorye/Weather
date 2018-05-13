@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v0h-gX-jtt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sXP-hm-Yoc">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--CitySearchInput-->
+        <scene sceneID="Vte-zZ-Inu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CitySearchInput" id="fzz-UN-MPf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s9G-3F-CNG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1215" y="5"/>
+        </scene>
         <!--Add City View Controller-->
         <scene sceneID="gyc-dN-Kxe">
             <objects>
@@ -24,7 +32,7 @@
                                     <constraint firstAttribute="height" constant="56" id="4cg-ZJ-iLE"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="dAL-C7-Hh3" kind="embed" identifier="searchInput" id="5Lo-Zi-gKr"/>
+                                    <segue destination="fzz-UN-MPf" kind="embed" identifier="searchInput" id="P8O-WU-H4v"/>
                                 </connections>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gse-sH-bch">
@@ -47,20 +55,31 @@
                         <nil key="title"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="_searchContainerView" destination="gse-sH-bch" id="UnX-RJ-r1N"/>
+                        <outlet property="searchContainerViewImp" destination="gse-sH-bch" id="iGG-YB-pMg"/>
+                        <segue destination="bXd-Oz-ylu" kind="unwind" identifier="unwindFromAddCity" unwindAction="unwindFromAddCity:" id="Iun-p6-fjy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kpn-FE-r1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="bXd-Oz-ylu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-226.84729064039411" y="5.5999999999999996"/>
+            <point key="canvasLocation" x="679.71014492753625" y="4.8913043478260869"/>
         </scene>
-        <!--CitySearchInput-->
-        <scene sceneID="oPk-eZ-HQ8">
+        <!--Navigation Controller-->
+        <scene sceneID="T5T-rm-V61">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="CitySearchInput" storyboardName="CitySearchInput" referencedIdentifier="CitySearchInput" id="dAL-C7-Hh3" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vYa-zc-ECW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="sXP-hm-Yoc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cfa-x6-efI">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="v0h-gX-jtt" kind="relationship" relationship="rootViewController" id="jcg-nx-SKg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GLc-ze-85n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="426" y="6"/>
+            <point key="canvasLocation" x="-227.536231884058" y="4.8913043478260869"/>
         </scene>
     </scenes>
 </document>

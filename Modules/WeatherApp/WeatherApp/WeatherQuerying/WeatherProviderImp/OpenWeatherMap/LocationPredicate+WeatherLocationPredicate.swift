@@ -13,7 +13,11 @@ extension OpenWeatherMapKit.LocationPredicate {
     init(_ canonicPredicate: WeatherLocationPredicate) {
         switch canonicPredicate {
         case .cityId(let cityId):
-            self = .cityId(Int(cityId)!)
+            if cityId.isEmpty {
+                self = .cityId(0)
+            } else {
+                self = .cityId(Int(cityId)!)
+            }
         case .cityName(let cityName):
             self = .cityName(cityName)
         case .coordinate(let coordinate):

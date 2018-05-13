@@ -9,17 +9,36 @@
 import Result
 import Foundation
 
+var defaultCurrentLocation: CityCoordinate {
+    return .init(latitude: 52.3545653, longitude: 4.7585394)
+}
+
+extension UserCityLocation {
+    
+    var weatherLocationPredicate: WeatherLocationPredicate {
+        switch self {
+        case .cityId(let cityId):
+            return .cityId(cityId)
+        case .coordinate(let coordinate):
+            return .coordinate(coordinate)
+        case .currentLocation:
+            return .coordinate(defaultCurrentLocation)
+        }
+    }
+}
+
 extension WeatherProvider {
     
     /// Quick hack due to no implemented batch weather requests.
-    func queryWeather(forCityIds cityIds: [String], completion: @escaping ([Result<WeatherInfo, AnyError>]) -> Void) {
+    func queryWeather(for locations: [UserCityLocation], completion: @escaping ([Result<WeatherInfo, AnyError>]) -> Void) {
         
         let completionGroup = DispatchGroup()
         let resultQueue = DispatchQueue(label: "")
         var enumeratedResults: [Int : Result<WeatherInfo, AnyError>] = [:]
-        for (i, cityId) in cityIds.enumerated() {
+        for (i, location) in locations.enumerated() {
             completionGroup.enter()
-            queryWeather(for: .cityId(cityId), completion: { (result) in
+            let locationPredicate = location.weatherLocationPredicate
+            queryWeather(for: locationPredicate, completion: { (result) in
                 resultQueue.async {
                     enumeratedResults[i] = result
                     completionGroup.leave()

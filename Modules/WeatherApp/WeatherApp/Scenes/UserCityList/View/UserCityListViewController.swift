@@ -11,8 +11,6 @@ import RxCocoa
 import RxDataSources
 import Then
 
-typealias CityId = String
-
 protocol UserCityListViewDelegate : class {
     
     func selectedAddCity()
@@ -126,11 +124,7 @@ class UserCityListViewController : UITableViewController, UserCityListView, User
         delegate.selectedAddCity()
     }
 
-    // MARK: - Segues
-    
-    @IBAction func unwindFromCitySearchInput(_ segue: UIStoryboardSegue) {
-    }
-
+    // MARK: -
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         

@@ -9,6 +9,6 @@
 /// A city description/meta-info.
 struct CityInfo {
     
-    let cityId: String
+    let cityId: CityId
     let cityName: String
 }

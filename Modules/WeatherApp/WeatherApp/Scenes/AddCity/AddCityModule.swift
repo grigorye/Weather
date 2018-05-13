@@ -11,19 +11,16 @@ import UIKit
 func newAddCityViewController() -> UIViewController {
     
     let storyboard = UIStoryboard(name: "AddCity", bundle: .current)
-    let viewController = storyboard.instantiateInitialViewController()!
-    let view = viewController as! AddCityView
     
-    let searchContainerView = (viewController as! AddCityViewController).searchContainerView
+    let navigationController = storyboard.instantiateInitialViewController()! as! UINavigationController
     
-    let router: AddCityRouter = AddCityRouterImp(viewController: viewController, searchContainerView: searchContainerView)
+    let viewControllerObject = navigationController.viewControllers.first!
+    let viewController = viewControllerObject as! AddCityViewController
+    
+    let searchContainerView = viewController.searchContainerView
+    
+    let searchInputViewController = viewController.childSearchInputViewController
+    CitySearchInputModule.prepare(searchInputViewController, containerViewController: viewController, containerView: searchContainerView)
 
-    let interactor = AddCityInteractorImp()
-    let presenter: AddCityPresenter = AddCityPresenterImp(interactor: interactor, router: router)
-    view.delegate = presenter
-    viewController.retainObject(presenter)
-    
-    router.routeToNoSearch()
-
-    return viewController
+    return navigationController
 }

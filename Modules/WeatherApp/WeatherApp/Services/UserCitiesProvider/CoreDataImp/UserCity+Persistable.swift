@@ -17,15 +17,15 @@ extension UserCity : Persistable {
     }
     
     static var primaryAttributeName: String {
-        return #keyPath(PersistentUserCity.cityId)
+        return #keyPath(PersistentUserCity.locationJson)
     }
     
     var identity: String {
-        return cityId
+        return location.asJson()
     }
     
     init(entity: PersistentUserCity) {
-        cityId = entity.cityId!
+        location = entity.location
         cityName = entity.cityName!
         dateAdded = entity.dateAdded!
         dateUpdated = entity.dateUpdated!
@@ -35,7 +35,7 @@ extension UserCity : Persistable {
     func update(_ entity: PersistentUserCity) {
         assert((nil == userInfo) || (entity === (userInfo as! PersistentUserCity)))
         
-        entity.cityId = cityId
+        entity.location = location
         entity.cityName = cityName
         entity.dateAdded = dateAdded
         entity.dateUpdated = dateUpdated

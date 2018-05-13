@@ -6,4 +6,4 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-typealias UserCityWithWeather = (UserCity, WeatherInfo?)
+typealias UserCityWithWeather = (userCity: UserCity, weather: WeatherInfo?)

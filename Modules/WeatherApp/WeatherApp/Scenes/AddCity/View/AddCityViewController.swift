@@ -8,38 +8,23 @@
 
 import UIKit
 
-protocol AddCityViewDelegate : class {
-
-    func citySearchInputDidChange(_ text: String)
-}
-
-protocol AddCityView : class {
-    
-    var delegate: AddCityViewDelegate! { get set }
-}
-
-class AddCityViewController : UIViewController, AddCityView, CitySearchInputViewDelegate {
+class AddCityViewController : UIViewController {
     
     deinit {()}
     
-    // MARK: - <AddCityView>
-    
-    weak var delegate: AddCityViewDelegate!
-    
-    // MARK: - <CitySearchInputViewDelegate>
-    
-    func citySearchInputDidChange(_ text: String) {
-        delegate.citySearchInputDidChange(text)
-    }
-    
     // MARK: -
     
-    @IBOutlet private var _searchContainerView: UIStackView!
+    var childSearchInputViewController: UIViewController {
+        _ = view
+        return childSearchInputViewControllerImp
+    }
+    private var childSearchInputViewControllerImp: UIViewController!
     
     var searchContainerView: UIStackView {
         _ = view
-        return _searchContainerView
+        return searchContainerViewImp
     }
+    @IBOutlet private var searchContainerViewImp: UIStackView!
     
     // MARK: -
     
@@ -49,8 +34,7 @@ class AddCityViewController : UIViewController, AddCityView, CitySearchInputView
         
         switch segue.identifier {
         case "searchInput":
-            let childSearchInputView = segue.destination as! CitySearchInputView
-            childSearchInputView.delegate = self
+            childSearchInputViewControllerImp = segue.destination
         default: ()
         }
     }

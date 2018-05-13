@@ -11,7 +11,7 @@ import Result
 
 protocol UserCityListInteractor {
     
-    func userCitiesWithWeatherAndRefresher() -> (Observable<[(UserCity, WeatherInfo?)]>, refresher: () -> Void)
+    func userCitiesWithWeatherAndRefresher() -> (Observable<[UserCityWithWeather]>, refresher: () -> Void)
     
     func delete(_: UserCity)
 }
@@ -56,8 +56,8 @@ extension UserCityListInteractorImp {
                     
                     observer.onNext(next)
                     
-                    let cityIds = userCities.map { $0.cityId }
-                    self?.weatherProvider.queryWeather(forCityIds: cityIds, completion: { (results) in
+                    let locations = userCities.map { $0.location }
+                    self?.weatherProvider.queryWeather(for: locations, completion: { (results) in
                         let userCitiesWithWeather = (0..<results.count).map {
                             (userCities[$0], results[$0].value)
                         }

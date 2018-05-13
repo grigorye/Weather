@@ -6,12 +6,6 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-struct CityCoordinate {
-    
-    let latitude: Double
-    let longitude: Double
-}
-
 enum CityPredicate {
     
     case cityId(String)

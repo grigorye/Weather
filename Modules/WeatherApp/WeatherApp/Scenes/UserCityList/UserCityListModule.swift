@@ -30,3 +30,9 @@ func newUserCityListViewController() -> UIViewController {
     
     return viewController
 }
+
+extension UserCityListViewController /* Routing via Unwind Segues */ {
+    
+    @IBAction func unwindFromAddCity(_ segue: UIStoryboardSegue) {
+    }
+}

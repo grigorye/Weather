@@ -26,7 +26,7 @@ class AddCityFromSearchResultsListInteractorImp : AddCityFromSearchResultsListIn
     
     func addCity(with cityInfo: CityInfo) {
 
-        let userCity = UserCity(cityId: cityInfo.cityId, cityName: cityInfo.cityName, dateAdded: Date(), dateUpdated: .distantPast, userInfo: nil)
+        let userCity = UserCity(with: .cityId(cityInfo.cityId), cityName: cityInfo.cityName)
         try! userCitiesProvider.add(userCity)
     }
     

@@ -8,12 +8,6 @@
 
 import UIKit
 
-func newCityNoSearchViewController() -> UIViewController {
-    
-    let storyboard = UIStoryboard(name: "CityNoSearch", bundle: .current)
-    return storyboard.instantiateInitialViewController()!
-}
-
 func newCitySearchViewController(for text: String) -> UIViewController {
     
     let storyboard = UIStoryboard(name: "CitySearchResults", bundle: .current)

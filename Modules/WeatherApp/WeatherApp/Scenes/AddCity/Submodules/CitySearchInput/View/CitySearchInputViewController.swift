@@ -11,9 +11,10 @@ import UIKit
 protocol CitySearchInputViewDelegate : class {
     
     func citySearchInputDidChange(_ text: String)
+    func citySearchInputDidCancel()
 }
 
-protocol CitySearchInputView : class {
+protocol CitySearchInputView : View {
     
     var delegate: CitySearchInputViewDelegate! { get set }
 }
@@ -29,7 +30,11 @@ class CitySearchInputViewController : UIViewController, CitySearchInputView {
         
         // https://stackoverflow.com/q/19141886/1859783
         searchBar.subviews.forEach { $0.clipsToBounds = false }
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         searchBar.becomeFirstResponder()
     }
 }
@@ -37,7 +42,7 @@ class CitySearchInputViewController : UIViewController, CitySearchInputView {
 extension CitySearchInputViewController : UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        performSegue(withIdentifier: "unwindFromCitySearchInput", sender: self)
+        delegate.citySearchInputDidCancel()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
