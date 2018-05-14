@@ -20,3 +20,5 @@ My attempt to build weather app utilizing clean architecture approaches and mode
 4. At some places RxSwift is used to implement dynamic bindings. There's more room for that/some things (in terms of implementation) need to be switched to RxSwift to improve the performance.
 
 5. City lookup is implemented via lookup in pre-packaged Core Data store built from city list json available at [OpenWeatherMap](http://bulk.openweathermap.org/sample/). 
+
+6. City search by zip is not there yet. Though there's primitive UI solution for that.
