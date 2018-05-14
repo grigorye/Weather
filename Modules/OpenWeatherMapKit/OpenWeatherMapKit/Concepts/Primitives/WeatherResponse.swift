@@ -9,7 +9,10 @@
 public struct WeatherResponse : Decodable, Equatable {
     
     public let main: Main
-    
+    public let sys: Sys
+    public let name: String
+    public let dt: Int
+
     public struct Main : Decodable, Equatable {
         
         public let temp: Double
@@ -19,7 +22,23 @@ public struct WeatherResponse : Decodable, Equatable {
         }
     }
     
-    public init(main: Main) {
+    public struct Sys : Decodable, Equatable {
+        
+        public let country: String?
+        public let sunrise: Int
+        public let sunset: Int
+
+        public init(country: String?, sunrise: Int, sunset: Int) {
+            self.country = country
+            self.sunrise = sunrise
+            self.sunset = sunset
+        }
+    }
+    
+    public init(main: Main, sys: Sys, name: String, dt: Int) {
         self.main = main
+        self.sys = sys
+        self.name = name
+        self.dt = dt
     }
 }
