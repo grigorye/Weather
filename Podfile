@@ -103,6 +103,13 @@ post_install do |installer|
     end
   end
   installer.pods_project.targets.each do |target|
+    if target.name =~ /^RxSwift-iOS/
+      puts("Adding RepeatWhen to RxSwift")
+      group = target.project.main_group.find_subpath("Pods/RxSwift", true)
+      file_ref = group.new_reference("../../Pods-Extras/RxSwift/RepeatWhen.swift")
+      target.add_file_references([file_ref])
+    end
+
     target.build_configurations.each do |configuration|
       #configuration.build_settings['CLANG_ENABLE_CODE_COVERAGE'] = 'NO'
       #configuration.build_settings['SWIFT_EXEC'] = '$(SRCROOT)/../Tools/SWIFT_EXEC-no-coverage'
