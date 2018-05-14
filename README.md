@@ -6,13 +6,14 @@ My attempt to build weather app utilizing clean architecture approaches and mode
 
 # Notes
 
-1. (B)VIPER is the architecture of the app. See more on that in [Scenes README](./Modules/WeatherApp/WeatherApp/Scenes/README.md)
+1. (B)VIPER is the architecture of the app. See more on that in [Scenes README](./Modules/WeatherApp/WeatherApp/Scenes/README.md).
+
    Module tests are not there yet, sorry. Working on that.
 
 2. UI implementation is heavily based on storyboards, view controller containment (both dynamic and static) and sometimes storyboard references. The containment reflects module structure of (B)VIPER. As result every view controller is either (not both):
 
-    * *View* managing "leaf" view;
-    * *ContainerView* managing some number of *opaque* child views (read: container view controller).
+   * *View* managing "leaf" view;
+   * *ContainerView* managing some number of *opaque* child views (read: container view controller).
 
    Each such a view controller is an implementation of View in the corresponding module.
 
