@@ -1,4 +1,5 @@
 [![](https://travis-ci.org/grigorye/Weather.svg?branch=master)](https://travis-ci.org/grigorye/Weather)
+[![](https://codecov.io/gh/grigorye/Weather/branch/master/graph/badge.svg)](https://codecov.io/gh/grigorye/Weather)
 
 My attempt to build weather app utilizing clean architecture approaches and modern tools.
 
