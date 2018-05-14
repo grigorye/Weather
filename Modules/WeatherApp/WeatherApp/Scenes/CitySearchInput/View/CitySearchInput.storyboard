@@ -14,7 +14,7 @@
         <scene sceneID="DRl-fR-XWV">
             <objects>
                 <viewController id="SqJ-Je-OTa" customClass="CitySearchInputViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wR0-aj-sLH" customClass="ViewFittingExpandedSize" customModule="WeatherApp" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="wR0-aj-sLH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
