@@ -1,0 +1,1 @@
+Querying city info by text. Should provide useful results in terms of input for weather queries.
