@@ -10,27 +10,6 @@ import UIKit
 
 class WeatherDetailViewController : UIViewController, WeatherDetailView {
 
-    deinit {()}
-
-    // MARK: -
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        configureView()
-    }
-    
-    private func configureView() {
-        guard nil != viewIfLoaded else {
-            return
-        }
-        detailDescriptionLabel.text = model.temperature
-    }
-    
-    // MARK: -
-    
-    @IBOutlet private var detailDescriptionLabel: UILabel!
-
     // MARK: - <WeatherDetailView>
     
     var model: WeatherDetailViewModel! {
@@ -38,4 +17,42 @@ class WeatherDetailViewController : UIViewController, WeatherDetailView {
             configureView()
         }
     }
+
+    // MARK: -
+    
+    func configureView() {
+        detailTableView.model = model
+        detailMapView.model = model
+        title = model.cityName
+    }
+    
+    // MARK: -
+    
+    private var detailTableView: WeatherDetailView {
+        _ = view
+        return _detailTableView
+    }
+    
+    private var _detailTableView: WeatherDetailView!
+    
+    private var detailMapView: WeatherDetailView {
+        _ = view
+        return _detailMapView
+    }
+    
+    private var _detailMapView: WeatherDetailView!
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "detailTable":
+            _detailTableView = forceCasted(segue.destination)
+        case "detailMap":
+            _detailMapView = forceCasted(segue.destination)
+        default: ()
+        }
+    }
+    
+    // MARK: -
+    
+    deinit {()}
 }

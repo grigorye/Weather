@@ -15,4 +15,5 @@ struct WeatherDetailViewModel {
     
     let temperature: String
     let cityName: String
+    let cityCoordinate: CityCoordinate
 }

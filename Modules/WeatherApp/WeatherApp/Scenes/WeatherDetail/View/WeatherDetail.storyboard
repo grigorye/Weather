@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JEX-9P-axG">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -13,36 +13,62 @@
         <!--Weather Detail View Controller-->
         <scene sceneID="yUG-lL-AsK">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
                 <viewController id="JEX-9P-axG" customClass="WeatherDetailViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
-                                <rect key="frame" x="20" y="323.5" width="335" height="20.5"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfV-ma-TtO">
+                                <rect key="frame" x="0.0" y="180" width="320" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="Mlx-Hx-RL7"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="lsL-bi-vje" kind="embed" identifier="detailTable" id="ghc-4i-BaW"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgF-MK-MIp">
+                                <rect key="frame" x="0.0" y="64" width="320" height="108"/>
+                                <connections>
+                                    <segue destination="iLX-G5-soF" kind="embed" identifier="detailMap" id="N9l-FP-djn"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" constant="20" symbolic="YES" id="Tsc-yG-G1q"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="centerY" secondItem="svH-Pt-448" secondAttribute="centerY" id="jWN-iV-94e"/>
-                            <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="20" symbolic="YES" id="tHV-ZD-HQj"/>
+                            <constraint firstItem="hgF-MK-MIp" firstAttribute="trailing" secondItem="VUw-jc-0yf" secondAttribute="trailing" id="9rC-8A-TH9"/>
+                            <constraint firstItem="LfV-ma-TtO" firstAttribute="trailing" secondItem="VUw-jc-0yf" secondAttribute="trailing" id="CE8-Dk-xz8"/>
+                            <constraint firstItem="hgF-MK-MIp" firstAttribute="top" secondItem="VUw-jc-0yf" secondAttribute="top" id="LEp-kL-D8t"/>
+                            <constraint firstItem="LfV-ma-TtO" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" id="Rp3-uO-V8U"/>
+                            <constraint firstItem="hgF-MK-MIp" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" id="VbN-Y9-lQP"/>
+                            <constraint firstItem="LfV-ma-TtO" firstAttribute="top" secondItem="hgF-MK-MIp" secondAttribute="bottom" constant="8" id="X0O-E2-Kl3"/>
+                            <constraint firstItem="LfV-ma-TtO" firstAttribute="bottom" secondItem="VUw-jc-0yf" secondAttribute="bottom" id="gjs-1M-z75"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="mOI-FS-AaM"/>
-                    <connections>
-                        <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
-                    </connections>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="129"/>
+            <point key="canvasLocation" x="706.875" y="127.5"/>
+        </scene>
+        <!--WeatherDetailTable-->
+        <scene sceneID="TQ6-6e-t2N">
+            <objects>
+                <viewControllerPlaceholder storyboardName="WeatherDetailTable" id="lsL-bi-vje" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uiV-aa-6l7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1458" y="160"/>
+        </scene>
+        <!--WeatherDetailMap-->
+        <scene sceneID="dos-ws-t9Z">
+            <objects>
+                <viewControllerPlaceholder storyboardName="WeatherDetailMap" id="iLX-G5-soF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6JV-Xa-LAN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1451" y="96"/>
         </scene>
     </scenes>
 </document>

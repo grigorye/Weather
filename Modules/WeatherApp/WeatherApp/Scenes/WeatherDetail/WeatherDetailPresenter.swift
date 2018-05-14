@@ -24,6 +24,6 @@ class WeatherDetailPresenterImp : WeatherDetailPresenter {
     func loadContent() {
         let (userCity, weather) = userCityWithWeather
         let temperature = temperatureTextFromWeather(weather, temperatureUnit: defaultTemperatureUnit)
-        view.model = WeatherDetailViewModel(temperature: temperature, cityName: userCity.cityName)
+        view.model = WeatherDetailViewModel(temperature: temperature, cityName: userCity.cityName, cityCoordinate: weather!.cityCoordinate)
     }
 }
