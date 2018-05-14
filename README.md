@@ -1,11 +1,12 @@
 [![](https://travis-ci.org/grigorye/Weather.svg?branch=master)](https://travis-ci.org/grigorye/Weather)
-[![](https://codecov.io/gh/grigorye/Weather/branch/master/graph/badge.svg)](https://codecov.io/gh/grigorye/Weather)
+[![codecov](https://codecov.io/gh/grigorye/Weather/branch/master/graph/badge.svg)](https://codecov.io/gh/grigorye/Weather)
 
 My attempt to build weather app utilizing clean architecture approaches and modern tools.
 
 # Notes
 
 1. (B)VIPER is the architecture of the app. See more on that in [Scenes README](./Modules/WeatherApp/WeatherApp/Scenes/README.md)
+   Module tests are not there yet, sorry. Working on that.
 
 2. UI implementation is heavily based on storyboards, view controller containment (both dynamic and static) and sometimes storyboard references. The containment reflects module structure of (B)VIPER. As result every view controller is either (not both):
 
