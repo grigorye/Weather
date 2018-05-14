@@ -13,11 +13,12 @@ import Result
 class WeatherProviderImp_OpenWeatherMap_WeatherProviderImp_QueryWeather_T : QuickSpec, WeatherProviderImp_OpenWeatherMap$$ {
     override func spec() {
         context("with good network") {
-            var WeatherProvider: WeatherProvider!
+            var weatherProvider: WeatherProvider!
             beforeEach {
                 struct NetworkingStub : Networking {
                     func queryWeather(for locationPredicate: LocationPredicate, completion: @escaping (WeatherQueryResult) -> Void) {
                         let response = WeatherResponse(
+                            coord: .init(lat: 145.77, lon: -16.92),
                             main: .init(
                                 temp: 50
                             ),
@@ -32,13 +33,13 @@ class WeatherProviderImp_OpenWeatherMap_WeatherProviderImp_QueryWeather_T : Quic
                         completion(.init(response))
                     }
                 }
-                WeatherProvider = WeatherProviderImp(networking: NetworkingStub())
+                weatherProvider = WeatherProviderImp(networking: NetworkingStub())
             }
             for (locationPredicateContext, locationPredicate) in weatherLocationPredicateSamplesWithContext {
                 context("when location is \(locationPredicateContext)") {
                     it("should succeed") {
                         var weatherQueryResult: WeatherProvider.WeatherQueryResult!
-                        WeatherProvider.queryWeather(for: locationPredicate, completion: { (result) in
+                        weatherProvider.queryWeather(for: locationPredicate, completion: { (result) in
                             weatherQueryResult = result
                         })
                         expect(weatherQueryResult).notTo(beNil())
@@ -55,7 +56,7 @@ class WeatherProviderImp_OpenWeatherMap_WeatherProviderImp_QueryWeather_T : Quic
 class WeatherProviderImp_OpenWeatherMap_WeatherProviderImp_QueryWeather_ET : QuickSpec, WeatherProviderImp_OpenWeatherMap$$ {
     override func spec() {
         context("with bad network") {
-            var WeatherProvider: WeatherProvider!
+            var weatherProvider: WeatherProvider!
             beforeEach {
                 enum FakeError : Error {
                     case unknownFailure
@@ -65,13 +66,13 @@ class WeatherProviderImp_OpenWeatherMap_WeatherProviderImp_QueryWeather_ET : Qui
                         completion(.failure(.other(FakeError.unknownFailure)))
                     }
                 }
-                WeatherProvider = WeatherProviderImp(networking: NetworkingStub())
+                weatherProvider = WeatherProviderImp(networking: NetworkingStub())
             }
             for (locationPredicateContext, locationPredicate) in weatherLocationPredicateSamplesWithContext {
                 context("when location is \(locationPredicateContext)") {
                     it("should error") {
                         var weatherQueryResult: WeatherProvider.WeatherQueryResult!
-                        WeatherProvider.queryWeather(for: locationPredicate, completion: { (result) in
+                        weatherProvider.queryWeather(for: locationPredicate, completion: { (result) in
                             weatherQueryResult = result
                         })
                         expect(weatherQueryResult).notTo(beNil())

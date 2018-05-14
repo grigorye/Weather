@@ -8,6 +8,7 @@
 
 public struct WeatherResponse : Decodable, Equatable {
     
+    public let coord: Coordinate
     public let main: Main
     public let sys: Sys
     public let name: String
@@ -35,7 +36,8 @@ public struct WeatherResponse : Decodable, Equatable {
         }
     }
     
-    public init(main: Main, sys: Sys, name: String, dt: Int) {
+    public init(coord: Coordinate, main: Main, sys: Sys, name: String, dt: Int) {
+        self.coord = coord
         self.main = main
         self.sys = sys
         self.name = name
