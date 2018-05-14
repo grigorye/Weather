@@ -813,12 +813,10 @@
 		C4C8F0EC209B6AFE00E081B4 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				C4C8F0F9209B6AFF00E081B4 /* Assets.xcassets */,
 				C4C8F129209B784A00E081B4 /* Entities */,
 				C4C8F122209B72D200E081B4 /* Scenes */,
-				C4C8F124209B730100E081B4 /* Globals */,
 				C4390215209CD7E7001677DA /* Services */,
-				C4C8F130209B7D2F00E081B4 /* Reusable */,
+				C4C8F124209B730100E081B4 /* Globals */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -891,6 +889,7 @@
 		C4C8F124209B730100E081B4 /* Globals */ = {
 			isa = PBXGroup;
 			children = (
+				C4C8F0F9209B6AFF00E081B4 /* Assets.xcassets */,
 				C4C8F0ED209B6AFE00E081B4 /* AppDelegate.swift */,
 				C4CFD0F820A4645900A87DCC /* AppModule.swift */,
 				C4C8F0FB209B6AFF00E081B4 /* LaunchScreen.storyboard */,
@@ -912,13 +911,6 @@
 				C42B3DD520A7B64A0011E016 /* UserCityLocation+Codable.swift */,
 			);
 			path = Entities;
-			sourceTree = "<group>";
-		};
-		C4C8F130209B7D2F00E081B4 /* Reusable */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Reusable;
 			sourceTree = "<group>";
 		};
 		C4CFD0E720A43DB100A87DCC /* View */ = {
