@@ -8,13 +8,13 @@
       location = "container:"
       name = "Modules">
       <FileRef
-         location = "group:Modules/Shared">
-      </FileRef>
-      <FileRef
          location = "group:Modules/WeatherApp/WeatherApp.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:Modules/OpenWeatherMapKit/OpenWeatherMapKit.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Modules/Shared">
       </FileRef>
    </Group>
    <FileRef
