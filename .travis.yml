@@ -3,6 +3,7 @@ language: objective-c
 script:
 - xcodebuild -sdk iphonesimulator -workspace WeatherApp.xcworkspace -scheme WeatherApp -destination 'platform=iOS Simulator,name=iPhone X,OS=11.3' -enableCodeCoverage YES test CODE_SIGNING_REQUIRED=NO
 before_install:
+- bundle install
 - bundle exec pod repo update
 before_script:
 after_success:
