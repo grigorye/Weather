@@ -216,7 +216,7 @@
 		C43985E620A8CE6C002F07B7 /* CitySearchInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchInputDelegate.swift; sourceTree = "<group>"; };
 		C43985E820A8DA73002F07B7 /* TemplateRespectingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateRespectingImageView.swift; sourceTree = "<group>"; };
 		C440003D20A059B900808CC9 /* DefaultWeatherProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultWeatherProvider.swift; sourceTree = "<group>"; };
-		C440003F20A05A3400808CC9 /* WeatherProviderImp$.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherProviderImp$.swift; sourceTree = "<group>"; };
+		C440003F20A05A3400808CC9 /* WeatherProviderImp$.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WeatherProviderImp$.swift"; sourceTree = "<group>"; };
 		C440004020A05A3400808CC9 /* WeatherProviderImpContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherProviderImpContainer.swift; sourceTree = "<group>"; };
 		C440004320A067D000808CC9 /* CitySearchResultsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchResultsInteractor.swift; sourceTree = "<group>"; };
 		C4622D2D20A32CB500CAC3B0 /* CitySearchResultsListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySearchResultsListPresenter.swift; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 		C498C3BF20A0705B00D63DB3 /* CityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityProvider.swift; sourceTree = "<group>"; };
 		C498C3C720A0733A00D63DB3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C498C3C920A0743800D63DB3 /* CityProviderImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityProviderImp.swift; sourceTree = "<group>"; };
-		C498C3CB20A0744100D63DB3 /* CityProviderImp$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityProviderImp$.swift; sourceTree = "<group>"; };
+		C498C3CB20A0744100D63DB3 /* CityProviderImp$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CityProviderImp$.swift"; sourceTree = "<group>"; };
 		C498C3CC20A0747500D63DB3 /* CityProviderImpContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityProviderImpContainer.swift; sourceTree = "<group>"; };
 		C498C3CE20A074F900D63DB3 /* OpenWeatherMap$-CityProviderImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherMap$-CityProviderImp.swift"; sourceTree = "<group>"; };
 		C498C3D120A0759300D63DB3 /* DefaultCityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCityProvider.swift; sourceTree = "<group>"; };
@@ -1157,7 +1157,6 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/GZIP-iOS/GZIP.framework",
-				"${BUILT_PRODUCTS_DIR}/LHSKeyboardAdjusting/LHSKeyboardAdjusting.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya-iOS/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result-iOS/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -1172,7 +1171,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GZIP.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LHSKeyboardAdjusting.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -1533,10 +1531,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 465NA5BW7E;
 				INFOPLIST_FILE = "$(SRCROOT)/WeatherApp/Globals/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.Weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1552,10 +1547,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 465NA5BW7E;
 				INFOPLIST_FILE = "$(SRCROOT)/WeatherApp/Globals/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.Weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1571,11 +1563,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 465NA5BW7E;
 				INFOPLIST_FILE = WeatherTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.WeatherTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1592,11 +1580,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 465NA5BW7E;
 				INFOPLIST_FILE = WeatherTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.WeatherTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1613,11 +1597,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 465NA5BW7E;
 				INFOPLIST_FILE = WeatherUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.WeatherUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1635,11 +1615,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 465NA5BW7E;
 				INFOPLIST_FILE = WeatherUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.WeatherUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
