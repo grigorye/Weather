@@ -46,6 +46,9 @@ extension CityQueryingImp_CoreData$ {
                         _ = (text)
                         _ = (persistentCityInfos.count)
                         let cityInfos = persistentCityInfos.map { CityInfo.init(from: $0) }
+                        #if false
+                        Thread.sleep(forTimeInterval: 600)
+                        #endif
                         observer.on(.next(cityInfos))
                         observer.on(.completed)
                     })
