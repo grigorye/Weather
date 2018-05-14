@@ -28,8 +28,6 @@ target 'WeatherApp' do
   pod 'RxCocoa'
   pod 'RxCoreData'
 
-  pod 'LHSKeyboardAdjusting', '~> 2.0.1'
-
   target 'WeatherAppTests' do
     inherit! :search_paths
     
