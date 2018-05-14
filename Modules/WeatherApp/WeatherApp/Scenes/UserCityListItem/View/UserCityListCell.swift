@@ -12,6 +12,7 @@ class UserCityListCell : UITableViewCell, UserCityListItemView {
     
     @IBOutlet private var temperatureLabel: UILabel!
     @IBOutlet private var cityNameLabel: UILabel!
+    @IBOutlet private var subtitleLabel: UILabel!
 
     // MARK: - <UserCityListItemView>
     
@@ -19,6 +20,7 @@ class UserCityListCell : UITableViewCell, UserCityListItemView {
         didSet {
             cityNameLabel.text = model.cityName
             temperatureLabel.text = model.temperature
+            subtitleLabel.text = model.subtitle
         }
     }
 }

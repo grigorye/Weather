@@ -17,7 +17,18 @@ class WeatherProviderImp_OpenWeatherMap_WeatherProviderImp_QueryWeather_T : Quic
             beforeEach {
                 struct NetworkingStub : Networking {
                     func queryWeather(for locationPredicate: LocationPredicate, completion: @escaping (WeatherQueryResult) -> Void) {
-                        let response = WeatherResponse(main: .init(temp: 50))
+                        let response = WeatherResponse(
+                            main: .init(
+                                temp: 50
+                            ),
+                            sys: .init(
+                                country: "US",
+                                sunrise: 1526302800,
+                                sunset: 1526353766
+                            ),
+                            name: "Cupertino",
+                            dt: 1526259360
+                        )
                         completion(.init(response))
                     }
                 }

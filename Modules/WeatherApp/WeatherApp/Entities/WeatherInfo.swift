@@ -12,4 +12,5 @@ import Foundation.NSUnit
 struct WeatherInfo {
     
     let temperature: Measurement<UnitTemperature>
+    let cityName: String
 }

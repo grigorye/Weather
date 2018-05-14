@@ -6,48 +6,72 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+import RxCocoa
 import RxSwift
 import Result
+import Then
 
+extension Array : Then {
+    
+}
 protocol UserCityListInteractor {
     
     func userCitiesWithWeatherAndRefresher() -> (Observable<[UserCityWithWeather]>, refresher: () -> Void)
+    
+    var userCities: Observable<[UserCity]> { get }
     
     func delete(_: UserCity)
 }
 
 class UserCityListInteractorImp : UserCityListInteractor {
-
-    private let userCitiesProvider: UserCitiesProvider
-    private let weatherProvider: WeatherProvider
-
+    
+    let userCitiesProvider: UserCitiesProvider
+    let weatherProvider: WeatherProvider
+    let locationService: LocationService
+    
     deinit {()}
     
-    init(userCitiesProvider: UserCitiesProvider, weatherProvider: WeatherProvider) {
+    init(userCitiesProvider: UserCitiesProvider, weatherProvider: WeatherProvider, locationService: LocationService) {
         
         self.userCitiesProvider = userCitiesProvider
         self.weatherProvider = weatherProvider
+        self.locationService = locationService
     }
 }
 
-private extension UserCityListInteractorImp {
-    
-    typealias RefreshSubject = PublishSubject<Void>
-    
-    var userCities: Observable<[UserCity]> {
-        return userCitiesProvider.userCities
+extension UserCityLocation {
+    var isCurrentLocation: Bool {
+        switch self {
+        case .currentLocation:
+            return true
+        default:
+            return false
+        }
     }
 }
 
 extension UserCityListInteractorImp {
     
     // MARK: - <UserCityListInteractor>
-
+    
+    var userCities: Observable<[UserCity]> {
+        return userCitiesProvider.userCities.share(replay: 1, scope: .forever)
+    }
+    
+    func updateCurrentLocation(from: CityCoordinate) {
+        let disposeBag = DisposeBag()
+        userCities.subscribe(onNext: { (userCities: [UserCity]) in
+            if let userLocation = userCities.first(where: { $0.location.isCurrentLocation }) {
+                print(userLocation)
+            }
+        }).disposed(by: disposeBag)
+    }
+    
     func userCitiesWithWeatherAndRefresher() -> (Observable<[UserCityWithWeather]>, refresher: () -> Void) {
         
         var last: (() -> Void)?
         
-        let observable = Observable<[UserCityWithWeather]>.create { [unowned self] observer in
+        let observable = Observable<[UserCityWithWeather]>.create { [unowned self, locationService] observer in
             
             return self.userCities.subscribe(onNext: { [weak self] (userCities) in
                 
@@ -57,12 +81,61 @@ extension UserCityListInteractorImp {
                     observer.onNext(next)
                     
                     let locations = userCities.map { $0.location }
-                    self?.weatherProvider.queryWeather(for: locations, completion: { (results) in
+                    let userLocationIndex = locations.index(where: { $0.isCurrentLocation })
+                    
+                    if (nil != userLocationIndex) && locationService.timeIntervalSinceLastUpdate > 600 {
+                        locationService.queryCurrentLocation(completionHandler: { [weak self] (result) in
+                            switch result {
+                            case .success(let coordinate):
+                                self?.updateCurrentLocation(from: coordinate)
+                            case .failure(let error):
+                                print(error)
+                            }
+                        })
+                    }
+                    let (indexOfCurrentLocationToSkip, locationPredicates): (Int?, [WeatherLocationPredicate]) = {
+                        
+                        guard let userLocationIndex = userLocationIndex else {
+                            return (nil, userCities.map { $0.location.weatherLocationPredicate })
+                        }
+                        
+                        guard let currentCoordinate = locationService.currentCoordinate else {
+                            return (userLocationIndex, {
+                                var adjustedValue = userCities
+                                adjustedValue.remove(at: userLocationIndex)
+                                return adjustedValue.map { $0.location.weatherLocationPredicate }
+                            }())
+                        }
+                        
+                        return (nil, userCities.map { $0.location }.map {
+                            switch $0 {
+                            case .currentLocation:
+                                return .coordinate(currentCoordinate)
+                            default:
+                                return $0.weatherLocationPredicate
+                            }
+                        })
+                    }()
+                    self?.weatherProvider.queryWeather(for: locationPredicates, completion: { (results) in
+                        let adjustedUserCities = userCities.with {
+                            guard let indexOfCurrentLocationToSkip = indexOfCurrentLocationToSkip else {
+                                return
+                            }
+                            $0.remove(at: indexOfCurrentLocationToSkip)
+                        }
+                        assert(adjustedUserCities.count == results.count)
                         let userCitiesWithWeather = (0..<results.count).map {
-                            (userCities[$0], results[$0].value)
+                            (adjustedUserCities[$0], results[$0].value)
+                        }
+                        let currentLocationAwareUserCitiesWithWeather = userCitiesWithWeather.with {
+                            guard let indexOfCurrentLocationToSkip = indexOfCurrentLocationToSkip else {
+                                return
+                            }
+                            let oldUserLocationAndWheather = next[indexOfCurrentLocationToSkip]
+                            $0.insert(oldUserLocationAndWheather, at: indexOfCurrentLocationToSkip)
                         }
                         DispatchQueue.main.async {
-                            observer.onNext(userCitiesWithWeather)
+                            observer.onNext(currentLocationAwareUserCitiesWithWeather)
                         }
                     })
                 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7E9BC811DFE4B9677475E099 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EBA041663B63F0B9350E9C /* Pods_WeatherApp.framework */; };
 		8F9BB98C77D689A1CEE7FF45 /* Pods_WeatherAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23690966F220B2BD2DDFA50C /* Pods_WeatherAppTests.framework */; };
+		C401A3EC20A8F9FE00C1503E /* LocationQuerying.swift in Sources */ = {isa = PBXBuildFile; fileRef = C401A3EB20A8F9FE00C1503E /* LocationQuerying.swift */; };
+		C401A3EE20A8FA8E00C1503E /* LocationServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C401A3ED20A8FA8E00C1503E /* LocationServiceImp.swift */; };
 		C42B3DD420A7B60A0011E016 /* Codable+Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42B3DD320A7B60A0011E016 /* Codable+Json.swift */; };
 		C42B3DD620A7B64A0011E016 /* UserCityLocation+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42B3DD520A7B64A0011E016 /* UserCityLocation+Codable.swift */; };
 		C42B3DD920A7C2090011E016 /* UserCityListItemView+Differentiator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42B3DD820A7C2090011E016 /* UserCityListItemView+Differentiator.swift */; };
@@ -183,6 +185,8 @@
 		6CF0351FF1157DDC5A03C743 /* Pods-WeatherAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherAppTests.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-WeatherAppTests/Pods-WeatherAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		A00F94E9F7960695EB12195E /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 		B3448EF62FFCD072E058321C /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
+		C401A3EB20A8F9FE00C1503E /* LocationQuerying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationQuerying.swift; sourceTree = "<group>"; };
+		C401A3ED20A8FA8E00C1503E /* LocationServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceImp.swift; sourceTree = "<group>"; };
 		C42B3DD320A7B60A0011E016 /* Codable+Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+Json.swift"; sourceTree = "<group>"; };
 		C42B3DD520A7B64A0011E016 /* UserCityLocation+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCityLocation+Codable.swift"; sourceTree = "<group>"; };
 		C42B3DD820A7C2090011E016 /* UserCityListItemView+Differentiator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCityListItemView+Differentiator.swift"; sourceTree = "<group>"; };
@@ -795,6 +799,8 @@
 				C4390215209CD7E7001677DA /* Services */,
 				C498C3C520A0731D00D63DB3 /* CityQuerying */,
 				C4390216209CD7FE001677DA /* WeatherQuerying */,
+				C401A3EB20A8F9FE00C1503E /* LocationQuerying.swift */,
+				C401A3ED20A8FA8E00C1503E /* LocationServiceImp.swift */,
 				C4C8F130209B7D2F00E081B4 /* Reusable */,
 			);
 			path = WeatherApp;
@@ -1246,6 +1252,7 @@
 			files = (
 				C43985E720A8CE6C002F07B7 /* CitySearchInputDelegate.swift in Sources */,
 				C4CFD10020A489D900A87DCC /* UserCityListRouter.swift in Sources */,
+				C401A3EC20A8F9FE00C1503E /* LocationQuerying.swift in Sources */,
 				C42B3DFB20A86D0C0011E016 /* UserCitiesActionsView.swift in Sources */,
 				C42B3DEF20A8544B0011E016 /* UserCityListView.swift in Sources */,
 				C47BAB8520A7173E00EC3FF1 /* CitySelectionOnMapModule.swift in Sources */,
@@ -1282,6 +1289,7 @@
 				C42B3DF120A866C90011E016 /* UserCitiesViewController.swift in Sources */,
 				C4C8F132209B7D6500E081B4 /* UserCity.swift in Sources */,
 				C4CFD0FD20A477F500A87DCC /* AssociatedObjects.swift in Sources */,
+				C401A3EE20A8FA8E00C1503E /* LocationServiceImp.swift in Sources */,
 				C47BAB7720A6FD8700EC3FF1 /* CitySearchAlternativesViewController.swift in Sources */,
 				C4622D3820A32CEA00CAC3B0 /* CitySearchResultsListViewController.swift in Sources */,
 				C4C1DFD620A1C46A00C11C62 /* CitySearchResultsPresenter.swift in Sources */,

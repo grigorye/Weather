@@ -34,7 +34,8 @@ extension UserCityListItemViewModel {
     
     init(_ userCityWithWeather: UserCityWithWeather, temperatureUnit: UnitTemperature) {
         let (userCity, weather) = userCityWithWeather
-        self.cityName = userCity.cityName
+        self.cityName = weather?.cityName ?? "..."
+        self.subtitle = userCity.cityName
         self.temperature = temperatureTextFromWeather(weather, temperatureUnit: temperatureUnit)
         self.identifier = "\(userCity.location)" // !!!
         self.userInfo = userCityWithWeather

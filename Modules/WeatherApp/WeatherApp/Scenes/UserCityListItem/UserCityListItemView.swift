@@ -15,6 +15,7 @@ struct UserCityListItemViewModel {
     
     let cityName: String
     let temperature: String
+    let subtitle: String
     
     let identifier: String
     let userInfo: Any!
