@@ -1,0 +1,11 @@
+stages:
+  - build
+
+build_project:
+  stage: build
+  script:
+    - xcodebuild -sdk iphonesimulator -workspace Weather.xcworkspace -scheme WeatherApp -destination 'platform=iOS Simulator,name=iPhone X,OS=11.3' -enableCodeCoverage YES test CODE_SIGNING_REQUIRED=NO | xcpretty
+  tags:
+    - ios_9-2
+    - xcode_9-2
+    - osx_10-13
