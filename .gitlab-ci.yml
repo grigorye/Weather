@@ -9,6 +9,6 @@ build_project:
     - bundle exec pod install
     - xcodebuild -sdk iphonesimulator -workspace WeatherApp.xcworkspace -scheme WeatherApp -destination 'platform=iOS Simulator,name=iPhone X,OS=11.3' -enableCodeCoverage YES test | xcpretty
   tags:
-    - ios_9-2
-    - xcode_9-2
-    - osx_10-13
+    - ios
+    - xcode
+    - macos
