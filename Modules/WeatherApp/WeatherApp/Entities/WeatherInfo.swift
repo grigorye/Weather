@@ -13,4 +13,5 @@ struct WeatherInfo {
     
     let temperature: Measurement<UnitTemperature>
     let cityName: String
+    let cityCoordinate: CityCoordinate
 }

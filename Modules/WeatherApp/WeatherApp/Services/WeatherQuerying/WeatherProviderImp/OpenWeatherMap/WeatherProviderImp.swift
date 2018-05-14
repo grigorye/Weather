@@ -30,7 +30,8 @@ extension WeatherProviderImp_OpenWeatherMap$ {
                     return
                 case .success(let networkWeatherInfo):
                     let temperature = Measurement(value: networkWeatherInfo.main.temp, unit: UnitTemperature.kelvin)
-                    let weatherInfo = WeatherInfo(temperature: temperature, cityName: networkWeatherInfo.name)
+                    let cityCoordinate = CityCoordinate(latitude: networkWeatherInfo.coord.lat, longitude: networkWeatherInfo.coord.lon)
+                    let weatherInfo = WeatherInfo(temperature: temperature, cityName: networkWeatherInfo.name, cityCoordinate: cityCoordinate)
                     completion(.success(weatherInfo))
                 }
             }
