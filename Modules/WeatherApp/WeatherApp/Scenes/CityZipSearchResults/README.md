@@ -1,0 +1,1 @@
+Searching cities by zip. It's quite different story vs. searching by city name at least in case of OpenWeatherMap/current implementation - you can not search by substring, should provide country and etc.

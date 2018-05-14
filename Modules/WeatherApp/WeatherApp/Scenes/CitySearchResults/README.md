@@ -1,4 +1,4 @@
-This container view *child* is switched between loading/search results/error screens by Router via Presenter.
+Switches "active" (sub)module depening on loading search/search error/search completed states.
 
 This is search by city name, not by zip code.
 
