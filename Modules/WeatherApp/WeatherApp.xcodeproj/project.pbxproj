@@ -186,6 +186,11 @@
 		B3448EF62FFCD072E058321C /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C401A3EB20A8F9FE00C1503E /* LocationQuerying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationQuerying.swift; sourceTree = "<group>"; };
 		C401A3ED20A8FA8E00C1503E /* LocationServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceImp.swift; sourceTree = "<group>"; };
+		C426A51920AA0D6600F0A202 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C426A51A20AA0EB000F0A202 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C426A51B20AA0F4300F0A202 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C426A51C20AA122A00F0A202 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C426A51D20AA12A400F0A202 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C42B3DD320A7B60A0011E016 /* Codable+Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+Json.swift"; sourceTree = "<group>"; };
 		C42B3DD520A7B64A0011E016 /* UserCityLocation+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCityLocation+Codable.swift"; sourceTree = "<group>"; };
 		C42B3DD820A7C2090011E016 /* UserCityListItemView+Differentiator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCityListItemView+Differentiator.swift"; sourceTree = "<group>"; };
@@ -472,6 +477,7 @@
 		C4622D2B20A32CB500CAC3B0 /* CitySearchResultsList */ = {
 			isa = PBXGroup;
 			children = (
+				C426A51A20AA0EB000F0A202 /* README.md */,
 				C4622D2D20A32CB500CAC3B0 /* CitySearchResultsListPresenter.swift */,
 				C4622D3A20A32D6100CAC3B0 /* CitySearchResultsListRouter.swift */,
 				C4CFD10820A4A6B900A87DCC /* CitySearchResultsListModule.swift */,
@@ -631,6 +637,7 @@
 		C4A15339209FEE4D003D2170 /* CitySearchInput */ = {
 			isa = PBXGroup;
 			children = (
+				C426A51920AA0D6600F0A202 /* README.md */,
 				C42B3DDA20A7C2B00011E016 /* CitySearchInputView.swift */,
 				C43985E020A8C81C002F07B7 /* CitySearchInputPresenter.swift */,
 				C43985E420A8CDD6002F07B7 /* CitySearchInputInteractor.swift */,
@@ -687,6 +694,7 @@
 		C4BCE90C20A8E0BF004B8589 /* CityZipSearchResults */ = {
 			isa = PBXGroup;
 			children = (
+				C426A51B20AA0F4300F0A202 /* README.md */,
 				C4BCE91320A8E599004B8589 /* CityZipSearchResultsModule.swift */,
 				C4BCE91220A8E586004B8589 /* View */,
 			);
@@ -822,6 +830,7 @@
 		C4C8F120209B72BC00E081B4 /* UserCityList */ = {
 			isa = PBXGroup;
 			children = (
+				C426A51C20AA122A00F0A202 /* README.md */,
 				C4CFD0EA20A4400700A87DCC /* UserCityListPresenter.swift */,
 				C4CFD0FF20A489D900A87DCC /* UserCityListRouter.swift */,
 				C4CFD0EC20A4442000A87DCC /* UserCityListInteractor.swift */,
@@ -835,6 +844,7 @@
 		C4C8F121209B72C900E081B4 /* WeatherDetail */ = {
 			isa = PBXGroup;
 			children = (
+				C426A51D20AA12A400F0A202 /* README.md */,
 				C4CFD10220A48B3300A87DCC /* WeatherDetailModule.swift */,
 				C4CFD10420A4918E00A87DCC /* WeatherDetailInteractor.swift */,
 				C4CFD10620A492D900A87DCC /* WeatherDetailPresenter.swift */,
