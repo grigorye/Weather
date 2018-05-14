@@ -4,6 +4,7 @@ stages:
 build_project:
   stage: build
   script:
+    - bundle
     - bundle exec pod repo update
     - bundle exec pod install
     - xcodebuild -sdk iphonesimulator -workspace WeatherApp.xcworkspace -scheme WeatherApp -destination 'platform=iOS Simulator,name=iPhone X,OS=11.3' -enableCodeCoverage YES test CODE_SIGNING_REQUIRED=NO | xcpretty
