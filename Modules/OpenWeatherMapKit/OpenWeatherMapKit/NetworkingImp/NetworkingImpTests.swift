@@ -17,7 +17,7 @@ class NetworkingImp_QueryWeather_IT : QuickSpec, NetworkingImp$$ {
         for (locationContext, locationPredicate) in locationPredicateSamplesWithContext {
             context("when location is \(locationContext)") {
                 it("should succeed unless there's connectivity issue") {
-                    var weatherRequestResult: WeatherQueryResult!
+                    var weatherRequestResult: NetworkingWeatherQueryResult!
                     networking.queryWeather(for: locationPredicate, completion: { (result) in
                         weatherRequestResult = result
                     })
@@ -44,7 +44,7 @@ class NetworkingImp_QueryWeather_MissingIT : QuickSpec, NetworkingImp$$ {
         for (locationContext, locationPredicate) in missingLocationPredicateSamplesWithContext {
             context("when location is missing \(locationContext)") {
                 it("should result in 404 unless there's connectivity issue") {
-                    var weatherRequestResult: WeatherQueryResult!
+                    var weatherRequestResult: NetworkingWeatherQueryResult!
                     networking.queryWeather(for: locationPredicate, completion: { (result) in
                         weatherRequestResult = result
                     })

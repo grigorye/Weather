@@ -22,7 +22,7 @@ class NetworkingImp_Moya_MoyaNetworking_QueryWeather_T : QuickSpec, NetworkingIm
             for (locationContext, locationPredicate) in locationPredicateSamplesWithContext {
                 context("when location is \(locationContext)") {
                     it("should succeed") {
-                        var weatherRequestResult: WeatherQueryResult!
+                        var weatherRequestResult: NetworkingWeatherQueryResult!
                         networking.queryWeather(for: locationPredicate, completion: { (result) in
                             weatherRequestResult = result
                         })
@@ -59,7 +59,7 @@ class NetworkingImp_Moya_MoyaNetworking_QueryWeather_ET : QuickSpec, NetworkingI
                     for (locationContext, locationPredicate) in locationPredicateSamplesWithContext {
                         context("when location is \(locationContext)") {
                             it("should error") {
-                                var weatherQueryResult: WeatherQueryResult!
+                                var weatherQueryResult: NetworkingWeatherQueryResult!
                                 networking.queryWeather(for: locationPredicate, completion: { (result) in
                                     weatherQueryResult = result
                                 })

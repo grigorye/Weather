@@ -1,5 +1,5 @@
 //
-//  WeatherQueryResult.swift
+//  NetworkingWeatherQueryResult.swift
 //  OpenWeatherMapKit
 //
 //  Created by Grigory Entin on 06/05/2018.
@@ -8,4 +8,4 @@
 
 import Result
 
-public typealias WeatherQueryResult = Result<WeatherResponse, NetworkingError>
+public typealias NetworkingWeatherQueryResult = Result<WeatherResponse, NetworkingError>

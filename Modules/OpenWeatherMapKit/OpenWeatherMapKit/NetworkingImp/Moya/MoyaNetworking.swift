@@ -33,14 +33,14 @@ extension NetworkingImp_Moya$ {
             return try response.map(WeatherResponse.self)
         }
         
-        func queryWeather(for locationPredicate: LocationPredicate, completion: @escaping (WeatherQueryResult) -> Void) {
+        func queryWeather(for locationPredicate: LocationPredicate, completion: @escaping (NetworkingWeatherQueryResult) -> Void) {
             moyaProvider.request(.weather(for: locationPredicate)) { (moyaResult) in
                 switch moyaResult {
                 case .failure(let error):
                     completion(.failure(.other(error)))
                     return
                 case .success(let response):
-                    let result = WeatherQueryResult() {
+                    let result = NetworkingWeatherQueryResult() {
                         return try self.proceedWithRequestWeatherResponse(response)
                     }
                     completion(result)

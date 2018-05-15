@@ -8,5 +8,5 @@
 
 public protocol Networking {
 
-    func queryWeather(for locationPredicate: LocationPredicate, completion: @escaping (WeatherQueryResult) -> Void)
+    func queryWeather(for locationPredicate: LocationPredicate, completion: @escaping (NetworkingWeatherQueryResult) -> Void)
 }
