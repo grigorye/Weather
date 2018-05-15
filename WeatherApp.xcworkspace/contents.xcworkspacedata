@@ -13,9 +13,6 @@
       <FileRef
          location = "group:Modules/OpenWeatherMapKit/OpenWeatherMapKit.xcodeproj">
       </FileRef>
-      <FileRef
-         location = "group:Modules/Shared">
-      </FileRef>
    </Group>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
