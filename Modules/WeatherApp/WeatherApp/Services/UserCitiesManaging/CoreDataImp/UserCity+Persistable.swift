@@ -25,20 +25,24 @@ extension UserCity : Persistable {
     }
     
     init(entity: PersistentUserCity) {
-        location = entity.location
-        cityName = entity.cityName!
-        dateAdded = entity.dateAdded!
-        dateUpdated = entity.dateUpdated!
-        userInfo = entity
+        self.location = entity.location
+        self.cityName = entity.cityName!
+        self.dateAdded = entity.dateAdded!
+        self.weather = entity.weather
+        self.dateWeatherUpdated = entity.dateWeatherUpdated
+        self.dateWeatherRequested = entity.dateWeatherRequested
+        self.errored = entity.errored
+        self.weatherStateVersion = entity.weatherStateVersion
     }
     
     func update(_ entity: PersistentUserCity) {
-        assert((nil == userInfo) || (entity === (userInfo as! PersistentUserCity)))
-        
         entity.location = location
         entity.cityName = cityName
         entity.dateAdded = dateAdded
-        entity.dateUpdated = dateUpdated
+        entity.weather = weather
+        entity.dateWeatherUpdated = dateWeatherUpdated
+        entity.dateWeatherRequested = dateWeatherRequested
+        entity.errored = errored
         
         try! entity.managedObjectContext!.save()
     }

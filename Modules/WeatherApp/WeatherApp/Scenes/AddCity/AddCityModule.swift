@@ -39,7 +39,12 @@ enum AddCityModule : ContainerViewModule {
         
         let userCitiesProvider = defaultUserCitiesProvider()
         
-        let interactor: Interactor = AddCityInteractorImp(userCitiesProvider: userCitiesProvider)
+        let locationService = defaultLocationService
+        let weatherProvider = defaultWeatherProvider()
+        let userCityRefresher: UserCityRefresher = UserCityRefresherImp(userCitiesProvider: userCitiesProvider, weatherProvider: weatherProvider, locationService: locationService)
+        
+        let interactor: Interactor = AddCityInteractorImp(userCitiesProvider: userCitiesProvider, userCityRefresher: userCityRefresher)
+        
         var presenter: Presenter!
         let router: Router = AddCityRouterImp(
             viewController: viewController,

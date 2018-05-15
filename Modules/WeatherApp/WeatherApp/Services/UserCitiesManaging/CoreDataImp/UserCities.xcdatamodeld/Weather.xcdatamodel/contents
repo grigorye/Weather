@@ -3,14 +3,17 @@
     <entity name="PersistentUserCity" representedClassName="PersistentUserCity" codeGenerationType="class">
         <attribute name="cityName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateAdded" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="dateUpdated" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateWeatherRequested" optional="YES" transient="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateWeatherUpdated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="errored" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="locationJson" attributeType="String">
             <userInfo/>
         </attribute>
-        <attribute name="temperature" optional="YES" transient="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="weatherJson" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weatherStateVersion" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <userInfo/>
     </entity>
     <elements>
-        <element name="PersistentUserCity" positionX="261" positionY="189" width="128" height="120"/>
+        <element name="PersistentUserCity" positionX="261" positionY="189" width="128" height="165"/>
     </elements>
 </model>

@@ -22,9 +22,61 @@ class CoreDataUserCitiesProvider : UserCitiesProvider {
         try managedObjectContext.rx.delete(userCity)
     }
     
-    lazy var userCities: Observable<[UserCity]> =
-        managedObjectContext.rx
-            .entities(UserCity.self, sortDescriptors: [NSSortDescriptor(key: #keyPath(PersistentUserCity.dateAdded), ascending: true)])
+    func setWeatherQueryInProgress(for userCities: [UserCity]) throws {
+        try userCities.forEach {
+            try self.setWeatherQueryInProgress(for: $0)
+        }
+    }
+    
+    func setWeatherQueryInProgress(for userCity: UserCity) throws {
+        let now = Date()
+        let updatedUserCity = userCity.with {
+            $0.dateWeatherRequested = now
+            $0.weatherStateVersion += 1
+        }
+        assert(updatedUserCity.hasWeatherQueryInProgress)
+        try managedObjectContext.rx.update(dump(updatedUserCity))
+    }
+    
+    func setWeatherQueryCompleted(for userCity: UserCity, with result: WeatherQueryResult) throws {
+        let now = Date()
+        let updatedUserCity = userCity.with {
+            $0.dateWeatherUpdated = now
+            switch result {
+            case .failure(let error):
+                print(error)
+                $0.errored = true // (and retain old weather)
+            case .success(let weatherInfo):
+                $0.errored = false
+                $0.weather = weatherInfo
+            }
+        }
+        assert(!userCity.hasWeatherQueryInProgress)
+        try managedObjectContext.rx.update(updatedUserCity)
+    }
+
+    lazy var observableUserCities: Observable<[UserCity]> = {
+        let sortDescriptors = [
+            NSSortDescriptor(key: #keyPath(PersistentUserCity.dateAdded), ascending: true)
+        ]
+        return
+            managedObjectContext.rx
+                .entities(UserCity.self, sortDescriptors: sortDescriptors)
+                .share(replay: 1, scope: .forever)
+    }()
+    
+    var userCities: [UserCity] {
+        var result: [UserCity]!
+        let disposeBag = DisposeBag()
+        self.observableUserCities.subscribe(onNext: {
+            result = $0
+        }).disposed(by: disposeBag)
+        return result!
+    }
+    
+    func lastWeather(for userCity: UserCity) -> LastWeather {
+        return WeatherApp.lastWeather(for: userCity, managedObjectContext: self.managedObjectContext)
+    }
     
     // MARK: -
     

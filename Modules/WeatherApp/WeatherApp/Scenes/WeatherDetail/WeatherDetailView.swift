@@ -13,7 +13,7 @@ protocol WeatherDetailView : class {
 
 struct WeatherDetailViewModel {
     
+    let title: String
     let temperature: String
-    let cityName: String
-    let cityCoordinate: CityCoordinate
+    let cityCoordinate: CityCoordinate?
 }

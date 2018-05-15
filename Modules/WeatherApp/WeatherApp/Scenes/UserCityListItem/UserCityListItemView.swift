@@ -6,16 +6,27 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+import RxSwift
+
 protocol UserCityListItemView : class {
     
     var model: UserCityListItemViewModel! { get set }
 }
 
+struct UserCityListItemWeatherViewModel {
+    
+    let subtitle: String
+    let temperature: String
+    let cityName: String
+    let textColor: UIColor
+}
+
 struct UserCityListItemViewModel {
     
-    let cityName: String
-    let temperature: String
-    let subtitle: String
+    let temperatureUnit: UnitTemperature
+    let icon: UIImage?
+
+    let lastWeatherModel: Observable<UserCityListItemWeatherViewModel>
     
     let identifier: String
     let userInfo: Any!

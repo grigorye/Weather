@@ -23,9 +23,11 @@ enum UserCityListModule : ViewModule {
         
         let userCitiesProvider: UserCitiesProvider = defaultUserCitiesProvider()
         let weatherProvider: WeatherProvider = defaultWeatherProvider()
-        let locationService: LocationService = LocationServiceImp()
         
-        let interactor: Interactor = UserCityListInteractorImp(userCitiesProvider: userCitiesProvider, weatherProvider: weatherProvider, locationService: locationService)
+        let locationService: LocationService = defaultLocationService
+        let userCityRefresher: UserCityRefresher = UserCityRefresherImp(userCitiesProvider: userCitiesProvider, weatherProvider: weatherProvider, locationService: locationService)
+        
+        let interactor: Interactor = UserCityListInteractorImp(userCitiesProvider: userCitiesProvider, weatherProvider: weatherProvider, userCityRefresher: userCityRefresher)
         
         let presenter: Presenter = UserCityListPresenterImp(view: view, interactor: interactor, router: router)
         

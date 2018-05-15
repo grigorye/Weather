@@ -6,7 +6,7 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-struct CityCoordinate : Codable {
+struct CityCoordinate : Codable, Equatable {
     
     let latitude: Double
     let longitude: Double

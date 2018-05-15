@@ -1,5 +1,5 @@
 //
-//  LocationServiceImp.swift
+//  CoreLocationLocationServiceImp.swift
 //  WeatherApp
 //
 //  Created by Grigory Entin on 14/05/2018.
@@ -10,7 +10,7 @@ import Result
 import CoreLocation
 import Foundation
 
-class LocationServiceImp : NSObject, LocationService, CLLocationManagerDelegate {
+class CoreLocationLocationServiceImp : NSObject, LocationService, CLLocationManagerDelegate {
     
     lazy var locationManager = CLLocationManager().then {
         $0.delegate = self
@@ -86,5 +86,4 @@ class LocationServiceImp : NSObject, LocationService, CLLocationManagerDelegate 
         self.currentQueryDate = nil
         self.completionHandler = nil
     }
-
 }

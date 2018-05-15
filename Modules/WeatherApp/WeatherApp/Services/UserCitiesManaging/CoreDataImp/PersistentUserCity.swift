@@ -10,10 +10,19 @@ extension PersistentUserCity {
     
     var location: UserCityLocation {
         set {
-            locationJson = newValue.asJson()
+            self.locationJson = newValue.asJson()
         }
         get {
             return try! .init(fromJson: locationJson!)
+        }
+    }
+    
+    var weather: WeatherInfo? {
+        set {
+            self.weatherJson = newValue?.asJson()
+        }
+        get {
+            return weatherJson.flatMap { try! .init(fromJson: $0) }
         }
     }
 }

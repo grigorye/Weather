@@ -23,7 +23,7 @@ class WeatherDetailViewController : UIViewController, WeatherDetailView {
     func configureView() {
         detailTableView.model = model
         detailMapView.model = model
-        title = model.cityName
+        self.title = model.title
     }
     
     // MARK: -

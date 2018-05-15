@@ -23,8 +23,10 @@ class WeatherDetailMapViewController : UIViewController, WeatherDetailView {
     
     private func configureView() {
         
-        let centerCoordinate = CLLocationCoordinate2D(latitude: model.cityCoordinate.latitude, longitude: model.cityCoordinate.longitude)
-        mapView.region = MKCoordinateRegionMakeWithDistance(centerCoordinate, 10000, 10000)
+        if let coordinate = model.cityCoordinate {
+            let centerCoordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            mapView.region = MKCoordinateRegionMakeWithDistance(centerCoordinate, 10000, 10000)
+        }
     }
     
     // MARK: -

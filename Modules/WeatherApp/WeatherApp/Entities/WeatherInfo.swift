@@ -9,8 +9,9 @@
 import Foundation.NSUnit
 
 /// Minimum bit of information about a weather.
-struct WeatherInfo {
+struct WeatherInfo : Codable, Equatable {
     
+    let dateReceived: Date
     let temperature: Measurement<UnitTemperature>
     let cityName: String
     let cityCoordinate: CityCoordinate

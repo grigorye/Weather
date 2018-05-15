@@ -26,7 +26,7 @@ extension UserCityLocation {
 extension WeatherProvider {
     
     /// Quick hack due to no implemented batch weather requests.
-    func queryWeather(for locationPredicates: [WeatherLocationPredicate], completion: @escaping ([Result<WeatherInfo, AnyError>]) -> Void) {
+    func queryWeather(for locationPredicates: [WeatherLocationPredicate], completion: @escaping ([WeatherQueryResult]) -> Void) {
         
         let completionGroup = DispatchGroup()
         let resultQueue = DispatchQueue(label: "")

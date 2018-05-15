@@ -8,21 +8,29 @@
 
 import Foundation.NSDate
 
-struct UserCity {
+struct UserCity : Equatable {
 
     let location: UserCityLocation
-    
+    var weather: WeatherInfo?
+
     let cityName: String
     let dateAdded: Date
-    let dateUpdated: Date
-
-    let userInfo: Any!
+    
+    var weatherStateVersion: Int16
+    var dateWeatherUpdated: Date?
+    var dateWeatherRequested: Date?
+    var errored: Bool
 }
 
 extension UserCity {
     
-    init(with location: UserCityLocation, cityName: String) {
+    init(with location: UserCityLocation, weather: WeatherInfo? = nil, cityName: String) {
         
-        self.init(location: location, cityName: cityName, dateAdded: .init(), dateUpdated: .distantPast, userInfo: nil)
+        let now = Date()
+        self.init(location: location, weather: weather, cityName: cityName, dateAdded: now, weatherStateVersion: 0, dateWeatherUpdated: nil, dateWeatherRequested: nil, errored: false)
     }
 }
+
+import Then
+
+extension UserCity : Then {}

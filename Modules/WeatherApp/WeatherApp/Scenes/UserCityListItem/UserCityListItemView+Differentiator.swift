@@ -11,7 +11,7 @@ import Differentiator
 extension UserCityListItemViewModel : Equatable {}
 
 func == (lhs: UserCityListItemViewModel, rhs: UserCityListItemViewModel) -> Bool {
-    return (lhs.identifier == rhs.identifier) && (lhs.temperature == rhs.temperature)
+    return (lhs.identifier == rhs.identifier)
 }
 
 extension UserCityListItemViewModel : IdentifiableType {

@@ -10,17 +10,45 @@ import UIKit
 
 class UserCityListCell : UITableViewCell, UserCityListItemView {
     
-    @IBOutlet private var temperatureLabel: UILabel!
-    @IBOutlet private var cityNameLabel: UILabel!
-    @IBOutlet private var subtitleLabel: UILabel!
-
     // MARK: - <UserCityListItemView>
     
     var model: UserCityListItemViewModel! {
         didSet {
-            cityNameLabel.text = model.cityName
-            temperatureLabel.text = model.temperature
-            subtitleLabel.text = model.subtitle
+            iconView.image = model.icon
+            model.lastWeatherModel.subscribe(onNext: { [temperatureLabel, cityNameLabel, subtitleLabel] (model) in
+                subtitleLabel.text = model.subtitle
+                subtitleLabel.textColor = model.textColor
+                temperatureLabel.text = model.temperature
+                temperatureLabel.textColor = model.textColor
+                cityNameLabel.text = model.cityName
+                cityNameLabel.textColor = model.textColor
+            })
         }
     }
+    
+    // MARK: -
+    
+    var temperatureLabel: UILabel {
+        return _temperatureLabel!
+    }
+    
+    @IBOutlet private var _temperatureLabel: UILabel!
+    
+    var cityNameLabel: UILabel {
+        return _cityNameLabel!
+    }
+    
+    @IBOutlet private var _cityNameLabel: UILabel!
+    
+    var subtitleLabel: UILabel {
+        return _subtitleLabel!
+    }
+
+    @IBOutlet private var _subtitleLabel: UILabel!
+    
+    var iconView: UIImageView {
+        return _iconView
+    }
+    
+    @IBOutlet var _iconView: UIImageView!
 }

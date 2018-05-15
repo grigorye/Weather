@@ -17,13 +17,6 @@ protocol AddCityInteractor {
 
 class AddCityInteractorImp : AddCityInteractor {
     
-    let userCitiesProvider: UserCitiesProvider
-    
-    init(userCitiesProvider: UserCitiesProvider) {
-        
-        self.userCitiesProvider = userCitiesProvider
-    }
-    
     // MARK: - <AddCityInteractor>
     
     func add(userCityFor cityInfo: CityInfo) {
@@ -32,8 +25,8 @@ class AddCityInteractorImp : AddCityInteractor {
             with: .cityId(cityInfo.cityId),
             cityName: cityInfo.cityName
         )
-    
-        try! userCitiesProvider.add(userCity)
+
+        self.addUserCity(userCity)
     }
 
     func add(userCityFor coordinate: CityCoordinate) {
@@ -44,7 +37,7 @@ class AddCityInteractorImp : AddCityInteractor {
             cityName: cityName
         )
         
-        try! userCitiesProvider.add(userCity)
+        self.addUserCity(userCity)
     }
 
     func addUserCityForCurrentLocation() {
@@ -54,6 +47,27 @@ class AddCityInteractorImp : AddCityInteractor {
             cityName: NSLocalizedString("Current Location", comment: "")
         )
         
-        try! userCitiesProvider.add(userCity)
+        self.addUserCity(userCity)
     }
+    
+    // MARK: -
+    
+    func addUserCity(_ userCity: UserCity) {
+    
+        try! userCitiesProvider.add(userCity)
+        userCityRefresher.refreshUserCitiesAsNecessary([userCity])
+    }
+    
+    // MARK: -
+    
+    let userCitiesProvider: UserCitiesProvider
+    let userCityRefresher: UserCityRefresher
+    
+    init(userCitiesProvider: UserCitiesProvider, userCityRefresher: UserCityRefresher) {
+        
+        self.userCitiesProvider = userCitiesProvider
+        self.userCityRefresher = userCityRefresher
+    }
+    
+    deinit {()}
 }

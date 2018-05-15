@@ -16,7 +16,7 @@ class WeatherProviderImp_OpenWeatherMap_WeatherProviderImp_QueryWeather_T : Quic
             var weatherProvider: WeatherProvider!
             beforeEach {
                 struct NetworkingStub : Networking {
-                    func queryWeather(for locationPredicate: LocationPredicate, completion: @escaping (WeatherQueryResult) -> Void) {
+                    func queryWeather(for locationPredicate: LocationPredicate, completion: @escaping (NetworkingWeatherQueryResult) -> Void) {
                         let response = WeatherResponse(
                             coord: .init(lat: 145.77, lon: -16.92),
                             main: .init(
@@ -38,7 +38,7 @@ class WeatherProviderImp_OpenWeatherMap_WeatherProviderImp_QueryWeather_T : Quic
             for (locationPredicateContext, locationPredicate) in weatherLocationPredicateSamplesWithContext {
                 context("when location is \(locationPredicateContext)") {
                     it("should succeed") {
-                        var weatherQueryResult: WeatherProvider.WeatherQueryResult!
+                        var weatherQueryResult: WeatherQueryResult!
                         weatherProvider.queryWeather(for: locationPredicate, completion: { (result) in
                             weatherQueryResult = result
                         })
@@ -62,7 +62,7 @@ class WeatherProviderImp_OpenWeatherMap_WeatherProviderImp_QueryWeather_ET : Qui
                     case unknownFailure
                 }
                 struct NetworkingStub : Networking {
-                    func queryWeather(for location: LocationPredicate, completion: @escaping (WeatherQueryResult) -> Void) {
+                    func queryWeather(for location: LocationPredicate, completion: @escaping (NetworkingWeatherQueryResult) -> Void) {
                         completion(.failure(.other(FakeError.unknownFailure)))
                     }
                 }
@@ -71,7 +71,7 @@ class WeatherProviderImp_OpenWeatherMap_WeatherProviderImp_QueryWeather_ET : Qui
             for (locationPredicateContext, locationPredicate) in weatherLocationPredicateSamplesWithContext {
                 context("when location is \(locationPredicateContext)") {
                     it("should error") {
-                        var weatherQueryResult: WeatherProvider.WeatherQueryResult!
+                        var weatherQueryResult: WeatherQueryResult!
                         weatherProvider.queryWeather(for: locationPredicate, completion: { (result) in
                             weatherQueryResult = result
                         })
