@@ -6,14 +6,14 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-@testable import WeatherApp
+@testable import WeatherAppKit
 import CoreData
 
 class UserCity_PersistableTests : QuickSpec {
     
     override func spec() {
         context("when persisted") {
-            let mom = NSPersistentContainer(name: "UserCities").managedObjectModel
+            let mom = Bundle.current.managedObjectModel(withName: "UserCities")!
             let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
             try! psc.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
             let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType).then {
@@ -40,6 +40,7 @@ class UserCity_PersistableTests : QuickSpec {
             it("should match original after recreated") {
                 let updatedUserCity = UserCity(entity: persistentUserCity)
                 expect(updatedUserCity) == userCity
+                _ = moc // Keep moc around given that "it" is invoked after leaving the "context".
             }
         }
     }

@@ -66,12 +66,13 @@ class CoreDataUserCitiesProvider : UserCitiesProvider {
     }()
     
     func lastWeather(for userCity: UserCity) -> LastWeather {
-        return WeatherApp.lastWeather(for: userCity, managedObjectContext: self.managedObjectContext)
+        return WeatherAppKit.lastWeather(for: userCity, managedObjectContext: self.managedObjectContext)
     }
     
     // MARK: -
     
-    private lazy var persistentContainer = NSPersistentContainer(name: "UserCities").then { (container) in
+    private lazy var managedObjectModel = Bundle.current.managedObjectModel(withName: "UserCities")!
+    private lazy var persistentContainer = NSPersistentContainer(name: "UserCities", managedObjectModel: managedObjectModel).then { (container) in
         container.loadPersistentStoresDestroyingStoreOnMigrationError { (storeDescription, error) in
             if let error = error {
                 fatalError("error: \(error), persistentStore: \(storeDescription)")

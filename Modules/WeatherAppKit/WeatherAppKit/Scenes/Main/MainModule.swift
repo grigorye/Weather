@@ -10,7 +10,7 @@ import UIKit
 
 extension MainViewController : MainContainerView {}
 
-func newMainViewController() -> UIViewController {
+public func newMainViewController() -> UIViewController {
     
     let storyboard = UIStoryboard(name: "Main", bundle: .current)
     let viewController = storyboard.instantiateInitialViewController()!

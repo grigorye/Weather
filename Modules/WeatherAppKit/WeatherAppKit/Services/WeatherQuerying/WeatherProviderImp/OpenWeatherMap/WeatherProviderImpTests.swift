@@ -6,7 +6,7 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-@testable import WeatherApp
+@testable import WeatherAppKit
 import OpenWeatherMapKit
 import Result
 

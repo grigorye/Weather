@@ -40,6 +40,22 @@ target 'WeatherApp' do
   end
 end
 
+target 'WeatherAppKit' do
+  project 'Modules/WeatherAppKit/WeatherAppKit.xcodeproj'
+  
+  shared_non_test_pods
+
+  pod 'RxDataSources'
+  pod 'RxCocoa'
+  pod 'RxCoreData'
+
+  target 'WeatherAppKitTests' do
+    inherit! :search_paths
+    
+    all_test_pods
+  end
+end
+
 target 'OpenWeatherMapKit' do
   project 'Modules/OpenWeatherMapKit/OpenWeatherMapKit.xcodeproj'
 

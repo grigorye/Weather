@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import WeatherAppKit
 
 func newAppWindow() -> UIWindow {
     let window = UIWindow(frame: UIScreen.main.bounds)
-    let mainViewController = newMainViewController()
+    let mainViewController = WeatherAppKit.newMainViewController()
     window.rootViewController = mainViewController
     return window
 }

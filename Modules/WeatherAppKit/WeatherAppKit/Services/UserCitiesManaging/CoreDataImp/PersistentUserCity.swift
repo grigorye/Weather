@@ -7,7 +7,7 @@
 //
 
 extension PersistentUserCity {
-    
+
     var location: UserCityLocation {
         set {
             self.locationJson = newValue.asJson()
