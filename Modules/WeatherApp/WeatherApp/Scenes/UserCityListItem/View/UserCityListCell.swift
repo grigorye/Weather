@@ -6,23 +6,28 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+import RxSwift
 import UIKit
 
 class UserCityListCell : UITableViewCell, UserCityListItemView {
     
     // MARK: - <UserCityListItemView>
     
+    var modelDisposeBag: DisposeBag!
     var model: UserCityListItemViewModel! {
         didSet {
             iconView.image = model.icon
-            model.lastWeatherModel.subscribe(onNext: { [temperatureLabel, cityNameLabel, subtitleLabel] (model) in
-                subtitleLabel.text = model.subtitle
-                subtitleLabel.textColor = model.textColor
-                temperatureLabel.text = model.temperature
-                temperatureLabel.textColor = model.textColor
-                cityNameLabel.text = model.cityName
-                cityNameLabel.textColor = model.textColor
-            })
+            
+            modelDisposeBag = DisposeBag()
+            model.lastWeatherModel
+                .subscribe(onNext: { [temperatureLabel, cityNameLabel, subtitleLabel] (model) in
+                    subtitleLabel.text = model.subtitle
+                    subtitleLabel.textColor = model.textColor
+                    temperatureLabel.text = model.temperature
+                    temperatureLabel.textColor = model.textColor
+                    cityNameLabel.text = model.cityName
+                    cityNameLabel.textColor = model.textColor
+                }).disposed(by: modelDisposeBag)
         }
     }
     
