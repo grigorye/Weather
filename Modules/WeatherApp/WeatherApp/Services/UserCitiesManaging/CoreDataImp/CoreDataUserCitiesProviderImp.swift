@@ -51,7 +51,7 @@ class CoreDataUserCitiesProvider : UserCitiesProvider {
                 $0.weather = weatherInfo
             }
         }
-        assert(!userCity.hasWeatherQueryInProgress)
+        assert(!updatedUserCity.hasWeatherQueryInProgress)
         try managedObjectContext.rx.update(updatedUserCity)
     }
 
