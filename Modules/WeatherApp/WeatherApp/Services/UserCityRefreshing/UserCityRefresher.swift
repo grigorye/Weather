@@ -8,6 +8,6 @@
 
 protocol UserCityRefresher {
     
-    func refreshUserCitiesAsNecessary(_ userCities: [UserCity])
+    func refreshAsNecessary(_: [UserCity])
+    func clearRefreshingAsNecessary(for: [UserCity])
 }
-

@@ -7,17 +7,3 @@
 //
 
 typealias UserCityWithLastWeather = (userCity: UserCity, lastWeather: LastWeather)
-
-extension UserCity {
-    
-    var hasWeatherQueryInProgress : Bool {
-        
-        guard let dateWeatherRequested = self.dateWeatherRequested else {
-            return false
-        }
-        guard let dateWeatherUpdated = self.dateWeatherUpdated else {
-            return true
-        }
-        return dateWeatherRequested > dateWeatherUpdated 
-    }
-}

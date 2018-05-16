@@ -30,10 +30,10 @@ class UserCity_PersistableTests : QuickSpec {
                 ),
                 cityName: "Cairns",
                 dateAdded: Date(),
-                weatherStateVersion: 0,
                 dateWeatherUpdated: Date(),
                 dateWeatherRequested: Date(),
-                errored: true
+                errored: true,
+                hasWeatherQueryInProgress: true
             )
             let persistentUserCity = PersistentUserCity(context: moc)
             userCity.update(persistentUserCity)

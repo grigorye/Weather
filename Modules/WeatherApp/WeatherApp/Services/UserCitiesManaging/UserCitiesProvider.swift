@@ -11,7 +11,6 @@ import RxSwift
 protocol UserCitiesProvider {
     
     var observableUserCities: Observable<[UserCity]> { get }
-    var userCities: [UserCity] { get }
     
     func lastWeather(for: UserCity) -> LastWeather
 

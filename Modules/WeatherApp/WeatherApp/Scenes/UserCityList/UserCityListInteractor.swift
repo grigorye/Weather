@@ -19,9 +19,9 @@ protocol UserCityListInteractor {
     
     func lastWeather(for: UserCity) -> LastWeather
     
-    var userCities: [UserCity] { get }
-
     func refreshUserCities()
+    func refreshUserCities(_: [UserCity])
+    func clearRefreshingForUserCities()
     
     func delete(_: UserCity)
 }
@@ -61,18 +61,26 @@ extension UserCityListInteractorImp {
         return userCitiesProvider.observableUserCities
     }
     
-    var userCities: [UserCity] {
-        return userCitiesProvider.userCities
-    }
-
     func lastWeather(for userCity: UserCity) -> LastWeather {
         return userCitiesProvider.lastWeather(for: userCity)
     }
     
     func refreshUserCities() {
-        self.userCityRefresher.refreshUserCitiesAsNecessary(self.userCities)
+        _ = observableUserCities.take(1).subscribe(onNext: { [userCityRefresher] (userCities) in
+            userCityRefresher.refreshAsNecessary(userCities)
+        })
     }
     
+    func refreshUserCities(_ userCities: [UserCity]) {
+        userCityRefresher.refreshAsNecessary(userCities)
+    }
+
+    func clearRefreshingForUserCities() {
+        _ = observableUserCities.take(1).subscribe(onNext: { [userCityRefresher] (userCities) in
+            userCityRefresher.clearRefreshingAsNecessary(for: userCities)
+        })
+    }
+
     func delete(_ userCity: UserCity) {
         try! userCitiesProvider.delete(userCity)
     }

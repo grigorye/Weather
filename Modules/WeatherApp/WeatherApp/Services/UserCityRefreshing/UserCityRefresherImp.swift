@@ -6,58 +6,78 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+import RxSwift
+import Result
 import Dispatch
 
 class UserCityRefresherImp : UserCityRefresher {
     
     // MARK: - <UserCityRefresher>
     
-    func refreshUserCitiesAsNecessary(_ userCities: [UserCity]) {
+    func refreshAsNecessary(_ userCities: [UserCity]) {
         
         let userLocation = userCities.first { $0.location.isCurrentLocation }
         
-        var currentLocationIsObosolete: Bool {
+        var currentLocationIsObsolete: Bool {
             return true
         }
         
         // If necessary, update current location *first* and *then* refresh the corresponding user city.
-        if (userLocation != nil) && currentLocationIsObosolete {
+        if (userLocation != nil) && currentLocationIsObsolete {
             
             self.refreshUserLocation()
             
             let userCitiesWithoutCurrentLocation = userCities.filter { !$0.location.isCurrentLocation }
             
-            self.updateWeatherForUserCitiesAsNecessary(userCitiesWithoutCurrentLocation)
+            self.updateWeatherAsNecessary(for: userCitiesWithoutCurrentLocation)
             
         } else {
             
-            self.updateWeatherForUserCitiesAsNecessary(userCities)
+            self.updateWeatherAsNecessary(for: userCities)
+        }
+    }
+    
+    func clearRefreshingAsNecessary(for userCities: [UserCity]) {
+        
+        let affectedUserCities = userCities.filter { $0.hasWeatherQueryInProgress }
+        dump(affectedUserCities, name: "clearRefreshingAffectedUserCities", maxDepth: 0).forEach { (userCity) in
+            try! userCitiesProvider.setWeatherQueryCompleted(for: userCity, with: .failure(AnyError(CocoaError(.userCancelled))))
         }
     }
     
     // MARK: -
     
-    func updateWeatherForUserLocationAsNecessary(with coordinate: CityCoordinate) {
+    func updateWeatherAsNecessaryForUserLocation(with coordinate: CityCoordinate) {
         
-        guard let userLocation = userCitiesProvider.userCities.first(where: { $0.location.isCurrentLocation }) else {
-            return
-        }
-        self.updateWeatherForUserCitiesAsNecessary([userLocation])
+        _ = userCitiesProvider.observableUserCities.take(1).subscribe(onNext: { (userCities) in
+            guard let userLocation = userCities.first(where: { $0.location.isCurrentLocation }) else {
+                return
+            }
+            self.updateWeatherAsNecessary(for: [userLocation])
+        })
     }
+    
+    var refreshingUserLocation = false
     
     func refreshUserLocation() {
         
+        guard !refreshingUserLocation else {
+            return
+        }
+        
+        refreshingUserLocation = true
         locationService.queryCurrentLocation(completionHandler: { [weak self] (result) in
+            self?.refreshingUserLocation = false
             switch result {
             case .success(let coordinate):
-                self?.updateWeatherForUserLocationAsNecessary(with: coordinate)
+                self?.updateWeatherAsNecessaryForUserLocation(with: coordinate)
             case .failure(let error):
                 print(error)
             }
         })
     }
     
-    func updateWeatherForUserCitiesAsNecessary(_ userCities: [UserCity]) {
+    func updateWeatherAsNecessary(for userCities: [UserCity]) {
         
         let userCities = userCities.filter { (userCity) in
             guard !userCity.hasWeatherQueryInProgress else {

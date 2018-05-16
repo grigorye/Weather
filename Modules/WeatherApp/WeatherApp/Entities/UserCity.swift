@@ -16,10 +16,10 @@ struct UserCity : Equatable {
     let cityName: String
     let dateAdded: Date
     
-    var weatherStateVersion: Int16
     var dateWeatherUpdated: Date?
     var dateWeatherRequested: Date?
     var errored: Bool
+    var hasWeatherQueryInProgress: Bool
 }
 
 extension UserCity {
@@ -27,7 +27,7 @@ extension UserCity {
     init(with location: UserCityLocation, weather: WeatherInfo? = nil, cityName: String) {
         
         let now = Date()
-        self.init(location: location, weather: weather, cityName: cityName, dateAdded: now, weatherStateVersion: 0, dateWeatherUpdated: nil, dateWeatherRequested: nil, errored: false)
+        self.init(location: location, weather: weather, cityName: cityName, dateAdded: now, dateWeatherUpdated: nil, dateWeatherRequested: nil, errored: false, hasWeatherQueryInProgress: false)
     }
 }
 

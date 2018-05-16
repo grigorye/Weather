@@ -31,18 +31,6 @@ func temperatureTextFromWeather(_ weather: WeatherInfo?, temperatureUnit: UnitTe
 
 // MARK: -
 
-extension UserCityListItemViewModel {
-    
-    var lastWeatherInfo: LastWeatherInfo {
-        var result: LastWeatherInfo!
-        let disposeBag = DisposeBag()
-        self.lastWeather.subscribe(onNext: {
-            result = $0
-        }).disposed(by: disposeBag)
-        return result!
-    }
-}
-
 struct LastWeatherInfo {
     let requestDate: Date?
     let updateDate: Date?
@@ -143,13 +131,16 @@ class UserCityListPresenterImp : UserCityListPresenter {
         self.router = router
     }
     
+    let disposeBag = DisposeBag()
+    
     // MARK: - <UserCityListPresenter>
     
     func loadContent() {
+        interactor.clearRefreshingForUserCities()
         view.itemViewModels =
             interactor.observableUserCities
                 .map { [interactor] (userCities) in
-                    return dump(userCities).map { (userCity) in
+                    return dump(userCities, name: "userCities", maxDepth: 0).map { (userCity) in
                         let lastWeather = interactor.lastWeather(for: userCity)
                         return UserCityListItemViewModel(
                             userCity,
@@ -159,6 +150,11 @@ class UserCityListPresenterImp : UserCityListPresenter {
                         )
                     }
                 }
+        interactor.refreshUserCities()
+        interactor.observableUserCities.subscribe(onNext: { [interactor] (userCities) in
+            let newCities = userCities.filter { nil == $0.dateWeatherRequested && nil == $0.dateWeatherUpdated }
+            interactor.refreshUserCities(dump(newCities, name: "newCities", maxDepth: 0))
+        }).disposed(by: disposeBag)
     }
     
     // MARK: - <UserCityListViewDelegate>

@@ -32,7 +32,7 @@ extension UserCity : Persistable {
         self.dateWeatherUpdated = entity.dateWeatherUpdated
         self.dateWeatherRequested = entity.dateWeatherRequested
         self.errored = entity.errored
-        self.weatherStateVersion = entity.weatherStateVersion
+        self.hasWeatherQueryInProgress = entity.hasWeatherQueryInProgress
     }
     
     func update(_ entity: PersistentUserCity) {
@@ -43,7 +43,8 @@ extension UserCity : Persistable {
         entity.dateWeatherUpdated = dateWeatherUpdated
         entity.dateWeatherRequested = dateWeatherRequested
         entity.errored = errored
-        
+        entity.hasWeatherQueryInProgress = hasWeatherQueryInProgress
+
         try! entity.managedObjectContext!.save()
     }
 }

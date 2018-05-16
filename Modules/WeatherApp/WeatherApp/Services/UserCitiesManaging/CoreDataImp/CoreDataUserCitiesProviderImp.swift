@@ -32,16 +32,16 @@ class CoreDataUserCitiesProvider : UserCitiesProvider {
         let now = Date()
         let updatedUserCity = userCity.with {
             $0.dateWeatherRequested = now
-            $0.weatherStateVersion += 1
+            $0.hasWeatherQueryInProgress = true
         }
-        assert(updatedUserCity.hasWeatherQueryInProgress)
-        try managedObjectContext.rx.update(dump(updatedUserCity))
+        try managedObjectContext.rx.update(updatedUserCity)
     }
     
     func setWeatherQueryCompleted(for userCity: UserCity, with result: WeatherQueryResult) throws {
         let now = Date()
         let updatedUserCity = userCity.with {
             $0.dateWeatherUpdated = now
+            $0.hasWeatherQueryInProgress = false
             switch result {
             case .failure(let error):
                 print(error)
@@ -64,15 +64,6 @@ class CoreDataUserCitiesProvider : UserCitiesProvider {
                 .entities(UserCity.self, sortDescriptors: sortDescriptors)
                 .share(replay: 1, scope: .forever)
     }()
-    
-    var userCities: [UserCity] {
-        var result: [UserCity]!
-        let disposeBag = DisposeBag()
-        self.observableUserCities.subscribe(onNext: {
-            result = $0
-        }).disposed(by: disposeBag)
-        return result!
-    }
     
     func lastWeather(for userCity: UserCity) -> LastWeather {
         return WeatherApp.lastWeather(for: userCity, managedObjectContext: self.managedObjectContext)

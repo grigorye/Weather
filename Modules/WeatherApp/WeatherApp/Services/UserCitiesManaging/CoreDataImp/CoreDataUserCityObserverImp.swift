@@ -10,10 +10,20 @@ import RxCoreData
 import RxSwift
 import CoreData
 
-func lastWeather(for userCity: UserCity, managedObjectContext: NSManagedObjectContext) -> LastWeather {
-    let sortDescriptors = [
-        NSSortDescriptor(key: #keyPath(PersistentUserCity.weatherStateVersion), ascending: true)
+extension PersistentUserCity {
+    static let namesOfComponentsOfLastWeather: Set<String> = [
+        #keyPath(dateWeatherRequested),
+        #keyPath(dateWeatherUpdated),
+        #keyPath(errored),
+        #keyPath(weatherJson),
+        #keyPath(hasWeatherQueryInProgress)
     ]
+}
+
+func lastWeather(for userCity: UserCity, managedObjectContext: NSManagedObjectContext) -> LastWeather {
+    let sortDescriptors = PersistentUserCity.namesOfComponentsOfLastWeather.map {
+        NSSortDescriptor(key: $0, ascending: true)
+    }
     
     typealias P = UserCity
     let persistable = userCity
