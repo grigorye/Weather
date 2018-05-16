@@ -1,0 +1,1 @@
+Main module for the app. Contains everything except for AppModule (the latter consists of AppDelegate, AppIcon, LaunchScreen.storyboard and the app Info.plist). Hence it might be easily reused for building/in different apps.

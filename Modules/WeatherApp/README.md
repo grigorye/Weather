@@ -1,0 +1,1 @@
+The app itself, AppModule. Does basically nothing except (currently) creating new window with (imported) main module view controller. Might be used as a template for other apps. AppDelegate could be relocated to WeatherAppKit module as well, but leaving it in the app module leaves a bit flexibility in terms of customization of different apps, so so far it is here.
