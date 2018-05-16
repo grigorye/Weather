@@ -55,18 +55,15 @@ class AddCityInteractorImp : AddCityInteractor {
     func addUserCity(_ userCity: UserCity) {
     
         try! userCitiesProvider.add(userCity)
-        userCityRefresher.refreshUserCitiesAsNecessary([userCity])
     }
     
     // MARK: -
     
     let userCitiesProvider: UserCitiesProvider
-    let userCityRefresher: UserCityRefresher
     
-    init(userCitiesProvider: UserCitiesProvider, userCityRefresher: UserCityRefresher) {
+    init(userCitiesProvider: UserCitiesProvider) {
         
         self.userCitiesProvider = userCitiesProvider
-        self.userCityRefresher = userCityRefresher
     }
     
     deinit {()}
