@@ -326,6 +326,7 @@
 		C476BDBC20AC1B2200325393 /* Error.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Error.storyboard; sourceTree = "<group>"; };
 		C48FE62A20ACBAC2009094C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C48FE62F20ACBF55009094C9 /* BundledImageLiterals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundledImageLiterals.swift; sourceTree = "<group>"; };
+		C48FE63220ACD34D009094C9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C6B2C2DA55C8B3B35A7E34E3 /* Pods-WeatherAppKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherAppKitTests.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-WeatherAppKitTests/Pods-WeatherAppKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA1D4B6CC4735A610A380A7B /* Pods-WeatherAppKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherAppKit.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-WeatherAppKit/Pods-WeatherAppKit.release.xcconfig"; sourceTree = "<group>"; };
 		EFC3FABA7DEEE40D34095B03 /* Pods-WeatherAppKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherAppKit.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-WeatherAppKit/Pods-WeatherAppKit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -400,6 +401,7 @@
 		C476BCE220AC175800325393 = {
 			isa = PBXGroup;
 			children = (
+				C48FE63220ACD34D009094C9 /* README.md */,
 				C476BCEE20AC175800325393 /* WeatherAppKit */,
 				C476BCF920AC175800325393 /* WeatherAppKitTests */,
 				C4043DBC20AC3810006A6BE6 /* Shared */,
