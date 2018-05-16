@@ -56,9 +56,9 @@ class CitySearchInputPresenterImp : CitySearchInputPresenter {
         view.inputTypeIcons = {
             switch interactor.currentInputType {
             case .cityName:
-                return CitySearchInputTypeIcons(normal: #imageLiteral(resourceName: "icons8-zip_code"), selected: #imageLiteral(resourceName: "icons8-zip_code_filled"))
+                return CitySearchInputTypeIcons(normal: .bundled(#imageLiteral(resourceName: "icons8-zip_code")), selected: .bundled(#imageLiteral(resourceName: "icons8-zip_code_filled")))
             case .zipCode:
-                return CitySearchInputTypeIcons(normal: #imageLiteral(resourceName: "icons8-city"), selected: #imageLiteral(resourceName: "icons8-city_filled"))
+                return CitySearchInputTypeIcons(normal: .bundled(#imageLiteral(resourceName: "icons8-city")), selected: .bundled(#imageLiteral(resourceName: "icons8-city_filled")))
             }
         }()
         view.prompt = {

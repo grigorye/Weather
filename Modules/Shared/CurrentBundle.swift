@@ -1,5 +1,5 @@
 //
-//  Bundle.swift
+//  CurrentBundle.swift
 //  GEBase
 //
 //  Created by Grigory Entin on 06/05/2018.

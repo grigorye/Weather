@@ -54,7 +54,7 @@
 		C49E39AC209F9EAA0010EBAF /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49E3984209F9A980010EBAF /* Networking.swift */; };
 		C49E39AF209FA07A0010EBAF /* WeatherResponseSample+OpenWeatherMap.json in Resources */ = {isa = PBXBuildFile; fileRef = C49E398E209F9A980010EBAF /* WeatherResponseSample+OpenWeatherMap.json */; };
 		C49E39BA209FAAD40010EBAF /* MoyaResponse+NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49E39B9209FAAD40010EBAF /* MoyaResponse+NetworkingError.swift */; };
-		C4C1DFE420A238CD00C11C62 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C1DFE320A2388E00C11C62 /* Bundle.swift */; };
+		C4C1DFE420A238CD00C11C62 /* CurrentBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C1DFE320A2388E00C11C62 /* CurrentBundle.swift */; };
 		E789531754176136DAD1A71A /* Pods_OpenWeatherMapKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AED5E9B103A4988ADF894F /* Pods_OpenWeatherMapKitTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,16 +95,16 @@
 		C498C3C320A0726E00D63DB3 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		C498C3D320A0776900D63DB3 /* CityQueryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityQueryResult.swift; sourceTree = "<group>"; };
 		C498C3D520A077B900D63DB3 /* CityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
-		C498C3D820A079EF00D63DB3 /* CityQueryingImp$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CityQueryingImp$.swift"; sourceTree = "<group>"; };
+		C498C3D820A079EF00D63DB3 /* CityQueryingImp$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityQueryingImp$.swift; sourceTree = "<group>"; };
 		C498C3D920A07A1100D63DB3 /* CityQueryingImpContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityQueryingImpContainer.swift; sourceTree = "<group>"; };
 		C498C3DA20A07B1100D63DB3 /* DefaultCityQuerying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCityQuerying.swift; sourceTree = "<group>"; };
-		C498C3DF20A07EB700D63DB3 /* CityListJson$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CityListJson$.swift"; sourceTree = "<group>"; };
+		C498C3DF20A07EB700D63DB3 /* CityListJson$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListJson$.swift; sourceTree = "<group>"; };
 		C498C3E120A07F3E00D63DB3 /* CityListJsonCityQuerying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListJsonCityQuerying.swift; sourceTree = "<group>"; };
 		C498C3E320A083A600D63DB3 /* city.list.json.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = city.list.json.gz; sourceTree = "<group>"; };
 		C498C3E620A0970100D63DB3 /* CityListJsonCityQueryingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListJsonCityQueryingTests.swift; sourceTree = "<group>"; };
 		C498C3E920A0E5FA00D63DB3 /* PersistentCityInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentCityInfos.swift; sourceTree = "<group>"; };
 		C498C3EC20A0E76700D63DB3 /* CityInfos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CityInfos.xcdatamodel; sourceTree = "<group>"; };
-		C498C3EF20A0ED2100D63DB3 /* CoreData$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData$.swift"; sourceTree = "<group>"; };
+		C498C3EF20A0ED2100D63DB3 /* CoreData$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData$.swift; sourceTree = "<group>"; };
 		C498C3F120A0ED6300D63DB3 /* CityInfo+PersistentCityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CityInfo+PersistentCityInfo.swift"; sourceTree = "<group>"; };
 		C498C3F320A0EDA200D63DB3 /* CoreDataCityQuerying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCityQuerying.swift; sourceTree = "<group>"; };
 		C498C3F520A0F21B00D63DB3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -127,17 +127,17 @@
 		C49E398C209F9A980010EBAF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C49E398D209F9A980010EBAF /* LocationPredicateSamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPredicateSamples.swift; sourceTree = "<group>"; };
 		C49E398E209F9A980010EBAF /* WeatherResponseSample+OpenWeatherMap.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "WeatherResponseSample+OpenWeatherMap.json"; sourceTree = "<group>"; };
-		C49E3992209F9A990010EBAF /* NetworkingImp$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingImp$.swift"; sourceTree = "<group>"; };
+		C49E3992209F9A990010EBAF /* NetworkingImp$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingImp$.swift; sourceTree = "<group>"; };
 		C49E3993209F9A990010EBAF /* NetworkingImpContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingImpContainer.swift; sourceTree = "<group>"; };
 		C49E3994209F9A990010EBAF /* NetworkingImpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingImpTests.swift; sourceTree = "<group>"; };
-		C49E3995209F9A990010EBAF /* Moya$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moya$.swift"; sourceTree = "<group>"; };
+		C49E3995209F9A990010EBAF /* Moya$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moya$.swift; sourceTree = "<group>"; };
 		C49E3996209F9A990010EBAF /* MoyaNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaNetworking.swift; sourceTree = "<group>"; };
 		C49E3997209F9A990010EBAF /* MoyaNetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaNetworkingTests.swift; sourceTree = "<group>"; };
 		C49E3998209F9A990010EBAF /* MoyaTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaTarget.swift; sourceTree = "<group>"; };
 		C49E3999209F9A990010EBAF /* APIKeyPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyPlugin.swift; sourceTree = "<group>"; };
 		C49E39B9209FAAD40010EBAF /* MoyaResponse+NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaResponse+NetworkingError.swift"; sourceTree = "<group>"; };
 		C4AFE0737A29B395D00456B0 /* Pods_GenerateOpenWeatherMapPersistentCityInfos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GenerateOpenWeatherMapPersistentCityInfos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4C1DFE320A2388E00C11C62 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		C4C1DFE320A2388E00C11C62 /* CurrentBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentBundle.swift; sourceTree = "<group>"; };
 		CF39F51EE3D5E2DD8823423E /* Pods-OpenWeatherMapKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenWeatherMapKit.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-OpenWeatherMapKit/Pods-OpenWeatherMapKit.debug.xcconfig"; sourceTree = "<group>"; };
 		D725DC241A3E8C58BC218D0C /* Pods-GenerateOpenWeatherMapPersistentCityInfos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenerateOpenWeatherMapPersistentCityInfos.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-GenerateOpenWeatherMapPersistentCityInfos/Pods-GenerateOpenWeatherMapPersistentCityInfos.debug.xcconfig"; sourceTree = "<group>"; };
 		F2F50FBFE1234434D94A18AC /* Pods-GenerateOpenWeatherMapPersistentCityInfos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GenerateOpenWeatherMapPersistentCityInfos.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-GenerateOpenWeatherMapPersistentCityInfos/Pods-GenerateOpenWeatherMapPersistentCityInfos.release.xcconfig"; sourceTree = "<group>"; };
@@ -362,7 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				C498C40420A0F38D00D63DB3 /* BundledPersistentContainer.swift */,
-				C4C1DFE320A2388E00C11C62 /* Bundle.swift */,
+				C4C1DFE320A2388E00C11C62 /* CurrentBundle.swift */,
 			);
 			name = Shared;
 			path = ../Shared;
@@ -619,7 +619,7 @@
 				C49E39AA209F9B3F0010EBAF /* APIKeyPlugin.swift in Sources */,
 				C49E39A5209F9B340010EBAF /* NetworkingImpContainer.swift in Sources */,
 				C498C3E020A07EED00D63DB3 /* CityListJson$.swift in Sources */,
-				C4C1DFE420A238CD00C11C62 /* Bundle.swift in Sources */,
+				C4C1DFE420A238CD00C11C62 /* CurrentBundle.swift in Sources */,
 				C49E399D209F9AED0010EBAF /* NetworkingWeatherQueryResult.swift in Sources */,
 				C49E399E209F9AED0010EBAF /* NetworkingError.swift in Sources */,
 				C498C3C220A0712A00D63DB3 /* CityQuerying.swift in Sources */,
@@ -834,7 +834,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = OpenWeatherMapKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.OpenWeatherMapKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -856,7 +860,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = OpenWeatherMapKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.OpenWeatherMapKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -872,7 +880,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 465NA5BW7E;
 				INFOPLIST_FILE = OpenWeatherMapKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.OpenWeatherMapKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -887,7 +899,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 465NA5BW7E;
 				INFOPLIST_FILE = OpenWeatherMapKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.OpenWeatherMapKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

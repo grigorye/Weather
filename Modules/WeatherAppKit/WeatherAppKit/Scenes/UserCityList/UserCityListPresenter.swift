@@ -66,9 +66,9 @@ extension UserCityListItemViewModel {
             case .cityId:
                 return nil
             case .coordinate:
-                return #imageLiteral(resourceName: "icons8-map_marker")
+                return .bundled(#imageLiteral(resourceName: "icons8-map_marker"))
             case .currentLocation:
-                return #imageLiteral(resourceName: "icons8-near_me")
+                return .bundled(#imageLiteral(resourceName: "icons8-near_me"))
             }
         }()
 
