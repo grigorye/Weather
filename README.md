@@ -6,7 +6,7 @@ My attempt to build weather app utilizing clean architecture approaches and mode
 
 # Notes
 
-1. (B)VIPER is the architecture of the app. See more on that in [Scenes README](./Modules/WeatherApp/WeatherApp/Scenes/README.md).
+1. (B)VIPER is the architecture of the app. See more on that in [Scenes README](./Modules/WeatherAppKit/WeatherAppKit/Scenes/README.md).
 
    Module tests are not there yet, sorry. Working on that.
 
