@@ -32,6 +32,7 @@ func temperatureTextFromWeather(_ weather: WeatherInfo?, temperatureUnit: UnitTe
 // MARK: -
 
 struct LastWeatherInfo {
+    let requestIsInProgress: Bool
     let requestDate: Date?
     let updateDate: Date?
     let errored: Bool
@@ -41,6 +42,7 @@ struct LastWeatherInfo {
 extension UserCity {
     var lastWeatherInfo: LastWeatherInfo {
         return .init(
+            requestIsInProgress: self.hasWeatherQueryInProgress,
             requestDate: self.dateWeatherRequested,
             updateDate: self.dateWeatherUpdated,
             errored: self.errored,
