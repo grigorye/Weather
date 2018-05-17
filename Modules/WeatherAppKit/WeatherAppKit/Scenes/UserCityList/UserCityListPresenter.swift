@@ -28,6 +28,8 @@ class UserCityListPresenterImp : UserCityListPresenter {
         self.router = router
     }
     
+    deinit {()}
+    
     let disposeBag = DisposeBag()
     
     // MARK: - <UserCityListPresenter>
