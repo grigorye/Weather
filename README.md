@@ -8,7 +8,7 @@ My attempt to build weather app utilizing clean architecture approaches and mode
 
 1. (B)VIPER is the architecture of the app. See more on that in [Scenes README](./Modules/WeatherAppKit/WeatherAppKit/Scenes/README.md).
 
-   Module tests are not there yet, sorry. Working on that.
+   Scene module tests are almost not there yet, sorry. Working on that. See [UserCityListPresenterTests](./Modules/WeatherAppKit/WeatherAppKit/Scenes/UserCityList/UserCityListPresenterTests.swift) for an example for now.
 
 2. UI implementation is heavily based on storyboards, view controller containment (both dynamic and static) and sometimes storyboard references. The containment reflects module structure of (B)VIPER. As result every view controller is either (not both):
 
