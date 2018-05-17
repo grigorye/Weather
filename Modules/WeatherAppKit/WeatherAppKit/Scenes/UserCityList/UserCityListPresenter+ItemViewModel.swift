@@ -6,6 +6,7 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+import UIKit.UIImage
 import Foundation.NSUnit
 import Foundation.NSDate
 
@@ -13,7 +14,8 @@ extension UserCityListItemViewModel {
     
     init(_ userCity: UserCity, lastWeather: LastWeather, temperatureUnit: UnitTemperature, dateFormatter: @escaping (Date) -> String) {
         self.identifier = "\(userCity.location)" // !!!
-        self.icon = {
+        
+        let rawIcon: UIImage? = {
             switch userCity.location {
             case .cityId:
                 return nil
@@ -23,6 +25,8 @@ extension UserCityListItemViewModel {
                 return .bundled(#imageLiteral(resourceName: "icons8-near_me"))
             }
         }()
+        let icon = rawIcon?.withRenderingMode(.alwaysOriginal)
+        self.icon = icon
         
         self.temperatureUnit = temperatureUnit
         self.lastWeatherModel = lastWeather.map { (lastWeatherInfo) in
