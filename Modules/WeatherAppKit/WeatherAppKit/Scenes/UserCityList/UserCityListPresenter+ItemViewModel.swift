@@ -35,14 +35,14 @@ extension UserCityListItemViewModel {
                 temperature: temperature,
                 cityName: cityName,
                 textColor: {
-                    if userCity.hasWeatherQueryInProgress {
-                        return .blue
+                    if lastWeatherInfo.requestIsInProgress {
+                        return .gray
                     }
                     if lastWeatherInfo.errored {
                         return .red
                     }
                     if nil == lastWeatherInfo.updateDate {
-                        return .gray
+                        return .blue
                     }
                     return .black
             }()
