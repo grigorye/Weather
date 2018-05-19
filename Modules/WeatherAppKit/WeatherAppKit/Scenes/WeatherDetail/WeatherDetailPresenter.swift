@@ -16,17 +16,17 @@ protocol WeatherDetailPresenter : class {
 class WeatherDetailPresenterImp : WeatherDetailPresenter {
     
     let view: WeatherDetailView
-    let userCityWithLastWeather: UserCityWithLastWeather
+    let userCityInfoAndLastWeather: UserCityInfoAndLastWeather
     
-    init(view: WeatherDetailView, userCityWithLastWeather: UserCityWithLastWeather) {
+    init(view: WeatherDetailView, userCityInfoAndLastWeather: UserCityInfoAndLastWeather) {
         self.view = view
-        self.userCityWithLastWeather = userCityWithLastWeather
+        self.userCityInfoAndLastWeather = userCityInfoAndLastWeather
     }
     
     let disposeBag = DisposeBag()
     
     func loadContent() {
-        let (userCity, lastWeather) = userCityWithLastWeather
+        let (userCity, lastWeather) = userCityInfoAndLastWeather
         lastWeather.subscribe(onNext: { [view] (lastWeatherInfo) in
             let weather = lastWeatherInfo.weather
             let temperature = temperatureTextFromWeather(weather, temperatureUnit: defaultTemperatureUnit)

@@ -21,40 +21,40 @@ class AddCityInteractorImp : AddCityInteractor {
     
     func add(userCityFor cityInfo: CityInfo) {
         
-        let userCity = UserCity(
-            with: .cityId(cityInfo.cityId),
+        let userCity = UserCityInfo(
+            location: .cityId(cityInfo.cityId),
             cityName: cityInfo.cityName
         )
 
-        self.addUserCity(userCity)
+        self.addUserCity(for: userCity)
     }
 
     func add(userCityFor coordinate: CityCoordinate) {
         
         let cityName = String(format: "%.5f,%.5f", coordinate.latitude, coordinate.longitude)
-        let userCity = UserCity(
-            with: .coordinate(coordinate),
+        let userCity = UserCityInfo(
+            location: .coordinate(coordinate),
             cityName: cityName
         )
         
-        self.addUserCity(userCity)
+        self.addUserCity(for: userCity)
     }
 
     func addUserCityForCurrentLocation() {
         
-        let userCity = UserCity(
-            with: .currentLocation,
+        let userCity = UserCityInfo(
+            location: .currentLocation,
             cityName: NSLocalizedString("Current Location", comment: "")
         )
         
-        self.addUserCity(userCity)
+        self.addUserCity(for: userCity)
     }
     
     // MARK: -
     
-    func addUserCity(_ userCity: UserCity) {
+    func addUserCity(for userCityInfo: UserCityInfo) {
     
-        try! userCitiesProvider.add(userCity)
+        try! userCitiesProvider.addUserCity(with: userCityInfo)
     }
     
     // MARK: -

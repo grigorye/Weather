@@ -8,6 +8,6 @@
 
 protocol UserCityRefresher {
     
-    func refreshAsNecessary(_: [UserCity])
-    func clearRefreshingAsNecessary(for: [UserCity])
+    func refreshAsNecessary(weatherFor: [UserCityLocation])
+    func clearWeatherRefreshingAsNecessary(for: [UserCityLocation])
 }

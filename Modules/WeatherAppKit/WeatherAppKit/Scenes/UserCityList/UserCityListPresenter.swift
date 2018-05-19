@@ -35,39 +35,42 @@ class UserCityListPresenterImp : UserCityListPresenter {
     // MARK: - <UserCityListPresenter>
     
     func loadContent() {
-        interactor.clearRefreshingForUserCities()
+        interactor.clearRefreshingForUserCityLocations()
         view.itemViewModels =
-            interactor.observableUserCities
-                .map { [interactor] (userCities) in
-                    return dump(userCities, name: "userCities", maxDepth: 0).map { (userCity) in
-                        let lastWeather = interactor.lastWeather(for: userCity)
+            interactor.observableUserCityInfos
+                .map { [interactor] (userCityInfos) in
+                    return dump(userCityInfos, name: "userCityInfos", maxDepth: 0).map { (userCityInfo) in
+                        let lastWeather = interactor.lastWeather(for: userCityInfo.location)
                         return UserCityListItemViewModel(
-                            userCity,
+                            userCityInfo,
                             lastWeather: lastWeather,
                             temperatureUnit: defaultTemperatureUnit,
                             dateFormatter: defaultTimeFormatter
                         )
                     }
                 }
-        interactor.refreshUserCities()
-        interactor.observableUserCities.subscribe(onNext: { [interactor] (userCities) in
-            let newCities = userCities.filter { nil == $0.dateWeatherRequested && nil == $0.dateWeatherUpdated }
-            interactor.refreshUserCities(dump(newCities, name: "newCities", maxDepth: 0))
+        interactor.refreshUserCityLocations()
+        interactor.observableUserCityInfos.subscribe(onNext: { [interactor] (userCityInfos) in
+            let locations = userCityInfos.map { $0.location }
+            let newLocations = locations.filter {
+                !interactor.weatherIsEverQueried(for: $0)
+            }
+            interactor.refreshUserCityLocations(dump(newLocations, name: "newLocations", maxDepth: 0))
         }).disposed(by: disposeBag)
     }
     
     // MARK: - <UserCityListViewDelegate>
     
     func deleted(_ viewModel: UserCityListItemViewModel) {
-        interactor.delete(.init(from: viewModel))
+        interactor.delete(viewModel.userCityInfo.location)
     }
     
     func selected(_ viewModel: UserCityListItemViewModel) {
-        router.routeToUserCityWithLastWeather((viewModel.userCity, viewModel.lastWeather))
+        router.routeToUserCityWithLastWeather(viewModel.userCityInfoAndLastWeather)
     }
     
     func triggeredRefresh() {
-        interactor.refreshUserCities()
+        interactor.refreshUserCityLocations()
         view.endRefreshing()
     }
 }

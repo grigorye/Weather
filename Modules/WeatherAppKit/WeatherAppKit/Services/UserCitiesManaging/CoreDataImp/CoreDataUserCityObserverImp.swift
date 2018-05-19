@@ -20,31 +20,6 @@ extension PersistentUserCity {
     ]
 }
 
-func lastWeather(for userCity: UserCity, managedObjectContext: NSManagedObjectContext) -> LastWeather {
-    let sortDescriptors = PersistentUserCity.namesOfComponentsOfLastWeather.map {
-        NSSortDescriptor(key: $0, ascending: true)
-    }
-    
-    typealias P = UserCity
-    let persistable = userCity
-    let predicate = NSPredicate(format: "%K = %@", P.primaryAttributeName, persistable.identity)
-    
-    return Observable.create { (observer) in
-        observer.onNext(userCity.lastWeatherInfo)
-        return managedObjectContext.rx
-            .entities(UserCity.self, predicate: predicate, sortDescriptors: sortDescriptors)
-            .subscribe(onNext: { (userCities) in
-                guard userCities.count != 0 else {
-                    observer.onCompleted()
-                    return
-                }
-                assert(userCities.count == 1)
-                let userCity = userCities.first!
-                observer.onNext(userCity.lastWeatherInfo)
-            })
-    }.share(replay: 1, scope: .forever)
-}
-
 class UserCityCoreDataObserverImp : UserCityObserver {
     
     weak var delegate: UserCityObserverDelegate!

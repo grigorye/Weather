@@ -6,4 +6,4 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-typealias UserCityWithLastWeather = (userCity: UserCity, lastWeather: LastWeather)
+typealias UserCityInfoAndLastWeather = (userCityInfo: UserCityInfo, lastWeather: LastWeather)

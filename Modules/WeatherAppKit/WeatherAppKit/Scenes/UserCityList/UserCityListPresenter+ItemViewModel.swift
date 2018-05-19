@@ -12,11 +12,11 @@ import Foundation.NSDate
 
 extension UserCityListItemViewModel {
     
-    init(_ userCity: UserCity, lastWeather: LastWeather, temperatureUnit: UnitTemperature, dateFormatter: @escaping (Date) -> String) {
-        self.identifier = "\(userCity.location)" // !!!
+    init(_ userCityInfo: UserCityInfo, lastWeather: LastWeather, temperatureUnit: UnitTemperature, dateFormatter: @escaping (Date) -> String) {
+        self.identifier = "\(userCityInfo.location)" // !!!
         
         let rawIcon: UIImage? = {
-            switch userCity.location {
+            switch userCityInfo.location {
             case .cityId:
                 return nil
             case .coordinate:
@@ -33,7 +33,7 @@ extension UserCityListItemViewModel {
             let weather = lastWeatherInfo.weather
             let temperature = temperatureTextFromWeather(weather, temperatureUnit: temperatureUnit)
             let cityName = weather?.cityName ?? "..."
-            let subtitle = weather.flatMap { dateFormatter($0.dateReceived) } ?? userCity.cityName
+            let subtitle = weather.flatMap { dateFormatter($0.dateReceived) } ?? userCityInfo.cityName
             return UserCityListItemWeatherViewModel(
                 subtitle: subtitle,
                 temperature: temperature,
@@ -52,25 +52,18 @@ extension UserCityListItemViewModel {
             }()
             )
         }
-        self.userInfo = UserCityWithLastWeather(userCity, lastWeather)
+        self.userInfo = UserCityInfoAndLastWeather(userCityInfo, lastWeather)
     }
     
     var lastWeather: LastWeather {
-        return self.userCityWithLastWeather.lastWeather
+        return self.userCityInfoAndLastWeather.lastWeather
     }
     
-    var userCity: UserCity {
-        return self.userCityWithLastWeather.userCity
+    var userCityInfo: UserCityInfo {
+        return self.userCityInfoAndLastWeather.userCityInfo
     }
     
-    var userCityWithLastWeather: UserCityWithLastWeather {
-        return self.userInfo as! UserCityWithLastWeather
-    }
-}
-
-extension UserCity {
-    
-    init(from viewModel: UserCityListItemViewModel) {
-        self = (viewModel.userInfo as! UserCityWithLastWeather).userCity
+    var userCityInfoAndLastWeather: UserCityInfoAndLastWeather {
+        return self.userInfo as! UserCityInfoAndLastWeather
     }
 }

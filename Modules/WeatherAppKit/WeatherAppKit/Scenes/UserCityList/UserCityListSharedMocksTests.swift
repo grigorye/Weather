@@ -39,40 +39,47 @@ class UserCityListViewMock : UserCityListView {
 
 class UserCityListInteractorMock : UserCityListInteractor {
     
-    let observableUserCities_$: BehaviorSubject<[UserCity]> = BehaviorSubject(value: [UserCity]())
-    lazy var observableUserCities_$handler: () -> Observable<[UserCity]> = {
-        return self.observableUserCities_$
+    let observableUserCityInfos_$ = BehaviorSubject(value: [UserCityInfo]())
+    lazy var observableUserCityInfos_$handler: () -> Observable<[UserCityInfo]> = {
+        return self.observableUserCityInfos_$
     }
-    var observableUserCities_$invocationCount = 0
-    var observableUserCities: Observable<[UserCity]> {
-        observableUserCities_$invocationCount += 1
-        return observableUserCities_$handler()
+    var observableUserCityInfos_$invocationCount = 0
+    var observableUserCityInfos: Observable<[UserCityInfo]> {
+        observableUserCityInfos_$invocationCount += 1
+        return observableUserCityInfos_$handler()
     }
     
+    var weatherIsEverQueried_$invocationCount = 0
+    var weatherIsEverQueried_$: Bool?
+    func weatherIsEverQueried(for: UserCityLocation) -> Bool {
+        weatherIsEverQueried_$invocationCount += 1
+        return weatherIsEverQueried_$!
+    }
+
     var lastWeather_$invocationCount = 0
     var lastWeather_$: LastWeather?
-    func lastWeather(for: UserCity) -> LastWeather {
+    func lastWeather(for: UserCityLocation) -> LastWeather {
         lastWeather_$invocationCount += 1
         return lastWeather_$!
     }
     
-    var refreshUserCities_$invocationCount = 0
-    func refreshUserCities() {
-        refreshUserCities_$invocationCount += 1
+    var refreshUserCityLocations_$invocationCount = 0
+    func refreshUserCityLocations() {
+        refreshUserCityLocations_$invocationCount += 1
     }
     
-    var refreshUserCities__$invocationCount = 0
-    func refreshUserCities(_: [UserCity]) {
-        refreshUserCities__$invocationCount += 1
+    var refreshUserCityLocations__$invocationCount = 0
+    func refreshUserCityLocations(_: [UserCityLocation]) {
+        refreshUserCityLocations__$invocationCount += 1
     }
     
-    var clearRefreshingForUserCities_$invocationCount = 0
-    func clearRefreshingForUserCities() {
-        clearRefreshingForUserCities_$invocationCount += 1
+    var clearRefreshingForUserCityLocations_$invocationCount = 0
+    func clearRefreshingForUserCityLocations() {
+        clearRefreshingForUserCityLocations_$invocationCount += 1
     }
     
     var delete_$invocationCount = 0
-    func delete(_: UserCity) {
+    func delete(_: UserCityLocation) {
         delete_$invocationCount += 1
     }
 }
@@ -80,7 +87,7 @@ class UserCityListInteractorMock : UserCityListInteractor {
 class UserCityListRouterMock : UserCityListRouter {
     
     var routeToUserCityWithLastWeather_$invocationCount = 0
-    func routeToUserCityWithLastWeather(_: UserCityWithLastWeather) {
+    func routeToUserCityWithLastWeather(_: UserCityInfoAndLastWeather) {
         routeToUserCityWithLastWeather_$invocationCount += 1
     }
 }

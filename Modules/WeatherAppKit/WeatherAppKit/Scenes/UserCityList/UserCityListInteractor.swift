@@ -15,15 +15,16 @@ extension Array : Then {}
 
 protocol UserCityListInteractor {
     
-    var observableUserCities: Observable<[UserCity]> { get }
+    var observableUserCityInfos: Observable<[UserCityInfo]> { get }
     
-    func lastWeather(for: UserCity) -> LastWeather
+    func weatherIsEverQueried(for: UserCityLocation) -> Bool
+    func lastWeather(for: UserCityLocation) -> LastWeather
     
-    func refreshUserCities()
-    func refreshUserCities(_: [UserCity])
-    func clearRefreshingForUserCities()
+    func refreshUserCityLocations()
+    func refreshUserCityLocations(_: [UserCityLocation])
+    func clearRefreshingForUserCityLocations()
     
-    func delete(_: UserCity)
+    func delete(_: UserCityLocation)
 }
 
 class UserCityListInteractorImp : UserCityListInteractor {
@@ -57,31 +58,37 @@ extension UserCityListInteractorImp {
     
     // MARK: - <UserCityListInteractor>
     
-    var observableUserCities: Observable<[UserCity]> {
-        return userCitiesProvider.observableUserCities
+    var observableUserCityInfos: Observable<[UserCityInfo]> {
+        return userCitiesProvider.observableUserCityInfos
     }
     
-    func lastWeather(for userCity: UserCity) -> LastWeather {
-        return userCitiesProvider.lastWeather(for: userCity)
+    func weatherIsEverQueried(for location: UserCityLocation) -> Bool {
+        return try! userCitiesProvider.weatherIsEverQueried(for: location)
     }
     
-    func refreshUserCities() {
-        _ = observableUserCities.take(1).subscribe(onNext: { [userCityRefresher] (userCities) in
-            userCityRefresher.refreshAsNecessary(userCities)
+    func lastWeather(for location: UserCityLocation) -> LastWeather {
+        return userCitiesProvider.lastWeather(for: location)
+    }
+    
+    func refreshUserCityLocations() {
+        _ = observableUserCityInfos.take(1).subscribe(onNext: { [userCityRefresher] (userCityInfos) in
+            let locations = userCityInfos.map { $0.location }
+            userCityRefresher.refreshAsNecessary(weatherFor: locations)
         })
     }
     
-    func refreshUserCities(_ userCities: [UserCity]) {
-        userCityRefresher.refreshAsNecessary(userCities)
+    func refreshUserCityLocations(_ locations: [UserCityLocation]) {
+        userCityRefresher.refreshAsNecessary(weatherFor: locations)
     }
 
-    func clearRefreshingForUserCities() {
-        _ = observableUserCities.take(1).subscribe(onNext: { [userCityRefresher] (userCities) in
-            userCityRefresher.clearRefreshingAsNecessary(for: userCities)
+    func clearRefreshingForUserCityLocations() {
+        _ = observableUserCityInfos.take(1).subscribe(onNext: { [userCityRefresher] (userCityInfos) in
+            let locations = userCityInfos.map { $0.location }
+            userCityRefresher.clearWeatherRefreshingAsNecessary(for: locations)
         })
     }
 
-    func delete(_ userCity: UserCity) {
-        try! userCitiesProvider.delete(userCity)
+    func delete(_ location: UserCityLocation) {
+        try! userCitiesProvider.deleteUserCity(for: location)
     }
 }

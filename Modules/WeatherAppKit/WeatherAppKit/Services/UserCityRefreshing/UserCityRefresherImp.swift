@@ -14,9 +14,9 @@ class UserCityRefresherImp : UserCityRefresher {
     
     // MARK: - <UserCityRefresher>
     
-    func refreshAsNecessary(_ userCities: [UserCity]) {
+    func refreshAsNecessary(weatherFor locations: [UserCityLocation]) {
         
-        let userLocation = userCities.first { $0.location.isCurrentLocation }
+        let userLocation = locations.first { $0.isCurrentLocation }
         
         var currentLocationIsObsolete: Bool {
             return true
@@ -27,21 +27,23 @@ class UserCityRefresherImp : UserCityRefresher {
             
             self.refreshUserLocation()
             
-            let userCitiesWithoutCurrentLocation = userCities.filter { !$0.location.isCurrentLocation }
+            let locationsExcludingCurrentLocation = locations.filter { !$0.isCurrentLocation }
             
-            self.updateWeatherAsNecessary(for: userCitiesWithoutCurrentLocation)
+            self.updateWeatherAsNecessary(for: locationsExcludingCurrentLocation)
             
         } else {
             
-            self.updateWeatherAsNecessary(for: userCities)
+            self.updateWeatherAsNecessary(for: locations)
         }
     }
     
-    func clearRefreshingAsNecessary(for userCities: [UserCity]) {
+    func clearWeatherRefreshingAsNecessary(for locations: [UserCityLocation]) {
         
-        let affectedUserCities = userCities.filter { $0.hasWeatherQueryInProgress }
-        dump(affectedUserCities, name: "clearRefreshingAffectedUserCities", maxDepth: 0).forEach { (userCity) in
-            try! userCitiesProvider.setWeatherQueryCompleted(for: userCity, with: .failure(AnyError(CocoaError(.userCancelled))))
+        let affectedLocations = locations.filter {
+            try! userCitiesProvider.hasWeatherQueryInProgress(for: $0)
+        }
+        dump(affectedLocations, name: "clearRefreshingAffectedLocations", maxDepth: 0).forEach { (location) in
+            try! userCitiesProvider.setWeatherQueryCompleted(for: location, with: .failure(AnyError(CocoaError(.userCancelled))))
         }
     }
     
@@ -49,8 +51,9 @@ class UserCityRefresherImp : UserCityRefresher {
     
     func updateWeatherAsNecessaryForUserLocation(with coordinate: CityCoordinate) {
         
-        _ = userCitiesProvider.observableUserCities.take(1).subscribe(onNext: { (userCities) in
-            guard let userLocation = userCities.first(where: { $0.location.isCurrentLocation }) else {
+        _ = userCitiesProvider.observableUserCityInfos.take(1).subscribe(onNext: { (userInfos) in
+            let locations = userInfos.map { $0.location }
+            guard let userLocation = locations.first(where: { $0.isCurrentLocation }) else {
                 return
             }
             self.updateWeatherAsNecessary(for: [userLocation])
@@ -76,19 +79,17 @@ class UserCityRefresherImp : UserCityRefresher {
             }
         })
     }
-    
-    func updateWeatherAsNecessary(for userCities: [UserCity]) {
+
+    func updateWeatherAsNecessary(for anyLocations: [UserCityLocation]) {
         
-        let userCities = userCities.filter { (userCity) in
-            guard !userCity.hasWeatherQueryInProgress else {
-                return false
-            }
-            return true
+        let locations = anyLocations.filter { (location) in
+            return try! !userCitiesProvider.hasWeatherQueryInProgress(for: location)
         }
         
-        try! userCitiesProvider.setWeatherQueryInProgress(for: userCities)
+        locations.forEach {
+            try! userCitiesProvider.setWeatherQueryInProgress(for: $0)
+        }
         
-        let locations = userCities.map { $0.location }
         let locationPredicates: [WeatherLocationPredicate] = locations.map {
             switch $0 {
             case .currentLocation:
@@ -100,11 +101,12 @@ class UserCityRefresherImp : UserCityRefresher {
         
         weatherProvider.queryWeather(for: locationPredicates) { [userCitiesProvider] (results) in
             DispatchQueue.main.async {
-                assert(userCities.count == results.count)
+                assert(locations.count == results.count)
                 (0..<results.count).forEach {
-                    let userCity = userCities[$0]
+                    let location = locations[$0]
                     let weatherQueryResult = results[$0]
-                    try! userCitiesProvider.setWeatherQueryCompleted(for: userCity, with: weatherQueryResult)
+                    try! userCitiesProvider.setWeatherQueryCompleted(for: location, with: weatherQueryResult)
+                    assert(try! !userCitiesProvider.hasWeatherQueryInProgress(for: location))
                 }
             }
         }

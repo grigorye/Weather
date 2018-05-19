@@ -8,6 +8,8 @@
 
 import Foundation.NSDate
 
+typealias UserWeatherId = UserCityLocation
+
 struct UserCity : Equatable {
 
     let location: UserCityLocation

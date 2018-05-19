@@ -20,21 +20,21 @@ class UserCityListPresenter_OnLoadContent_Tests : QuickSpec {
         let presenter = UserCityListPresenterImp(view: view, interactor: interactor, router: router)
         
         context("") {
-            expect(interactor.clearRefreshingForUserCities_$invocationCount) == 0
-            expect(interactor.observableUserCities_$invocationCount) == 0
-            expect(interactor.refreshUserCities__$invocationCount) == 0
+            expect(interactor.clearRefreshingForUserCityLocations_$invocationCount) == 0
+            expect(interactor.observableUserCityInfos_$invocationCount) == 0
+            expect(interactor.refreshUserCityLocations__$invocationCount) == 0
             expect(view.itemViewModels_$setCount) == 0
 
             presenter.loadContent()
             
-            it("should invoke interactor.clearRefreshingForUserCities") {
-                expect(interactor.clearRefreshingForUserCities_$invocationCount) == 1
+            it("should invoke interactor.clearRefreshingForUserCityLocations") {
+                expect(interactor.clearRefreshingForUserCityLocations_$invocationCount) == 1
             }
-            it("should query interactor.observableUserCities") {
-                expect(interactor.observableUserCities_$invocationCount) > 1
+            it("should query interactor.observableUserCityInfos") {
+                expect(interactor.observableUserCityInfos_$invocationCount) > 1
             }
-            it("should invoke interactor.refreshUserCities(_:)") {
-                expect(interactor.refreshUserCities__$invocationCount) == 1
+            it("should invoke interactor.refreshUserCityLocations(_:)") {
+                expect(interactor.refreshUserCityLocations__$invocationCount) == 1
             }
             it("should set view.itemViewModels") {
                 expect(view.itemViewModels_$setCount) == 1
@@ -52,7 +52,8 @@ class UserCityListPresenter_ItemAddedToObservableUserCitiesInInteractor_Tests : 
         let router = UserCityListRouterMock()
         
         interactor.lastWeather_$ = BehaviorSubject(value: lastWeatherInfoSample)
-        
+        interactor.weatherIsEverQueried_$ = false
+
         let presenter = UserCityListPresenterImp(view: view, interactor: interactor, router: router)
         presenter.loadContent()
 
@@ -65,7 +66,7 @@ class UserCityListPresenter_ItemAddedToObservableUserCitiesInInteractor_Tests : 
         context("") {
             expect(itemViewModels.count) == 0
             
-            interactor.observableUserCities_$.onNext([userCitySample])
+            interactor.observableUserCityInfos_$.onNext([userCityInfoSample])
 
             it("should add an item to view.itemViewModels") {
                 expect(itemViewModels.count) == 1
@@ -83,7 +84,8 @@ class UserCityListPresenter_OnRefreshTriggeredInView_Tests : QuickSpec {
         let router = UserCityListRouterMock()
         
         interactor.lastWeather_$ = BehaviorSubject(value: lastWeatherInfoSample)
-        
+        interactor.weatherIsEverQueried_$ = false
+
         let presenter = UserCityListPresenterImp(view: view, interactor: interactor, router: router)
         presenter.loadContent()
         
@@ -108,7 +110,8 @@ class UserCityListPresenter_OnDeletedInView_Tests : QuickSpec {
         let router = UserCityListRouterMock()
         
         interactor.lastWeather_$ = BehaviorSubject(value: lastWeatherInfoSample)
-        
+        interactor.weatherIsEverQueried_$ = false
+
         let presenter = UserCityListPresenterImp(view: view, interactor: interactor, router: router)
         presenter.loadContent()
         
@@ -118,7 +121,7 @@ class UserCityListPresenter_OnDeletedInView_Tests : QuickSpec {
             itemViewModels = nextItemViewModels
         }).disposed(by: disposeBag)
         
-        interactor.observableUserCities_$.onNext([userCitySample])
+        interactor.observableUserCityInfos_$.onNext([userCityInfoSample])
         
         context("") {
             expect(interactor.delete_$invocationCount) == 0
@@ -141,6 +144,7 @@ class UserCityListPresenter_OnSelectedInView_Tests : QuickSpec {
         let router = UserCityListRouterMock()
         
         interactor.lastWeather_$ = BehaviorSubject(value: lastWeatherInfoSample)
+        interactor.weatherIsEverQueried_$ = false
         
         let presenter = UserCityListPresenterImp(view: view, interactor: interactor, router: router)
         presenter.loadContent()
@@ -151,7 +155,7 @@ class UserCityListPresenter_OnSelectedInView_Tests : QuickSpec {
             itemViewModels = nextItemViewModels
         }).disposed(by: disposeBag)
         
-        interactor.observableUserCities_$.onNext([userCitySample])
+        interactor.observableUserCityInfos_$.onNext([userCityInfoSample])
         
         context("") {
             expect(router.routeToUserCityWithLastWeather_$invocationCount) == 0

@@ -14,32 +14,51 @@ class CoreDataUserCitiesProvider : UserCitiesProvider {
     
     // MARK: - <UserCitiesProvider>
     
-    func add(_ userCity: UserCity) throws {
+    func addUserCity(with userCityInfo: UserCityInfo) throws {
+        let userCity = UserCity(with: userCityInfo.location, cityName: userCityInfo.cityName)
         try managedObjectContext.rx.update(userCity)
     }
     
-    func delete(_ userCity: UserCity) throws {
-        try managedObjectContext.rx.delete(userCity)
+    func deleteUserCity(for location: UserCityLocation) throws {
+        let userCity = try persistentUserCityFor(location)!
+        managedObjectContext.delete(userCity)
+        try managedObjectContext.save()
     }
     
-    func setWeatherQueryInProgress(for userCities: [UserCity]) throws {
-        try userCities.forEach {
-            try self.setWeatherQueryInProgress(for: $0)
-        }
+    func hasWeatherQueryInProgress(for location: UserCityLocation) throws -> Bool {
+        let userCity = try persistentUserCityFor(location)!
+        return userCity.hasWeatherQueryInProgress
     }
     
-    func setWeatherQueryInProgress(for userCity: UserCity) throws {
+    func setWeatherQueryInProgress(for location: UserCityLocation) throws {
         let now = Date()
-        let updatedUserCity = userCity.with {
+        let userCity = try persistentUserCityFor(location)!
+        userCity.do {
             $0.dateWeatherRequested = now
             $0.hasWeatherQueryInProgress = true
         }
-        try managedObjectContext.rx.update(updatedUserCity)
+        try managedObjectContext.save()
+    }
+
+    private func persistentUserCityFor(_ location: UserCityLocation) throws -> PersistentUserCity? {
+        
+        typealias P = UserCity
+        let identity = userCityIdentity(from: location)
+        let predicate = NSPredicate(format: "%K = %@", UserCity.primaryAttributeName, identity)
+        
+        let fetchRequest: NSFetchRequest<PersistentUserCity> = PersistentUserCity.fetchRequest().then {
+            $0.predicate = predicate
+        }
+        let persistentUserCities = try managedObjectContext.fetch(fetchRequest)
+        assert(persistentUserCities.count <= 1)
+        let persistentUserCity = persistentUserCities.first
+        return persistentUserCity
     }
     
-    func setWeatherQueryCompleted(for userCity: UserCity, with result: WeatherQueryResult) throws {
+    func setWeatherQueryCompleted(for location: UserCityLocation, with result: WeatherQueryResult) throws {
         let now = Date()
-        let updatedUserCity = userCity.with {
+        let userCity = try persistentUserCityFor(location)!
+        userCity.do {
             $0.dateWeatherUpdated = now
             $0.hasWeatherQueryInProgress = false
             switch result {
@@ -51,37 +70,79 @@ class CoreDataUserCitiesProvider : UserCitiesProvider {
                 $0.weather = weatherInfo
             }
         }
-        assert(!updatedUserCity.hasWeatherQueryInProgress)
-        try managedObjectContext.rx.update(updatedUserCity)
+        assert(!userCity.hasWeatherQueryInProgress)
+        try managedObjectContext.save()
     }
 
-    lazy var observableUserCities: Observable<[UserCity]> = {
+    lazy var observableUserCityInfos: Observable<[UserCityInfo]> = {
         let sortDescriptors = [
             NSSortDescriptor(key: #keyPath(PersistentUserCity.dateAdded), ascending: true)
         ]
         return
             managedObjectContext.rx
                 .entities(UserCity.self, sortDescriptors: sortDescriptors)
+                .map({ (userCities) in
+                    userCities.map { UserCityInfo(location: $0.location, cityName: $0.cityName) }
+                })
                 .share(replay: 1, scope: .forever)
     }()
     
-    func lastWeather(for userCity: UserCity) -> LastWeather {
-        return WeatherAppKit.lastWeather(for: userCity, managedObjectContext: self.managedObjectContext)
+    func weatherIsEverQueried(for location: UserCityLocation) throws -> Bool {
+        let userCity = try persistentUserCityFor(location)!
+        guard nil == userCity.dateWeatherRequested else {
+            return true
+        }
+        guard nil == userCity.dateWeatherUpdated else {
+            return true
+        }
+        return false
+    }
+    
+    func lastWeather(for location: UserCityLocation) -> LastWeather {
+        let sortDescriptors = PersistentUserCity.namesOfComponentsOfLastWeather.map {
+            NSSortDescriptor(key: $0, ascending: true)
+        }
+        
+        let predicate = NSPredicate(format: "%K = %@", UserCity.primaryAttributeName, userCityIdentity(from: location))
+        
+        return Observable.create { [unowned self, managedObjectContext] (observer) in
+            let persistentUserCity = try! self.persistentUserCityFor(location)!
+            let userCity = UserCity(entity: persistentUserCity)
+            observer.onNext(userCity.lastWeatherInfo)
+            return managedObjectContext.rx
+                .entities(UserCity.self, predicate: predicate, sortDescriptors: sortDescriptors)
+                .subscribe(onNext: { (userCities) in
+                    guard userCities.count != 0 else {
+                        observer.onCompleted()
+                        return
+                    }
+                    assert(userCities.count == 1)
+                    let userCity = userCities.first!
+                    observer.onNext(userCity.lastWeatherInfo)
+                })
+            }.share(replay: 1, scope: .forever)
     }
     
     // MARK: -
     
-    private lazy var managedObjectModel = Bundle.current.managedObjectModel(withName: "UserCities")!
-    private lazy var persistentContainer = NSPersistentContainer(name: "UserCities", managedObjectModel: managedObjectModel).then { (container) in
-        container.loadPersistentStoresDestroyingStoreOnMigrationError { (storeDescription, error) in
-            if let error = error {
-                fatalError("error: \(error), persistentStore: \(storeDescription)")
+    private(set) public static var managedObjectModel = Bundle.current.managedObjectModel(withName: "UserCities")!
+    
+    private var managedObjectContext: NSManagedObjectContext
+    
+    convenience init() {
+        let persistentContainer = NSPersistentContainer(name: "UserCities", managedObjectModel: type(of: self).managedObjectModel).then { (container) in
+            container.loadPersistentStoresDestroyingStoreOnMigrationError { (storeDescription, error) in
+                if let error = error {
+                    fatalError("error: \(error), persistentStore: \(storeDescription)")
+                }
             }
         }
+        self.init(with: persistentContainer.viewContext)
     }
     
-    private lazy var managedObjectContext = persistentContainer.viewContext
+    init(with managedObjectContext: NSManagedObjectContext) {
+        self.managedObjectContext = managedObjectContext
+    }
     
-    init() {}
     deinit {()}
 }

@@ -10,13 +10,15 @@ import RxSwift
 
 protocol UserCitiesProvider {
     
-    var observableUserCities: Observable<[UserCity]> { get }
+    var observableUserCityInfos: Observable<[UserCityInfo]> { get }
     
-    func lastWeather(for: UserCity) -> LastWeather
+    func lastWeather(for: UserCityLocation) -> LastWeather
 
-    func add(_: UserCity) throws
-    func delete(_: UserCity) throws
+    func addUserCity(with: UserCityInfo) throws
+    func deleteUserCity(for: UserCityLocation) throws
     
-    func setWeatherQueryInProgress(for: [UserCity]) throws
-    func setWeatherQueryCompleted(for: UserCity, with: WeatherQueryResult) throws
+    func weatherIsEverQueried(for: UserCityLocation) throws -> Bool
+    func hasWeatherQueryInProgress(for: UserCityLocation) throws -> Bool 
+    func setWeatherQueryInProgress(for: UserCityLocation) throws
+    func setWeatherQueryCompleted(for: UserCityLocation, with: WeatherQueryResult) throws
 }

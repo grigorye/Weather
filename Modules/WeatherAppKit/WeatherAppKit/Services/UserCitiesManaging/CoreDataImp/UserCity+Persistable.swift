@@ -8,6 +8,10 @@
 
 import RxCoreData
 
+func userCityIdentity(from location: UserCityLocation) -> String {
+    return location.asJson()
+}
+
 extension UserCity : Persistable {
     
     typealias T = PersistentUserCity
@@ -21,7 +25,7 @@ extension UserCity : Persistable {
     }
     
     var identity: String {
-        return location.asJson()
+        return userCityIdentity(from: location)
     }
     
     init(entity: PersistentUserCity) {

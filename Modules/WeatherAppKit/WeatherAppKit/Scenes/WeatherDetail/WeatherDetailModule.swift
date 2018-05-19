@@ -8,14 +8,14 @@
 
 import UIKit
 
-func newWeatherDetailViewController(for userCityWithLastWeather: UserCityWithLastWeather) -> UIViewController {
+func newWeatherDetailViewController(for userCityInfoAndLastWeather: UserCityInfoAndLastWeather) -> UIViewController {
     
     let storyboard = UIStoryboard(name: "WeatherDetail", bundle: .current)
     
     let viewController = storyboard.instantiateInitialViewController()!
     let view = viewController as! WeatherDetailView
 
-    let presenter: WeatherDetailPresenter = WeatherDetailPresenterImp(view: view, userCityWithLastWeather: userCityWithLastWeather)
+    let presenter: WeatherDetailPresenter = WeatherDetailPresenterImp(view: view, userCityInfoAndLastWeather: userCityInfoAndLastWeather)
     
     viewController.retainObject(presenter)
     

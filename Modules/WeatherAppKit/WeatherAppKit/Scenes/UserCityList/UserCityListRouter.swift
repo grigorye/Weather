@@ -10,7 +10,7 @@ import UIKit
 
 protocol UserCityListRouter {
     
-    func routeToUserCityWithLastWeather(_: UserCityWithLastWeather)
+    func routeToUserCityWithLastWeather(_: UserCityInfoAndLastWeather)
 }
 
 struct UserCityListRouterImp : UserCityListRouter {
@@ -19,9 +19,9 @@ struct UserCityListRouterImp : UserCityListRouter {
     
     // MARK: - <UserCityListRouter>
     
-    func routeToUserCityWithLastWeather(_ userCityWithLastWeather: UserCityWithLastWeather) {
+    func routeToUserCityWithLastWeather(_ userCityInfoAndLastWeather: UserCityInfoAndLastWeather) {
 
-        let weatherDetailViewController = newWeatherDetailViewController(for: userCityWithLastWeather)
+        let weatherDetailViewController = newWeatherDetailViewController(for: userCityInfoAndLastWeather)
         
         let navigationController = viewController.navigationController!
         navigationController.pushViewController(weatherDetailViewController, animated: true)
