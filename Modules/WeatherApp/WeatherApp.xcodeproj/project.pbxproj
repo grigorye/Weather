@@ -446,7 +446,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -e";
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint";
+			shellScript = "pushd .. && \"${PODS_ROOT:?}\"/SwiftLint/swiftlint";
 			showEnvVarsInLog = 0;
 		};
 		EA223D63FB6BD7C10E751C3F /* [CP] Embed Pods Frameworks */ = {
