@@ -13,7 +13,7 @@ The architecture and implementation of "screens" is **heavily** inspired by [(B)
     
      Presenter *has* input that matches the output of View, but it might have other dependencies as well (e.g. related to Interactor). Hence we could define View Output in terms of (view facing) Presenter Input, but that is again, *solely* bound to View side, and should be the same for different Presenters for View to be reusable. Hence such a (View Facing) Presenter Input is basically indistinguashable from View Output, that, in case of View is typically View Delegate.
       
-   Given all the above, View *implementation* (read: ViewController) is always architecture agnostic: the fact that there're View protocol is just a coincedence. *It just happens* that ViewController implements the module-specific View protocol.
+   Given all the above, View *implementation* (read: ViewController) is always architecture agnostic: the fact that there's View protocol is just a coincedence. *It just happens* that ViewController implements the module-specific View protocol.
     
 2. (Default) Module configuration so far is achieved via `new<ModuleName>ViewController(input1, ... inputN)` or `ModuleName.prepare(viewController, input1, ... inputN)`.
 
