@@ -11,7 +11,7 @@ import RxSwift
 
 class UserCityListViewMock : UserCityListView {
     
-    var delegate: UserCityListViewDelegate!
+    weak var delegate: UserCityListViewDelegate!
     
     var itemViewModels_$setCount = 0
     var itemViewModels_$getCount = 0
