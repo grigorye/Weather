@@ -16,6 +16,7 @@ func defaultUserCitiesTestProvider() -> UserCitiesProvider {
 
 class UserCitiesProviderImpTests : QuickSpec {
     
+    // swiftlint:disable:next function_body_length
     override func spec() {
         
         context("after city is added") {

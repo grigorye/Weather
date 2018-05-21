@@ -159,6 +159,14 @@
 		C48FE68E20AFB01E009094C9 /* UserCityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FE68D20AFB01E009094C9 /* UserCityInfo.swift */; };
 		C48FE69320AFC505009094C9 /* UserCitiesProviderImpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FE68F20AFB9F3009094C9 /* UserCitiesProviderImpTests.swift */; };
 		C48FE69520AFC857009094C9 /* CoreDataUserCitiesProviderImpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FE69420AFC857009094C9 /* CoreDataUserCitiesProviderImpTests.swift */; };
+		C48FE69720B1C96E009094C9 /* ExpandFromCellTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FE69620B1C96E009094C9 /* ExpandFromCellTransitioningAnimator.swift */; };
+		C48FE69920B1CF50009094C9 /* UIImage+Cropping.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FE69820B1CF50009094C9 /* UIImage+Cropping.swift */; };
+		C48FE69B20B1D4B9009094C9 /* UIView+Snapshotting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FE69A20B1D4B9009094C9 /* UIView+Snapshotting.swift */; };
+		C48FE69D20B1DF61009094C9 /* UserCitiesSplitViewTransitioningSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FE69C20B1DF61009094C9 /* UserCitiesSplitViewTransitioningSource.swift */; };
+		C48FE69F20B1E06A009094C9 /* UserCityListViewController+UserCityCellTransitioningSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FE69E20B1E06A009094C9 /* UserCityListViewController+UserCityCellTransitioningSource.swift */; };
+		C48FE6A220B212C6009094C9 /* CellTransitioningNavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FE6A120B212C6009094C9 /* CellTransitioningNavigationControllerDelegate.swift */; };
+		C48FE6A320B213F3009094C9 /* CollapseToCellTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FE6A020B1FD85009094C9 /* CollapseToCellTransitioningAnimator.swift */; };
+		C48FE6A520B24065009094C9 /* UIViewControllerContextTransitioning+Frames.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FE6A420B24065009094C9 /* UIViewControllerContextTransitioning+Frames.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -346,6 +354,14 @@
 		C48FE68D20AFB01E009094C9 /* UserCityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCityInfo.swift; sourceTree = "<group>"; };
 		C48FE68F20AFB9F3009094C9 /* UserCitiesProviderImpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCitiesProviderImpTests.swift; sourceTree = "<group>"; };
 		C48FE69420AFC857009094C9 /* CoreDataUserCitiesProviderImpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUserCitiesProviderImpTests.swift; sourceTree = "<group>"; };
+		C48FE69620B1C96E009094C9 /* ExpandFromCellTransitioningAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandFromCellTransitioningAnimator.swift; sourceTree = "<group>"; };
+		C48FE69820B1CF50009094C9 /* UIImage+Cropping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Cropping.swift"; sourceTree = "<group>"; };
+		C48FE69A20B1D4B9009094C9 /* UIView+Snapshotting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Snapshotting.swift"; sourceTree = "<group>"; };
+		C48FE69C20B1DF61009094C9 /* UserCitiesSplitViewTransitioningSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCitiesSplitViewTransitioningSource.swift; sourceTree = "<group>"; };
+		C48FE69E20B1E06A009094C9 /* UserCityListViewController+UserCityCellTransitioningSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserCityListViewController+UserCityCellTransitioningSource.swift"; sourceTree = "<group>"; };
+		C48FE6A020B1FD85009094C9 /* CollapseToCellTransitioningAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapseToCellTransitioningAnimator.swift; sourceTree = "<group>"; };
+		C48FE6A120B212C6009094C9 /* CellTransitioningNavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTransitioningNavigationControllerDelegate.swift; sourceTree = "<group>"; };
+		C48FE6A420B24065009094C9 /* UIViewControllerContextTransitioning+Frames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewControllerContextTransitioning+Frames.swift"; sourceTree = "<group>"; };
 		C6B2C2DA55C8B3B35A7E34E3 /* Pods-WeatherAppKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherAppKitTests.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-WeatherAppKitTests/Pods-WeatherAppKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA1D4B6CC4735A610A380A7B /* Pods-WeatherAppKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherAppKit.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-WeatherAppKit/Pods-WeatherAppKit.release.xcconfig"; sourceTree = "<group>"; };
 		EFC3FABA7DEEE40D34095B03 /* Pods-WeatherAppKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherAppKit.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-WeatherAppKit/Pods-WeatherAppKit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -412,6 +428,12 @@
 				C4043DC720AC3810006A6BE6 /* TemplateRespectingImageView.swift */,
 				C4043DC820AC3810006A6BE6 /* UIStackView+ContainerViewController.swift */,
 				C4043DC920AC3810006A6BE6 /* VIPERModule.swift */,
+				C48FE6A120B212C6009094C9 /* CellTransitioningNavigationControllerDelegate.swift */,
+				C48FE69620B1C96E009094C9 /* ExpandFromCellTransitioningAnimator.swift */,
+				C48FE6A020B1FD85009094C9 /* CollapseToCellTransitioningAnimator.swift */,
+				C48FE6A420B24065009094C9 /* UIViewControllerContextTransitioning+Frames.swift */,
+				C48FE69820B1CF50009094C9 /* UIImage+Cropping.swift */,
+				C48FE69A20B1D4B9009094C9 /* UIView+Snapshotting.swift */,
 			);
 			name = Shared;
 			path = ../Shared;
@@ -823,6 +845,7 @@
 			isa = PBXGroup;
 			children = (
 				C476BD9920AC1B2200325393 /* UserCityListViewController.swift */,
+				C48FE69E20B1E06A009094C9 /* UserCityListViewController+UserCityCellTransitioningSource.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -835,6 +858,7 @@
 				C48FE63C20AD6526009094C9 /* UserCityListPresenterTests.swift */,
 				C48FE63420AD6140009094C9 /* UserCityListPresenter+ItemViewModel.swift */,
 				C476BD9520AC1B2200325393 /* UserCityListRouter.swift */,
+				C48FE69C20B1DF61009094C9 /* UserCitiesSplitViewTransitioningSource.swift */,
 				C476BD9620AC1B2200325393 /* UserCityListInteractor.swift */,
 				C476BD9720AC1B2200325393 /* UserCityListModule.swift */,
 				C476BD9820AC1B2200325393 /* UserCityListView.swift */,
@@ -1224,6 +1248,7 @@
 				C48FE63520AD6140009094C9 /* UserCityListPresenter+ItemViewModel.swift in Sources */,
 				C476BE0720AC1C0000325393 /* WeatherDetailViewController.swift in Sources */,
 				C476BE2320AC1C0000325393 /* WeatherProviderImp.swift in Sources */,
+				C48FE6A220B212C6009094C9 /* CellTransitioningNavigationControllerDelegate.swift in Sources */,
 				C4043DCD20AC3810006A6BE6 /* Codable+Json.swift in Sources */,
 				C476BE2020AC1C0000325393 /* WeatherProvider+BatchRequestsImp.swift in Sources */,
 				C476BE0420AC1C0000325393 /* WeatherDetailInteractor.swift in Sources */,
@@ -1255,6 +1280,7 @@
 				C476BDE220AC1C0000325393 /* CitySelectionOnMapView.swift in Sources */,
 				C476BDEC20AC1C0000325393 /* CitySearchResultsListRouter.swift in Sources */,
 				C476BE0120AC1C0000325393 /* UserCitiesActionsView.swift in Sources */,
+				C48FE6A320B213F3009094C9 /* CollapseToCellTransitioningAnimator.swift in Sources */,
 				C4043DD220AC3810006A6BE6 /* StatusBarCoveringSearchBar.swift in Sources */,
 				C476BDD520AC1C0000325393 /* CitySearchInputView.swift in Sources */,
 				C476BE2620AC1C0000325393 /* LocationPredicate+WeatherLocationPredicate.swift in Sources */,
@@ -1272,9 +1298,11 @@
 				C476BDF420AC1C0000325393 /* UserCitiesPresenter.swift in Sources */,
 				C476BDF820AC1C0000325393 /* UserCityListPresenter.swift in Sources */,
 				C476BDCA20AC1C0000325393 /* UserCityLocation.swift in Sources */,
+				C48FE69F20B1E06A009094C9 /* UserCityListViewController+UserCityCellTransitioningSource.swift in Sources */,
 				C476BDC320AC1C0000325393 /* CityInfo.swift in Sources */,
 				C476BE0320AC1C0000325393 /* WeatherDetailModule.swift in Sources */,
 				C476BE1C20AC1C0000325393 /* WeatherProvider.swift in Sources */,
+				C48FE69720B1C96E009094C9 /* ExpandFromCellTransitioningAnimator.swift in Sources */,
 				C476BE0520AC1C0000325393 /* WeatherDetailPresenter.swift in Sources */,
 				C4043DD420AC3810006A6BE6 /* TemplateRespectingImageView.swift in Sources */,
 				C476BDFF20AC1C0000325393 /* UserCityListItemView+Differentiator.swift in Sources */,
@@ -1291,6 +1319,7 @@
 				C476BDDC20AC1C0000325393 /* CitySearchAlternativesRouter.swift in Sources */,
 				C476BDC420AC1C0000325393 /* CityId.swift in Sources */,
 				C476BDC720AC1C0000325393 /* UserCity.swift in Sources */,
+				C48FE6A520B24065009094C9 /* UIViewControllerContextTransitioning+Frames.swift in Sources */,
 				C4043DCB20AC3810006A6BE6 /* CurrentBundle.swift in Sources */,
 				C476BDD320AC1C0000325393 /* AddCityInteractor.swift in Sources */,
 				C476BDE520AC1C0000325393 /* CitySearchResultsInteractor.swift in Sources */,
@@ -1302,12 +1331,15 @@
 				C476BDED20AC1C0000325393 /* CitySearchResultsListModule.swift in Sources */,
 				C476BE0920AC1C0000325393 /* WeatherDetailTableViewController.swift in Sources */,
 				C476BDDB20AC1C0000325393 /* CitySearchAlternativesPresenter.swift in Sources */,
+				C48FE69920B1CF50009094C9 /* UIImage+Cropping.swift in Sources */,
+				C48FE69B20B1D4B9009094C9 /* UIView+Snapshotting.swift in Sources */,
 				C4043DBB20AC37EA006A6BE6 /* UserCities.xcdatamodeld in Sources */,
 				C476BDFC20AC1C0000325393 /* UserCityListView.swift in Sources */,
 				C48FE63020ACBF55009094C9 /* BundledImageLiterals.swift in Sources */,
 				C476BDE820AC1C0000325393 /* CitySearchResultsContainerView.swift in Sources */,
 				C476BDDE20AC1C0000325393 /* CitySearchAlternativesModule.swift in Sources */,
 				C476BDE720AC1C0000325393 /* CitySearchResultsRouter.swift in Sources */,
+				C48FE69D20B1DF61009094C9 /* UserCitiesSplitViewTransitioningSource.swift in Sources */,
 				C4043DCE20AC3810006A6BE6 /* NSObject+RetainedObjects.swift in Sources */,
 				C476BDCC20AC1C0000325393 /* MainModule.swift in Sources */,
 				C476BE0E20AC1C0000325393 /* UserCitiesProvider.swift in Sources */,
