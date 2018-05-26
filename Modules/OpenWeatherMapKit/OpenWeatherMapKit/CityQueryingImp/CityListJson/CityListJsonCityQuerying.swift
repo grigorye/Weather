@@ -8,9 +8,6 @@
 
 import GZIP
 import RxSwift
-import Then
-
-extension Observable : Then {}
 
 private let defaultCityInfos = Observable<[CityInfo]>.create({ observer in
     DispatchQueue.global().async {

@@ -7,9 +7,6 @@
 //
 
 import Swinject
-import Then
-
-extension Container : Then {}
 
 extension CityQueryingImp_CityListJson$ {
     
