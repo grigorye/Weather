@@ -12,7 +12,7 @@ func userCityIdentity(from location: UserCityLocation) -> String {
     return location.asJson()
 }
 
-extension UserCity : Persistable {
+extension UserCityInfoAndLastWeatherInfo : Persistable {
     
     typealias T = PersistentUserCity
 
@@ -25,29 +25,37 @@ extension UserCity : Persistable {
     }
     
     var identity: String {
-        return userCityIdentity(from: location)
+        return userCityIdentity(from: userCityInfo.location)
     }
     
     init(entity: PersistentUserCity) {
-        self.location = entity.location
-        self.cityName = entity.cityName!
-        self.dateAdded = entity.dateAdded!
-        self.weather = entity.weather
-        self.dateWeatherUpdated = entity.dateWeatherUpdated
-        self.dateWeatherRequested = entity.dateWeatherRequested
-        self.errored = entity.errored
-        self.hasWeatherQueryInProgress = entity.hasWeatherQueryInProgress
+        self.userCityInfo = UserCityInfo(
+            dateAdded: entity.dateAdded!,
+            location: entity.location,
+            cityName: entity.cityName!
+        )
+        self.lastWeatherInfo = LastWeatherInfo(
+            requestIsInProgress: entity.hasWeatherQueryInProgress,
+            requestDate: entity.dateWeatherRequested,
+            updateDate: entity.dateWeatherUpdated,
+            errored: entity.errored,
+            weather: entity.weather
+        )
     }
     
     func update(_ entity: PersistentUserCity) {
-        entity.location = location
-        entity.cityName = cityName
-        entity.dateAdded = dateAdded
-        entity.weather = weather
-        entity.dateWeatherUpdated = dateWeatherUpdated
-        entity.dateWeatherRequested = dateWeatherRequested
-        entity.errored = errored
-        entity.hasWeatherQueryInProgress = hasWeatherQueryInProgress
+        userCityInfo.do {
+            entity.dateAdded = $0.dateAdded
+            entity.location = $0.location
+            entity.cityName = $0.cityName
+        }
+        lastWeatherInfo.do {
+            entity.weather = $0.weather
+            entity.dateWeatherUpdated = $0.updateDate
+            entity.dateWeatherRequested = $0.requestDate
+            entity.errored = $0.errored
+            entity.hasWeatherQueryInProgress = $0.requestIsInProgress
+        }
 
         try! entity.managedObjectContext!.save()
     }

@@ -22,6 +22,7 @@ class AddCityInteractorImp : AddCityInteractor {
     func add(userCityFor cityInfo: CityInfo) {
         
         let userCity = UserCityInfo(
+            dateAdded: Date(),
             location: .cityId(cityInfo.cityId),
             cityName: cityInfo.cityName
         )
@@ -33,6 +34,7 @@ class AddCityInteractorImp : AddCityInteractor {
         
         let cityName = String(format: "%.5f,%.5f", coordinate.latitude, coordinate.longitude)
         let userCity = UserCityInfo(
+            dateAdded: Date(),
             location: .coordinate(coordinate),
             cityName: cityName
         )
@@ -43,6 +45,7 @@ class AddCityInteractorImp : AddCityInteractor {
     func addUserCityForCurrentLocation() {
         
         let userCity = UserCityInfo(
+            dateAdded: Date(),
             location: .currentLocation,
             cityName: NSLocalizedString("Current Location", comment: "")
         )

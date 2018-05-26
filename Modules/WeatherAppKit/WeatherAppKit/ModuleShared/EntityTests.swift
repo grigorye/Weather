@@ -8,7 +8,11 @@
 
 @testable import WeatherAppKit
 
-let currentLocationUserCityInfoSample = UserCityInfo(location: .currentLocation, cityName: "Current Location")
+let currentLocationUserCityInfoSample = UserCityInfo(
+    dateAdded: Date(timeIntervalSinceReferenceDate: 0),
+    location: .currentLocation,
+    cityName: "Current Location"
+)
 
 let userCityInfoSample = currentLocationUserCityInfoSample
 let cityCoordinateSample = CityCoordinate(latitude: -16.92, longitude: 145.77)

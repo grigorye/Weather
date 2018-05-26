@@ -11,8 +11,6 @@ import RxSwift
 import Result
 import Then
 
-extension Array : Then {}
-
 protocol UserCityListInteractor {
     
     var observableUserCityInfos: Observable<[UserCityInfo]> { get }

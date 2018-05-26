@@ -11,24 +11,11 @@ import Foundation.NSDate
 
 typealias LastWeather = Observable<LastWeatherInfo>
 
-struct LastWeatherInfo {
+struct LastWeatherInfo : Equatable {
     
     let requestIsInProgress: Bool
     let requestDate: Date?
     let updateDate: Date?
     let errored: Bool
     let weather: WeatherInfo?
-}
-
-extension UserCity {
-    
-    var lastWeatherInfo: LastWeatherInfo {
-        return .init(
-            requestIsInProgress: self.hasWeatherQueryInProgress,
-            requestDate: self.dateWeatherRequested,
-            updateDate: self.dateWeatherUpdated,
-            errored: self.errored,
-            weather: self.weather
-        )
-    }
 }

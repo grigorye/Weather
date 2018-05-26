@@ -20,25 +20,29 @@ class UserCity_PersistableTests : QuickSpec {
                 $0.persistentStoreCoordinator = psc
             }
             
-            let userCity = UserCity(
-                location: .cityId("2172797"),
-                weather: WeatherInfo(
-                    dateReceived: Date(),
-                    temperature: Measurement(value: 0, unit: UnitTemperature.celsius),
-                    cityName: "Cairns",
-                    cityCoordinate: CityCoordinate(latitude: -16.92, longitude: 145.77)
+            let userCity = UserCityInfoAndLastWeatherInfo(
+                userCityInfo: UserCityInfo(
+                    dateAdded: Date(),
+                    location: .cityId("2172797"),
+                    cityName: "Cairns"
                 ),
-                cityName: "Cairns",
-                dateAdded: Date(),
-                dateWeatherUpdated: Date(),
-                dateWeatherRequested: Date(),
-                errored: true,
-                hasWeatherQueryInProgress: true
+                lastWeatherInfo: LastWeatherInfo(
+                    requestIsInProgress: true,
+                    requestDate: Date(),
+                    updateDate: Date(),
+                    errored: true,
+                    weather: WeatherInfo(
+                        dateReceived: Date(),
+                        temperature: Measurement(value: 0, unit: UnitTemperature.celsius),
+                        cityName: "Cairns",
+                        cityCoordinate: CityCoordinate(latitude: -16.92, longitude: 145.77)
+                    )
+                )
             )
             let persistentUserCity = PersistentUserCity(context: moc)
             userCity.update(persistentUserCity)
             it("should match original after recreated") {
-                let updatedUserCity = UserCity(entity: persistentUserCity)
+                let updatedUserCity = UserCityInfoAndLastWeatherInfo(entity: persistentUserCity)
                 expect(updatedUserCity) == userCity
                 _ = moc // Keep moc around given that "it" is invoked after leaving the "context".
             }

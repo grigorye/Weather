@@ -1,5 +1,5 @@
 //
-//  UserCityWithLastWeather.swift
+//  UserCityInfoAndLastWeather.swift
 //  WeatherApp
 //
 //  Created by Grigory Entin on 11/05/2018.

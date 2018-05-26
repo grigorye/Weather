@@ -15,7 +15,7 @@ class CoreDataUserCitiesProvider : UserCitiesProvider {
     // MARK: - <UserCitiesProvider>
     
     func addUserCity(with userCityInfo: UserCityInfo) throws {
-        let userCity = UserCity(with: userCityInfo.location, cityName: userCityInfo.cityName)
+        let userCity = UserCityInfoAndLastWeatherInfo(with: userCityInfo)
         try managedObjectContext.rx.update(userCity)
     }
     
@@ -42,9 +42,9 @@ class CoreDataUserCitiesProvider : UserCitiesProvider {
 
     private func persistentUserCityFor(_ location: UserCityLocation) throws -> PersistentUserCity? {
         
-        typealias P = UserCity
+        typealias P = UserCityInfoAndLastWeatherInfo
         let identity = userCityIdentity(from: location)
-        let predicate = NSPredicate(format: "%K = %@", UserCity.primaryAttributeName, identity)
+        let predicate = NSPredicate(format: "%K = %@", UserCityInfoAndLastWeatherInfo.primaryAttributeName, identity)
         
         let fetchRequest: NSFetchRequest<PersistentUserCity> = PersistentUserCity.fetchRequest().then {
             $0.predicate = predicate
@@ -80,9 +80,9 @@ class CoreDataUserCitiesProvider : UserCitiesProvider {
         ]
         return
             managedObjectContext.rx
-                .entities(UserCity.self, sortDescriptors: sortDescriptors)
+                .entities(UserCityInfoAndLastWeatherInfo.self, sortDescriptors: sortDescriptors)
                 .map({ (userCities) in
-                    userCities.map { UserCityInfo(location: $0.location, cityName: $0.cityName) }
+                    userCities.map { $0.userCityInfo }
                 })
                 .share(replay: 1, scope: .forever)
     }()
@@ -99,18 +99,18 @@ class CoreDataUserCitiesProvider : UserCitiesProvider {
     }
     
     func lastWeather(for location: UserCityLocation) -> LastWeather {
-        let sortDescriptors = PersistentUserCity.namesOfComponentsOfLastWeather.map {
+        let sortDescriptors = PersistentUserCity.namesOfPropertiesAffectingLastWeather.map {
             NSSortDescriptor(key: $0, ascending: true)
         }
         
-        let predicate = NSPredicate(format: "%K = %@", UserCity.primaryAttributeName, userCityIdentity(from: location))
+        let predicate = NSPredicate(format: "%K = %@", UserCityInfoAndLastWeatherInfo.primaryAttributeName, userCityIdentity(from: location))
         
         return Observable.create { [unowned self, managedObjectContext] (observer) in
             let persistentUserCity = try! self.persistentUserCityFor(location)!
-            let userCity = UserCity(entity: persistentUserCity)
+            let userCity = UserCityInfoAndLastWeatherInfo(entity: persistentUserCity)
             observer.onNext(userCity.lastWeatherInfo)
             return managedObjectContext.rx
-                .entities(UserCity.self, predicate: predicate, sortDescriptors: sortDescriptors)
+                .entities(UserCityInfoAndLastWeatherInfo.self, predicate: predicate, sortDescriptors: sortDescriptors)
                 .subscribe(onNext: { (userCities) in
                     guard userCities.count != 0 else {
                         observer.onCompleted()

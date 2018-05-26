@@ -6,7 +6,11 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+import Foundation.NSDate
+
 struct UserCityInfo : Equatable {
+    
+    let dateAdded: Date
     let location: UserCityLocation
     let cityName: String
 }
