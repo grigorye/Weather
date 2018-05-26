@@ -32,7 +32,9 @@ struct UserCityListRouterImp : UserCityListRouter {
         
         let navigationController = viewController.navigationController!
         
-        prepareCustomTransitioning(via: navigationController, for: userCityInfoAndLastWeather)
+        if !UserDefaults.standard.bool(forKey: "forceStandardWeatherDetailTransitioning") {
+            prepareCustomTransitioning(via: navigationController, for: userCityInfoAndLastWeather)
+        }
 
         navigationController.pushViewController(detailViewController, animated: true)
     }
