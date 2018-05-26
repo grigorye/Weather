@@ -39,7 +39,7 @@ DEPENDENCIES:
   - Then (~> 2.3.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - Differentiator
     - GZIP
@@ -73,4 +73,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 0ef477fc601f5cd2195963166d154133b5b4349e
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
