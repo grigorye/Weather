@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserCitiesActionsViewController : UIViewController, UserCitiesActionsView {
+class UserCitiesActionsViewController : UIViewController {
     
     weak var delegate: UserCitiesActionsViewDelegate!
     

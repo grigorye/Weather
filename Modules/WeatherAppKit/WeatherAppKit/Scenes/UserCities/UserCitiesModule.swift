@@ -6,42 +6,36 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+import Swinject
 import UIKit
 
-func newUserCitiesViewController() -> UIViewController {
+protocol UserCitiesModule : class {
     
-    return UserCitiesModule.newViewController()
+    func newViewController(parentContainer: Container?) -> UIViewController
 }
 
-enum UserCitiesModule : ContainerViewModule {
+class UserCitiesModuleImp : UserCitiesModule, ContainerViewModule_V2 {
     
-    static func newViewController() -> UIViewController {
+    init(parentContainer: Container) {
         
-        let viewController = instantiateViewController()
+        let container = Container(parent: parentContainer)
+        self.container = container
         
-        let containerView = viewController as! ContainerView
-
-        let router: Router = UserCitiesRouterImp(viewController: viewController)
-        let presenter: Presenter = UserCitiesPresenterImp(router: router)
-        
-        UserCityListModule.prepare(containerView.listViewController)
-        
-        let actionsViewController = containerView.actionsViewController
-        let actionsView = actionsViewController as! UserCitiesActionsView
-        
-        actionsView.delegate = presenter
-        actionsViewController.retainObject(presenter)
-
-        return viewController
+        parentContainer.storyboardInitCompleted(ViewController.self) { r, c in
+            
+            container.register((UIViewController & ContainerView).self) { _ in c }
+            container.register((ContainerView).self) { _ in c }
+        }
     }
-    
+
     // MARK: -
     
     typealias ContainerView = UserCitiesContainerView
     typealias Interactor = ()
-    typealias Presenter = UserCitiesPresenter
-    typealias Router = UserCitiesRouter
+    typealias Presenter = ()
+    typealias Router = ()
     typealias ViewController = UserCitiesViewController
     
-    static let storyboardName = "UserCities"
+    let storyboardName = "UserCities"
+    let container: Container
 }

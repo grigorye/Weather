@@ -19,25 +19,7 @@ class AddCityViewController : UIViewController {
         return _searchContainerView
     }
     
-    var searchInputViewController: UIViewController {
-        _ = view
-        return _searchInputViewController
-    }
-    
     // MARK: -
     
     @IBOutlet private var _searchContainerView: UIStackView!
-    
-    private var _searchInputViewController: UIViewController!
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        super.prepare(for: segue, sender: sender)
-        
-        switch segue.identifier {
-        case "searchInput":
-            _searchInputViewController = segue.destination
-        default: ()
-        }
-    }
 }

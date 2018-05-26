@@ -6,10 +6,5 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-import UIKit.UIViewController
-
-protocol UserCitiesContainerView : ContainerView {
-    
-    var listViewController: UIViewController { get }
-    var actionsViewController: UIViewController { get }
+protocol UserCitiesContainerView : ContainerView_V2 {
 }

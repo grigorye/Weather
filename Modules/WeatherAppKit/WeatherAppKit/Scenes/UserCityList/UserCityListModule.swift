@@ -6,44 +6,59 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+import Swinject
 import UIKit
 
-func newUserCityListViewController() -> UIViewController {
+protocol UserCityListModule : class {
     
-    return UserCityListModule.newViewController()
+    func storyboardInitCompleted(viewController: UIViewController & UserCityListView)
 }
 
-enum UserCityListModule : ViewModule {
+class UserCityListModuleImp : UserCityListModule, ViewModule_V2, ModuleStoryboarding_V2 {
     
-    static func prepare(_ viewController: UIViewController) {
+    init(parentContainer: Container) {
         
-        let view = viewController as! UserCityListView
+        let container = Container(parent: parentContainer)
+        self.container = container
         
-        let router: Router = UserCityListRouterImp(viewController: viewController)
+        container.register(Router.self) { r in
+            return RouterImp(
+                viewController: r.resolve((UIViewController & View).self)!
+            )
+        }
+        container.register(Presenter.self) { r in
+            return PresenterImp(
+                view: r.resolve(View.self)!,
+                interactor: r.resolve(Interactor.self)!,
+                router: r.resolve(Router.self)!
+            )
+        }
+        container.register(Interactor.self) { r in
+            return InteractorImp(
+                userCitiesProvider: r.resolve(UserCitiesProvider.self)!,
+                weatherProvider: r.resolve(WeatherProvider.self)!,
+                userCityRefresher: r.resolve(UserCityRefresher.self)!
+            )
+        }
         
-        let userCitiesProvider: UserCitiesProvider = defaultUserCitiesProvider()
-        let weatherProvider: WeatherProvider = defaultWeatherProvider()
+        parentContainer.storyboardInitCompleted(ViewController.self) { (r, c) in
+            
+            self.storyboardInitCompleted(viewController: c)
+        }
+    }
+    
+    func storyboardInitCompleted(viewController: UIViewController & View) {
         
-        let locationService: LocationService = defaultLocationService
-        let userCityRefresher: UserCityRefresher = UserCityRefresherImp(userCitiesProvider: userCitiesProvider, weatherProvider: weatherProvider, locationService: locationService)
-        
-        let interactor: Interactor = UserCityListInteractorImp(userCitiesProvider: userCitiesProvider, weatherProvider: weatherProvider, userCityRefresher: userCityRefresher)
-        
-        let presenter: Presenter = UserCityListPresenterImp(view: view, interactor: interactor, router: router)
+        container.register((UIViewController & View).self) { _ in viewController }
+        container.register((View).self) { _ in viewController }
+
+        let presenter = container.resolve(Presenter.self)!
+        let view: View = viewController
         
         view.delegate = presenter
         viewController.retainObject(presenter)
         
         presenter.loadContent()
-    }
-    
-    static func newViewController() -> UIViewController {
-        
-        let viewController = instantiateViewController()
-        
-        prepare(viewController)
-        
-        return viewController
     }
     
     // MARK: -
@@ -54,7 +69,12 @@ enum UserCityListModule : ViewModule {
     typealias Router = UserCityListRouter
     typealias ViewController = UserCityListViewController
     
-    static let storyboardName = "UserCityList"
+    typealias InteractorImp = UserCityListInteractorImp
+    typealias PresenterImp = UserCityListPresenterImp
+    typealias RouterImp = UserCityListRouterImp
+
+    let storyboardName = "UserCityList"
+    let container: Container
 }
 
 extension UserCityListViewController /* Routing via Unwind Segues */ {

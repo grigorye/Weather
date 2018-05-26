@@ -14,7 +14,7 @@ struct CitySearchInputTypeIcons {
     let selected: UIImage
 }
 
-protocol CitySearchInputView : View {
+protocol CitySearchInputView : View_V2 {
     
     var delegate: CitySearchInputViewDelegate! { get set }
     

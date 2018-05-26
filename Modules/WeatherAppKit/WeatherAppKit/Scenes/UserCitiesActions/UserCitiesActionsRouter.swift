@@ -6,21 +6,23 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+import Swinject
 import UIKit
 
-protocol UserCitiesRouter {
+protocol UserCitiesActionsRouter {
     
     func routeToAddCity()
 }
 
-struct UserCitiesRouterImp : UserCitiesRouter {
+struct UserCitiesActionsRouterImp : UserCitiesActionsRouter {
     
     let viewController: UIViewController
+    let container: Container
     
-    // MARK: - <UserCitiesRouter>
+    // MARK: - <UserCitiesActionsRouter>
     
     func routeToAddCity() {
-        let addCityViewController = newAddCityViewController()
+        let addCityViewController = newAddCityViewController(parentContainer: container)
         viewController.present(addCityViewController, animated: true)
     }
 }

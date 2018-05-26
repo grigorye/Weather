@@ -96,16 +96,16 @@
 		C498C3C320A0726E00D63DB3 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		C498C3D320A0776900D63DB3 /* CityQueryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityQueryResult.swift; sourceTree = "<group>"; };
 		C498C3D520A077B900D63DB3 /* CityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
-		C498C3D820A079EF00D63DB3 /* CityQueryingImp$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityQueryingImp$.swift; sourceTree = "<group>"; };
+		C498C3D820A079EF00D63DB3 /* CityQueryingImp$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CityQueryingImp$.swift"; sourceTree = "<group>"; };
 		C498C3D920A07A1100D63DB3 /* CityQueryingImpContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityQueryingImpContainer.swift; sourceTree = "<group>"; };
 		C498C3DA20A07B1100D63DB3 /* DefaultCityQuerying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCityQuerying.swift; sourceTree = "<group>"; };
-		C498C3DF20A07EB700D63DB3 /* CityListJson$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListJson$.swift; sourceTree = "<group>"; };
+		C498C3DF20A07EB700D63DB3 /* CityListJson$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CityListJson$.swift"; sourceTree = "<group>"; };
 		C498C3E120A07F3E00D63DB3 /* CityListJsonCityQuerying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListJsonCityQuerying.swift; sourceTree = "<group>"; };
 		C498C3E320A083A600D63DB3 /* city.list.json.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = city.list.json.gz; sourceTree = "<group>"; };
 		C498C3E620A0970100D63DB3 /* CityListJsonCityQueryingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListJsonCityQueryingTests.swift; sourceTree = "<group>"; };
 		C498C3E920A0E5FA00D63DB3 /* PersistentCityInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentCityInfos.swift; sourceTree = "<group>"; };
 		C498C3EC20A0E76700D63DB3 /* CityInfos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CityInfos.xcdatamodel; sourceTree = "<group>"; };
-		C498C3EF20A0ED2100D63DB3 /* CoreData$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData$.swift; sourceTree = "<group>"; };
+		C498C3EF20A0ED2100D63DB3 /* CoreData$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData$.swift"; sourceTree = "<group>"; };
 		C498C3F120A0ED6300D63DB3 /* CityInfo+PersistentCityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CityInfo+PersistentCityInfo.swift"; sourceTree = "<group>"; };
 		C498C3F320A0EDA200D63DB3 /* CoreDataCityQuerying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCityQuerying.swift; sourceTree = "<group>"; };
 		C498C3F520A0F21B00D63DB3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -127,10 +127,10 @@
 		C49E398C209F9A980010EBAF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C49E398D209F9A980010EBAF /* LocationPredicateSamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPredicateSamples.swift; sourceTree = "<group>"; };
 		C49E398E209F9A980010EBAF /* WeatherResponseSample+OpenWeatherMap.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "WeatherResponseSample+OpenWeatherMap.json"; sourceTree = "<group>"; };
-		C49E3992209F9A990010EBAF /* NetworkingImp$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingImp$.swift; sourceTree = "<group>"; };
+		C49E3992209F9A990010EBAF /* NetworkingImp$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingImp$.swift"; sourceTree = "<group>"; };
 		C49E3993209F9A990010EBAF /* NetworkingImpContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingImpContainer.swift; sourceTree = "<group>"; };
 		C49E3994209F9A990010EBAF /* NetworkingImpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingImpTests.swift; sourceTree = "<group>"; };
-		C49E3995209F9A990010EBAF /* Moya$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moya$.swift; sourceTree = "<group>"; };
+		C49E3995209F9A990010EBAF /* Moya$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moya$.swift"; sourceTree = "<group>"; };
 		C49E3996209F9A990010EBAF /* MoyaNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaNetworking.swift; sourceTree = "<group>"; };
 		C49E3997209F9A990010EBAF /* MoyaNetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaNetworkingTests.swift; sourceTree = "<group>"; };
 		C49E3998209F9A990010EBAF /* MoyaTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaTarget.swift; sourceTree = "<group>"; };
@@ -543,6 +543,7 @@
 				"${BUILT_PRODUCTS_DIR}/Result-iOS/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift-iOS/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject-iOS/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard-iOS/SwinjectStoryboard.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -555,6 +556,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

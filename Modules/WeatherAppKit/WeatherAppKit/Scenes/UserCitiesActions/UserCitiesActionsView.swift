@@ -11,7 +11,7 @@ protocol UserCitiesActionsViewDelegate : class {
     func selectedAddCity()
 }
 
-protocol UserCitiesActionsView : class {
+protocol UserCitiesActionsView : View_V2 {
     
     var delegate: UserCitiesActionsViewDelegate! { get set }
 }

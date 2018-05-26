@@ -8,7 +8,7 @@
 
 import RxSwift
 
-protocol UserCityListView : View {
+protocol UserCityListView : View_V2 {
     
     var delegate: UserCityListViewDelegate! { get set }
     

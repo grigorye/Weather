@@ -10,7 +10,7 @@ import Foundation.NSObject
 
 private var retainedObjectsAssoc: Void?
 
-extension NSObject {
+extension NSObjectProtocol {
     
     private var retainedObjects: NSMutableArray {
         return associatedObjectRegeneratedAsNecessary(obj: self, key: &retainedObjectsAssoc, generator: [])
@@ -19,4 +19,12 @@ extension NSObject {
     func retainObject(_ object: AnyObject) {
         retainedObjects.add(object)
     }
+}
+
+func objectsRetained(in owner: AnyObject) -> NSMutableArray {
+    return associatedObjectRegeneratedAsNecessary(obj: owner, key: &retainedObjectsAssoc, generator: [])
+}
+
+func retain(_ object: AnyObject, in owner: AnyObject) {
+    objectsRetained(in: owner).add(object)
 }

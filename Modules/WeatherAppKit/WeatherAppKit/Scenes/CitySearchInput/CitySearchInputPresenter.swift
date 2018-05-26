@@ -20,10 +20,9 @@ class CitySearchInputPresenterImp : CitySearchInputPresenter {
     let interactor: CitySearchInputInteractor
     let view: CitySearchInputView
     
-    init(view: CitySearchInputView, interactor: CitySearchInputInteractor, delegate: CitySearchInputDelegate) {
+    init(view: CitySearchInputView, interactor: CitySearchInputInteractor) {
         self.view = view
         self.interactor = interactor
-        self.delegate = delegate
     }
     
     // MARK: - <CitySearchInputPresenter>

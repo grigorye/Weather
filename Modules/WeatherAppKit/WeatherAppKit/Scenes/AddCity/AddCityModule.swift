@@ -6,58 +6,79 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+import SwinjectStoryboard
+import Swinject
 import UIKit
-
-func newAddCityViewController() -> UIViewController {
-    return AddCityModule.newModuleViewController()
-}
 
 extension AddCityViewController : AddCityContainerView {}
 
-enum AddCityModule : ContainerViewModule {
+protocol AddCityModule : class {
+    
+    func newViewController(parentContainer: Container?) -> UIViewController
+}
+
+class AddCityModuleImp : AddCityModule, ContainerViewModule_V2 {
+    
+    init(parentContainer: Container) {
+        
+        let container = Container(parent: parentContainer, defaultObjectScope: .container)
+        self.container = container
+        
+        container.register(Interactor.self) { r in
+            InteractorImp(
+                userCitiesProvider: r.resolve(UserCitiesProvider.self)!
+            )
+        }
+        container.register(Presenter.self) { r in
+            return PresenterImp(
+                router: r.resolve(Router.self)!,
+                interactor: r.resolve(Interactor.self)!
+            )
+        }
+        container.register(Router.self) { r in
+            var presenter: Presenter { return r.resolve(Presenter.self)! }
+            return AddCityRouterImp(
+                viewController: r.resolve((UIViewController & ContainerView).self)!,
+                containerView: r.resolve(ContainerView.self)!.searchContainerView,
+                cityInfoSelectionHandler: { presenter.cityInfoSelectionHandler($0) },
+                coordinateSelectionHandler: { presenter.coordinateSelectionHandler($0) },
+                currentLocationSelectionHandler: { presenter.currentLocationSelectionHandler() }
+            )
+        }
+        parentContainer.storyboardInitCompleted(ViewController.self) { [unowned self] (r, c) in
+            self.storyboardInitCompleted(viewController: c)
+        }
+        parentContainer.register(CitySearchInputDelegate.self) { r in
+            return container.resolve(Presenter.self)!
+        }
+    }
+    
+    func storyboardInitCompleted(viewController: UIViewController & ContainerView) {
+        
+        container.register((UIViewController & ContainerView).self) { _ in viewController }
+        container.register((ContainerView).self) { _ in viewController }
+        
+        let presenter = container.resolve(Presenter.self)!
+        
+        let router = container.resolve(Router.self)!
+
+        viewController.retainObject(presenter)
+        
+        router.routeToNoSearch()
+    }
+    
+    // MARK: -
     
     typealias ContainerView = AddCityContainerView
     typealias Interactor = AddCityInteractor
     typealias Presenter = AddCityPresenter
     typealias Router = AddCityRouter
     typealias ViewController = AddCityViewController
-    
-    static let storyboardName = "AddCity"
-    
-    static func newModuleViewController() -> UIViewController {
-        
-        let storyboard = UIStoryboard(name: "AddCity", bundle: .current)
-        
-        let navigationController = storyboard.instantiateInitialViewController()! as! UINavigationController
-        
-        let viewController = navigationController.viewControllers.first!
-        let containerView = viewController as! ContainerView
-        
-        let searchContainerView = containerView.searchContainerView
-        
-        let searchInputViewController = containerView.searchInputViewController
-        
-        let userCitiesProvider = defaultUserCitiesProvider()
-        
-        let interactor: Interactor = AddCityInteractorImp(userCitiesProvider: userCitiesProvider)
-        
-        var presenter: Presenter!
-        let router: Router = AddCityRouterImp(
-            viewController: viewController,
-            containerView: searchContainerView,
-            cityInfoSelectionHandler: { presenter.cityInfoSelectionHandler($0) },
-            coordinateSelectionHandler: { presenter.coordinateSelectionHandler($0) },
-            currentLocationSelectionHandler: { presenter.currentLocationSelectionHandler() }
-        )
-        
-        presenter = AddCityPresenterImp(router: router, interactor: interactor)
-        
-        viewController.retainObject(presenter)
 
-        router.routeToNoSearch()
-        
-        CitySearchInputModule.bind(searchInputViewController, delegate: presenter)
-        
-        return navigationController
-    }
+    typealias InteractorImp = AddCityInteractorImp
+    typealias PresenterImp = AddCityPresenterImp
+    typealias RouterImp = AddCityRouterImp
+
+    let storyboardName = "AddCity"
+    let container: Container
 }

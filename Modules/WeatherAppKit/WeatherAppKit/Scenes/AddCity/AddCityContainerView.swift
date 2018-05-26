@@ -6,12 +6,9 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-import UIKit.UIViewController
 import UIKit.UIStackView
 
-protocol AddCityContainerView : ContainerView {
-    
-    var searchInputViewController: UIViewController { get }
+protocol AddCityContainerView : ContainerView_V2 {
     
     var searchContainerView: UIStackView { get }
 }

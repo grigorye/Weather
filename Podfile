@@ -8,6 +8,7 @@ def shared_non_test_pods
   pod 'Result'
   pod 'Moya', '~> 11.0.2'
   pod 'Swinject', '~> 2.4.0'
+  pod 'SwinjectStoryboard', '~> 2.0.1'
   pod 'Then', '~> 2.3.0'
   pod 'SwiftLint', '~> 0.25.1'
   pod 'GZIP', '~> 1.2.1'

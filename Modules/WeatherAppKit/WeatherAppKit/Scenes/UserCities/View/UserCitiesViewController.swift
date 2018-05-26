@@ -8,29 +8,5 @@
 
 import UIKit
 
-class UserCitiesViewController : UserCityListViewController /* !!! */, UserCitiesContainerView {
-
-    var listViewController : UIViewController {
-        return self
-    }
-    
-    var actionsViewController : UIViewController {
-        _ = view
-        return _footerViewController!
-    }
-    
-    private var _footerViewController: UIViewController!
-    
-    // MARK: -
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        super.prepare(for: segue, sender: sender)
-        
-        switch segue.identifier {
-        case "footer"?:
-            _footerViewController = segue.destination
-        default: ()
-        }
-    }
+class UserCitiesViewController : UIViewController, UserCitiesContainerView {
 }

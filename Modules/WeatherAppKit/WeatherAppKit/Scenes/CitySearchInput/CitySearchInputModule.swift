@@ -6,19 +6,51 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+import SwinjectStoryboard
+import Swinject
 import UIKit
 
-enum CitySearchInputModule : ViewModule {
+protocol CitySearchInputModule : class {}
+
+class CitySearchInputModuleImp : CitySearchInputModule, ViewModule_V2 {
     
-    static func bind(_ viewController: UIViewController, delegate: CitySearchInputDelegate) {
+    init(parentContainer: Container) {
         
-        let view = viewController as! View
+        let container = Container(parent: parentContainer)
+        self.container = container
         
-        let interactor: Interactor = CitySearchInputInteractorImp()
-        let presenter: Presenter = CitySearchInputPresenterImp(view: view, interactor: interactor, delegate: delegate)
+        container.do {
+            $0.register(Interactor.self) { _ in
+                InteractorImp()
+            }
+            $0.register(Presenter.self, factory: { r in
+                PresenterImp(
+                    view: r.resolve(View.self)!,
+                    interactor: r.resolve(Interactor.self)!
+                )
+            }).initCompleted { (r, presenter) in
+                DispatchQueue.main.async {
+                    presenter.delegate = r.resolve(CitySearchInputDelegate.self)!
+                }
+            }
+        }
         
-        viewController.retainObject(presenter)
+        parentContainer.storyboardInitCompleted(ViewController.self) { (r, c) in
+            self.storyboardInitCompleted(viewController: c)
+        }
+    }
+    
+    func storyboardInitCompleted(viewController: (ViewController & View)) {
+        
+        let view = viewController as View
+
+        container.register((UIViewController & View).self) { _ in viewController }
+        container.register((View).self) { _ in view }
+
+        let presenter = container.resolve(Presenter.self)!
+        
         view.delegate = presenter
+        viewController.retainObject(presenter)
         
         presenter.loadContent()
     }
@@ -31,5 +63,13 @@ enum CitySearchInputModule : ViewModule {
     typealias Router = ()
     typealias ViewController = CitySearchInputViewController
 
-    static let storyboardName = "CitySearchInput"
+    typealias InteractorImp = CitySearchInputInteractorImp
+    typealias PresenterImp = CitySearchInputPresenterImp
+
+    let storyboardName = "CitySearchInput"
+    let container: Container
+    
+    // MARK: -
+    
+    deinit {()}
 }
