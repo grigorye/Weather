@@ -16,6 +16,7 @@ protocol View_V2 : class {
 
 protocol ModuleStoryboarding_V2 : class {
     
+    var viewControllerStoryboardID: String? { get }
     var storyboardName: String { get }
     var container: Container { get }
 }
@@ -56,11 +57,19 @@ struct StoryboardContainerProvider {
 
 extension ModuleStoryboarding_V2 {
     
+    var viewControllerStoryboardID: String? { return nil }
+    
     func instantiateViewController() -> UIViewController {
         
         let container = self.container.resolve(StoryboardContainerProvider.self)!.container
         let storyboard: UIStoryboard = SwinjectStoryboard.create(name: storyboardName, bundle: .current, container: container)
-        let viewController = storyboard.instantiateInitialViewController()!
+        let viewController: UIViewController = {
+            guard let viewControllerStoryboardID = self.viewControllerStoryboardID else {
+                return storyboard.instantiateInitialViewController()!
+            }
+            return storyboard.instantiateViewController(withIdentifier: viewControllerStoryboardID)
+        }()
+            
         retain(self, in: viewController)
         
         return viewController
