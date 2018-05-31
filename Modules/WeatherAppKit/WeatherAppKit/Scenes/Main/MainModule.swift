@@ -46,6 +46,13 @@ struct MainModuleImp : MainModule, ContainerViewModule_V2 {
     typealias Router = ()
     
     let storyboardName = "Main"
-    
+
+    var viewControllerStoryboardID: String? {
+        guard !UserDefaults.standard.bool(forKey: "forceDebugScene") else {
+            return "Debug"
+        }
+        return nil
+    }
+
     let container: Container
 }
