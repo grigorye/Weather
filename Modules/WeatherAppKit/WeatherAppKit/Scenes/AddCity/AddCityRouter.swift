@@ -18,7 +18,7 @@ protocol AddCityRouter {
 
 class AddCityRouterImp : AddCityRouter {
     
-    weak var viewController: UIViewController!
+    unowned let viewController: UIViewController
     let containerView: UIStackView
     let cityInfoSelectionHandler: (CityInfo) -> Void
     let coordinateSelectionHandler: (CityCoordinate) -> Void

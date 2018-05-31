@@ -16,7 +16,7 @@ protocol CitySearchAlternativesRouter {
 
 struct CitySearchAlternativesRouterImp : CitySearchAlternativesRouter {
     
-    let viewController: UIViewController
+    unowned let viewController: UIViewController
     
     let coordinateSelectionHandler: (CityCoordinate) -> Void
     let currentLocationSelectionHandler: () -> Void

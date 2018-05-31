@@ -16,7 +16,7 @@ protocol UserCitiesActionsRouter {
 
 struct UserCitiesActionsRouterImp : UserCitiesActionsRouter {
     
-    let viewController: UIViewController
+    unowned let viewController: UIViewController
     let container: Container
     
     // MARK: - <UserCitiesActionsRouter>

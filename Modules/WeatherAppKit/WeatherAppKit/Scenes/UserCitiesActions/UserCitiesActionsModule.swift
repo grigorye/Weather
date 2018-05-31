@@ -27,11 +27,14 @@ class UserCitiesActionsModuleImp : ViewModule_V2, UserCitiesActionsModule {
         container.register(Router.self) { r in
             return RouterImp(
                 viewController: r.resolve((UIViewController & View).self)!,
-                container: container
+                container: parentContainer
             )
         }
         
-        parentContainer.storyboardInitCompleted(ViewController.self) { r, c in
+        parentContainer.storyboardInitCompleted(ViewController.self) { [unowned container, unowned self] r, c in
+            
+            container.register((UIViewController & View).self) { [unowned c] _ in c }
+            container.register((View).self) { [unowned c] _ in c }
             
             self.storyboardInitCompleted(viewController: c)
         }
@@ -39,9 +42,6 @@ class UserCitiesActionsModuleImp : ViewModule_V2, UserCitiesActionsModule {
 
     func storyboardInitCompleted(viewController: UIViewController & View) {
         
-        container.register((UIViewController & View).self) { _ in viewController }
-        container.register((View).self) { _ in viewController }
-
         let presenter = container.resolve(Presenter.self)!
         let view = viewController as View
         

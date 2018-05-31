@@ -9,4 +9,6 @@
 import UIKit
 
 class UserCitiesViewController : UIViewController, UserCitiesContainerView {
+
+    deinit {()}
 }

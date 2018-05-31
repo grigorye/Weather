@@ -11,7 +11,7 @@ import UIKit
 
 protocol UserCitiesModule : class {
     
-    func newViewController(parentContainer: Container?) -> UIViewController
+    func newViewController() -> UIViewController
 }
 
 class UserCitiesModuleImp : UserCitiesModule, ContainerViewModule_V2 {
@@ -23,10 +23,12 @@ class UserCitiesModuleImp : UserCitiesModule, ContainerViewModule_V2 {
         
         parentContainer.storyboardInitCompleted(ViewController.self) { r, c in
             
-            container.register((UIViewController & ContainerView).self) { _ in c }
-            container.register((ContainerView).self) { _ in c }
+            container.register((UIViewController & ContainerView).self) { [unowned c] _ in c }
+            container.register((ContainerView).self) { [unowned c] _ in c }
         }
     }
+
+    deinit {()}
 
     // MARK: -
     

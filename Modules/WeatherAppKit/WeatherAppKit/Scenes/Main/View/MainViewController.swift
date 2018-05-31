@@ -21,4 +21,8 @@ class MainViewController : UISplitViewController {
         _ = view
         return forceCasted(viewControllers[1])
     }
+    
+    // MARK: -
+    
+    deinit {()}
 }

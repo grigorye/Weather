@@ -15,7 +15,7 @@ protocol UserCityListRouter {
 
 struct UserCityListRouterImp : UserCityListRouter {
     
-    let viewController: UIViewController
+    unowned let viewController: UIViewController
     
     // MARK: - <UserCityListRouter>
     

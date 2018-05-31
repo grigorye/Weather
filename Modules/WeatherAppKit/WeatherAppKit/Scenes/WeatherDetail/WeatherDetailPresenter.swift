@@ -15,7 +15,7 @@ protocol WeatherDetailPresenter : class {
 
 class WeatherDetailPresenterImp : WeatherDetailPresenter {
     
-    let view: WeatherDetailView
+    unowned let view: WeatherDetailView
     let userCityInfoAndLastWeather: UserCityInfoAndLastWeather
     
     init(view: WeatherDetailView, userCityInfoAndLastWeather: UserCityInfoAndLastWeather) {
@@ -27,7 +27,7 @@ class WeatherDetailPresenterImp : WeatherDetailPresenter {
     
     func loadContent() {
         let (userCity, lastWeather) = userCityInfoAndLastWeather
-        lastWeather.subscribe(onNext: { [view] (lastWeatherInfo) in
+        lastWeather.subscribe(onNext: { [unowned view] (lastWeatherInfo) in
             let weather = lastWeatherInfo.weather
             let temperature = temperatureTextFromWeather(weather, temperatureUnit: defaultTemperatureUnit)
             

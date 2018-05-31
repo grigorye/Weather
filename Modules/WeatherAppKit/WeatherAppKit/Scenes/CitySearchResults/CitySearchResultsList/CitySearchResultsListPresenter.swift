@@ -13,7 +13,7 @@ protocol CitySearchResultsListPresenter : CitySearchResultsListViewDelegate {
 
 class CitySearchResultsListPresenterImp : CitySearchResultsListPresenter {
 
-    let view: CitySearchResultsListView
+    unowned let view: CitySearchResultsListView
     let router: CitySearchResultsListRouter
     let searchResults: [CityInfo]
     

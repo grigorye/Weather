@@ -14,7 +14,7 @@ extension AddCityViewController : AddCityContainerView {}
 
 protocol AddCityModule : class {
     
-    func newViewController(parentContainer: Container?) -> UIViewController
+    func newViewController() -> UIViewController
 }
 
 class AddCityModuleImp : AddCityModule, ContainerViewModule_V2 {
@@ -29,14 +29,18 @@ class AddCityModuleImp : AddCityModule, ContainerViewModule_V2 {
                 userCitiesProvider: r.resolve(UserCitiesProvider.self)!
             )
         }
-        container.register(Presenter.self) { r in
-            return PresenterImp(
+        
+        weak var presenter: Presenter!
+        container.register(Presenter.self, factory: { r in
+            PresenterImp(
                 router: r.resolve(Router.self)!,
                 interactor: r.resolve(Interactor.self)!
             )
+        }).initCompleted { (r, p) in
+            presenter = p
         }
+        
         container.register(Router.self) { r in
-            var presenter: Presenter { return r.resolve(Presenter.self)! }
             return AddCityRouterImp(
                 viewController: r.resolve((UIViewController & ContainerView).self)!,
                 containerView: r.resolve(ContainerView.self)!.searchContainerView,
@@ -45,27 +49,34 @@ class AddCityModuleImp : AddCityModule, ContainerViewModule_V2 {
                 currentLocationSelectionHandler: { presenter.currentLocationSelectionHandler() }
             )
         }
-        parentContainer.storyboardInitCompleted(ViewController.self) { [unowned self] (r, c) in
+        let storyboardContainer = parentContainer.resolve(StoryboardContainerProvider.self)!.container
+        storyboardContainer.storyboardInitCompleted(ViewController.self) { [unowned self] (r, c) in
             self.storyboardInitCompleted(viewController: c)
         }
-        parentContainer.register(CitySearchInputDelegate.self) { r in
+        parentContainer.register(CitySearchInputDelegate.self, factory: { [unowned container] r in
             return container.resolve(Presenter.self)!
-        }
+        })
     }
     
     func storyboardInitCompleted(viewController: UIViewController & ContainerView) {
         
-        container.register((UIViewController & ContainerView).self) { _ in viewController }
-        container.register((ContainerView).self) { _ in viewController }
+        container.register((UIViewController & ContainerView).self, factory: { [weak viewController] _ in
+            viewController!
+        })
+        container.register((ContainerView).self, factory: { [weak viewController] _ in
+            viewController!
+        })
         
         let presenter = container.resolve(Presenter.self)!
         
         let router = container.resolve(Router.self)!
-
+        
         viewController.retainObject(presenter)
         
         router.routeToNoSearch()
     }
+    
+    deinit {()}
     
     // MARK: -
     
@@ -74,11 +85,11 @@ class AddCityModuleImp : AddCityModule, ContainerViewModule_V2 {
     typealias Presenter = AddCityPresenter
     typealias Router = AddCityRouter
     typealias ViewController = AddCityViewController
-
+    
     typealias InteractorImp = AddCityInteractorImp
     typealias PresenterImp = AddCityPresenterImp
     typealias RouterImp = AddCityRouterImp
-
+    
     let storyboardName = "AddCity"
     let container: Container
 }

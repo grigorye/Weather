@@ -18,7 +18,7 @@ protocol UserCityListPresenter : UserCityListViewDelegate {
 
 class UserCityListPresenterImp : UserCityListPresenter {
     
-    let view: UserCityListView
+    unowned let view: UserCityListView
     let interactor: UserCityListInteractor
     let router: UserCityListRouter
     

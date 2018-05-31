@@ -15,7 +15,7 @@ protocol CitySearchResultsListRouter {
 
 class CitySearchResultsListRouterImp : CitySearchResultsListRouter {
     
-    let viewController: UIViewController
+    unowned let viewController: UIViewController
     let selectionHandler: (CityInfo) -> Void
     
     init(viewController: UIViewController, selectionHandler: @escaping (CityInfo) -> Void) {

@@ -18,7 +18,7 @@ protocol CitySearchInputPresenter : CitySearchInputViewDelegate {
 class CitySearchInputPresenterImp : CitySearchInputPresenter {
     
     let interactor: CitySearchInputInteractor
-    let view: CitySearchInputView
+    unowned let view: CitySearchInputView
     
     init(view: CitySearchInputView, interactor: CitySearchInputInteractor) {
         self.view = view

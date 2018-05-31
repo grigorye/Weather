@@ -47,7 +47,13 @@ class UserCityListViewController : UITableViewController, UserCityListView {
             (cell as! UserCityListItemView).model = userCity
             return cell
         })
-        
+        animatedDataSource.canEditRowAtIndexPath = { _, _  in
+            return true
+        }
+        animatedDataSource.canMoveRowAtIndexPath = { _, _  in
+            return false
+        }
+
         tableView.dataSource = nil
         
         itemViewModels
@@ -73,12 +79,6 @@ class UserCityListViewController : UITableViewController, UserCityListView {
             })
             .disposed(by: disposeBag)
         
-        animatedDataSource.canEditRowAtIndexPath = { _, _  in
-            return true
-        }
-        animatedDataSource.canMoveRowAtIndexPath = { _, _  in
-            return false
-        }
     }
     
     // MARK: - Refresh
@@ -94,4 +94,8 @@ class UserCityListViewController : UITableViewController, UserCityListView {
     func endRefreshing() {
         refreshControl?.endRefreshing()
     }
+
+    // MARK: -
+    
+    deinit {()}
 }

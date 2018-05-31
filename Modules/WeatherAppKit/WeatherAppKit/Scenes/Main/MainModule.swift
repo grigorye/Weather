@@ -11,31 +11,24 @@ import UIKit
 
 extension MainViewController : MainContainerView, ContainerView_V2 {}
 
-public func newMainViewController(parentContainer: Container? = sharedContainer) -> UIViewController {
+protocol MainModule : class {
     
-    let container = Container(parent: parentContainer)
-    
-    let storyboard = UIStoryboard(name: "Main", bundle: .current)
-    let viewController = storyboard.instantiateInitialViewController()!
-    
-    let containerView = viewController as! MainContainerView
-    
-    let userCitiesViewController = newUserCitiesViewController(parentContainer: container)
-
-    let masterNavigationController = containerView.masterNavigationController
-    masterNavigationController.viewControllers = [userCitiesViewController]
-
-    return viewController
+    func newViewController() -> UIViewController
 }
 
-protocol MainModule {
+class MainModuleImp : MainModule, ContainerViewModule_V2 {
     
-    func newViewController(parentContainer: Container?) -> UIViewController
-}
-
-struct MainModuleImp : MainModule, ContainerViewModule_V2 {
+    init(parentContainer: Container) {
+        
+        let container = Container(parent: parentContainer)
+        self.container = container
+    }
     
-    typealias ContainerView = View_V2
+    deinit {()}
+    
+    // MARK: -
+    
+    typealias ContainerView = MainContainerView
     
     typealias ViewController = MainViewController
     

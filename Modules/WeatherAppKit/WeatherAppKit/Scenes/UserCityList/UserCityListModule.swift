@@ -41,7 +41,10 @@ class UserCityListModuleImp : UserCityListModule, ViewModule_V2, ModuleStoryboar
             )
         }
         
-        parentContainer.storyboardInitCompleted(ViewController.self) { (r, c) in
+        parentContainer.storyboardInitCompleted(ViewController.self) { [unowned container, unowned self] (r, c) in
+            
+            container.register((UIViewController & View).self) { [unowned c] _ in c }
+            container.register((View).self) { [unowned c] _ in c }
             
             self.storyboardInitCompleted(viewController: c)
         }
@@ -49,9 +52,6 @@ class UserCityListModuleImp : UserCityListModule, ViewModule_V2, ModuleStoryboar
     
     func storyboardInitCompleted(viewController: UIViewController & View) {
         
-        container.register((UIViewController & View).self) { _ in viewController }
-        container.register((View).self) { _ in viewController }
-
         let presenter = container.resolve(Presenter.self)!
         let view: View = viewController
         

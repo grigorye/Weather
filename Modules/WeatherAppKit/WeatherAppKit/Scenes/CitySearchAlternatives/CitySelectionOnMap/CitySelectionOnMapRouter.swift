@@ -16,13 +16,15 @@ protocol CitySelectionOnMapRouter {
 
 class CitySelectionOnMapRouterImp : CitySelectionOnMapRouter {
     
-    let viewController: UIViewController
+    unowned let viewController: UIViewController
     let selectionHandler: (CityCoordinate) -> Void
     
     init(viewController: UIViewController, selectionHandler: @escaping (CityCoordinate) -> Void) {
         self.viewController = viewController
         self.selectionHandler = selectionHandler
     }
+    
+    deinit {()}
     
     // MARK: - <CitySelectionOnMapRouter>
     

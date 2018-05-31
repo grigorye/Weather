@@ -11,5 +11,8 @@ import Swinject
 private var assembler: Assembler!
 
 public let sharedContainer = Container().with {
-    assembler = Assembler([ServicesAssembly()], container: $0)
+    let assemblies: [Assembly] = [
+        ServicesAssembly()
+    ]
+    assembler = Assembler(assemblies, container: $0)
 }

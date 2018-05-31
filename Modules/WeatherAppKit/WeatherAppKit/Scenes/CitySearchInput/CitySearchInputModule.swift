@@ -35,7 +35,8 @@ class CitySearchInputModuleImp : CitySearchInputModule, ViewModule_V2 {
             }
         }
         
-        parentContainer.storyboardInitCompleted(ViewController.self) { (r, c) in
+        let storyboardContainer = container.resolve(StoryboardContainerProvider.self)!.container
+        storyboardContainer.storyboardInitCompleted(ViewController.self) { [unowned self] (r, c) in
             self.storyboardInitCompleted(viewController: c)
         }
     }
@@ -44,8 +45,12 @@ class CitySearchInputModuleImp : CitySearchInputModule, ViewModule_V2 {
         
         let view = viewController as View
 
-        container.register((UIViewController & View).self) { _ in viewController }
-        container.register((View).self) { _ in view }
+        container.register((UIViewController & View).self, factory: { [weak viewController] _ in
+            viewController!
+        })
+        container.register((View).self, factory: { [weak viewController] _ in
+            viewController!
+        })
 
         let presenter = container.resolve(Presenter.self)!
         
