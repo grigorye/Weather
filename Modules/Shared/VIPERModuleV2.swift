@@ -14,7 +14,7 @@ protocol ContainerView_V2 : class {}
 protocol View_V2 : class {
 }
 
-protocol ModuleStoryboarding_V2 {
+protocol ModuleStoryboarding_V2 : class {
     
     var storyboardName: String { get }
     var container: Container { get }
@@ -45,12 +45,23 @@ protocol ContainerViewModule_V2 : ModuleNonView_V2, ModuleStoryboarding_V2 {
 
 import UIKit
 
+struct StoryboardContainerProvider {
+    
+    unowned let container: Container
+    
+    init(container: Container) {
+        self.container = container
+    }
+}
+
 extension ModuleStoryboarding_V2 {
     
     func instantiateViewController() -> UIViewController {
         
+        let container = self.container.resolve(StoryboardContainerProvider.self)!.container
         let storyboard: UIStoryboard = SwinjectStoryboard.create(name: storyboardName, bundle: .current, container: container)
         let viewController = storyboard.instantiateInitialViewController()!
+        retain(self, in: viewController)
         
         return viewController
     }
@@ -66,7 +77,7 @@ extension ViewModule_V2 where Self: ModuleStoryboarding_V2 {
 
 extension ContainerViewModule_V2 {
     
-    func newViewController(parentContainer: Container? = sharedContainer) -> UIViewController {
+    func newViewController() -> UIViewController {
         
         return instantiateViewController()
     }
