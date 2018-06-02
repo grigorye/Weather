@@ -17,8 +17,6 @@ The architecture and implementation of "screens" is **heavily** inspired by [(B)
     
 2. (Default) Module configuration so far is achieved via `new<ModuleName>ViewController(input1, ... inputN)` or `ModuleName.prepare(viewController, input1, ... inputN)`.
 
-3. It needs to be further investigated how/whether to avoid loading view when dealing with view controller containment (during module configuration). Technically it should be possible to delay it till viewDidLoad, but that would require support from view controller/adding extra dependency.
-
 # Types of dependencies
 
 There're three types of dependencies:
@@ -29,7 +27,7 @@ There're three types of dependencies:
 
 ## Module composition dependencies
 
-For a container module, in case of simple composition, storyboard-defined containmnet is quite enough. What we'd like to achieve is depenendecy-container hierarchy matching the module/view controller containment hierarchy. So that at each level/module just level-specific immediate dependencies are available.
+For a container module, in case of simple composition, storyboard-defined containment is quite enough. What we'd like to achieve is depenendecy-container hierarchy matching the module/view controller containment hierarchy. So that at each level/module just level-specific immediate dependencies are available.
 
 # Scenes vs Modules
 
