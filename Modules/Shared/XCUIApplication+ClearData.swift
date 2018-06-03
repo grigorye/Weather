@@ -19,6 +19,8 @@ extension XCUIApplication {
     
     func prepareForLaunchingWithClearData() {
         
+        precondition(scheduledForCleanup.count == 0)
+
         let fileManager = FileManager.default
         let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
         let homeURL = try! fileManager.createTemplateDirectory(at: temporaryDirectoryURL, prefix: "Container-")
@@ -33,7 +35,10 @@ extension XCUIApplication {
     }
     
     func prepareForTerminationWithClearData() {
+        
         precondition(scheduledForCleanup.count > 0)
+        
         scheduledForCleanup.forEach { $0() }
+        scheduledForCleanup = []
     }
 }
