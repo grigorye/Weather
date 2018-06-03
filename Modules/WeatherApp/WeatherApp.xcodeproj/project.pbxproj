@@ -22,6 +22,8 @@
 		C4C8F108209B6B0000E081B4 /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C8F107209B6B0000E081B4 /* WeatherTests.swift */; };
 		C4C8F113209B6B0000E081B4 /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C8F112209B6B0000E081B4 /* WeatherUITests.swift */; };
 		C4CFD0F920A4645900A87DCC /* AppModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CFD0F820A4645900A87DCC /* AppModule.swift */; };
+		C4E0414B20C42FF00014E358 /* XCUIApplication+ClearData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E0414A20C42FF00014E358 /* XCUIApplication+ClearData.swift */; };
+		C4E0414F20C43B090014E358 /* FileManager+TemplateDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E0414E20C43B090014E358 /* FileManager+TemplateDirectory.swift */; };
 		EE77918F5E8C37D38CC02E7C /* Pods_WeatherAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A25ADB6581CBB16FC60F2C /* Pods_WeatherAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +87,8 @@
 		C4C8F112209B6B0000E081B4 /* WeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITests.swift; sourceTree = "<group>"; };
 		C4C8F114209B6B0000E081B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4CFD0F820A4645900A87DCC /* AppModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModule.swift; sourceTree = "<group>"; };
+		C4E0414A20C42FF00014E358 /* XCUIApplication+ClearData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+ClearData.swift"; sourceTree = "<group>"; };
+		C4E0414E20C43B090014E358 /* FileManager+TemplateDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+TemplateDirectory.swift"; sourceTree = "<group>"; };
 		F3A25ADB6581CBB16FC60F2C /* Pods_WeatherAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -146,7 +150,9 @@
 		C4C1DFDD20A2357800C11C62 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C4E0414A20C42FF00014E358 /* XCUIApplication+ClearData.swift */,
 				C47D31D520C3DCAE00C673B3 /* CurrentBundle.swift */,
+				C4E0414E20C43B090014E358 /* FileManager+TemplateDirectory.swift */,
 				C4A1E5AB209C1CD400FBDCAC /* QuickAndNimble.swift */,
 			);
 			name = Shared;
@@ -508,7 +514,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4C8F113209B6B0000E081B4 /* WeatherUITests.swift in Sources */,
+				C4E0414B20C42FF00014E358 /* XCUIApplication+ClearData.swift in Sources */,
 				C47D31D720C3DCC100C673B3 /* CurrentBundle.swift in Sources */,
+				C4E0414F20C43B090014E358 /* FileManager+TemplateDirectory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
