@@ -33,10 +33,18 @@ class WeatherUITests: XCTestCase {
         let mainStaticText = app.tables.staticTexts["Main"]
         let addCityButton = app.tables.buttons["Add City"]
         let cancelButton = app.buttons["Cancel"]
-
-        for _ in 0..<50 {
+        let searchField = app.searchFields["City"]
+        
+        let cityNames: [String] = {
+            let jsonURL = Bundle.current.url(forResource: "CityNamesSample", withExtension: "json")!
+            let jsonData = try! Data(contentsOf: jsonURL)
+            return try! JSONDecoder().decode([String].self, from: jsonData)
+        }()
+        
+        for cityName in cityNames {
             mainStaticText.tap()
             addCityButton.tap()
+            searchField.typeText(cityName)
             cancelButton.tap()
             debugButton.tap()
         }
