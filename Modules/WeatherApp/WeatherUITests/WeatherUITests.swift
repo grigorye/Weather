@@ -16,7 +16,7 @@ let cancelButton = app.buttons["Cancel"]
 let searchField = app.searchFields.firstMatch
 let tableViews = app.tables
 
-class WeatherUITests: XCTestCase {
+class WeatherUITests : XCTestCase {
         
     override func setUp() {
         
@@ -46,9 +46,11 @@ class WeatherUITests: XCTestCase {
         return try! JSONDecoder().decode([String].self, from: jsonData)
     }()
 
+    lazy var iterationsCount = min(cityNames.count, 20)
+    
     func testRepeatedNavigation() {
         
-        for cityName in cityNames {
+        for cityName in cityNames[0..<iterationsCount] {
             mainStaticText.tap()
             addCityButton.tap()
             searchField.typeText(cityName)
@@ -60,7 +62,7 @@ class WeatherUITests: XCTestCase {
     func testRepeatedAddCity() {
         
         mainStaticText.tap()
-        for cityName in cityNames {
+        for cityName in cityNames[0..<iterationsCount] {
             addCityButton.tap()
             searchField.typeText(cityName)
             tableViews.children(matching: .cell).element(boundBy: 0).tap()
