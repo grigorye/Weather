@@ -14,8 +14,9 @@ let mainStaticText = app.tables.staticTexts["Main"]
 let addCityButton = app.tables.buttons["Add City"]
 let cancelButton = app.buttons["Cancel"]
 let searchField = app.searchFields.firstMatch
-let tableViews = app.tables
-let tables = app.tables
+let tableFirstCell = app.tables.children(matching: .cell).element(boundBy: 0)
+let tableCells = app.tables.cells
+let map = app.maps.firstMatch
 let navigationBars = app.navigationBars
 
 class WeatherUITests : XCTestCase {
@@ -67,8 +68,8 @@ class WeatherUITests : XCTestCase {
         for cityName in cityNames[0..<iterationsCount] {
             addCityButton.tap()
             searchField.typeText(cityName)
-            tableViews.children(matching: .cell).element(boundBy: 0).tap()
-            tableViews.cells.staticTexts[cityName].tap()
+            tableFirstCell.tap()
+            tableCells.staticTexts[cityName].tap()
             navigationBars[cityName].buttons["Back"].tap()
         }
         debugButton.tap()
@@ -83,19 +84,19 @@ class WeatherUITests : XCTestCase {
                 alert.buttons["Allow"].tap()
                 return true
             }
-            tables/*@START_MENU_TOKEN@*/.cells.staticTexts["Always goes with you"]/*[[".cells.staticTexts[\"Always goes with you\"]",".staticTexts[\"Always goes with you\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
+            tableCells.staticTexts["Always goes with you"].tap()
         }
         debugButton.tap()
     }
     
     func testRepeatedAddCustomLocation() {
+        
         mainStaticText.tap()
         for _ in (0..<iterationsCount) {
             addCityButton.tap()
-            tables.cells.staticTexts["When in doubt"].tap()
-            let netherlandsMap = app.maps.firstMatch
-            netherlandsMap.swipeRight()
-            app.navigationBars["WeatherAppKit.CitySelectionOnMapView"].buttons["Done"].tap()
+            tableCells.staticTexts["When in doubt"].tap()
+            map.swipeRight()
+            navigationBars["WeatherAppKit.CitySelectionOnMapView"].buttons["Done"].tap()
         }
         debugButton.tap()
     }
