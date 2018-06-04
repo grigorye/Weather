@@ -74,7 +74,7 @@ class WeatherUITests : XCTestCase {
         debugButton.tap()
     }
     
-    func testRepeatedAddCurrentLocationAndOpenDetails() {
+    func testRepeatedAddCurrentLocation() {
         
         mainStaticText.tap()
         for _ in (0..<iterationsCount) {
@@ -84,6 +84,18 @@ class WeatherUITests : XCTestCase {
                 return true
             }
             tables/*@START_MENU_TOKEN@*/.cells.staticTexts["Always goes with you"]/*[[".cells.staticTexts[\"Always goes with you\"]",".staticTexts[\"Always goes with you\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
+        }
+        debugButton.tap()
+    }
+    
+    func testRepeatedAddCustomLocation() {
+        mainStaticText.tap()
+        for _ in (0..<iterationsCount) {
+            addCityButton.tap()
+            tables.cells.staticTexts["When in doubt"].tap()
+            let netherlandsMap = app.maps.firstMatch
+            netherlandsMap.swipeRight()
+            app.navigationBars["WeatherAppKit.CitySelectionOnMapView"].buttons["Done"].tap()
         }
         debugButton.tap()
     }
