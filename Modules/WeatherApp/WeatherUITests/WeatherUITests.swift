@@ -15,6 +15,7 @@ let addCityButton = app.tables.buttons["Add City"]
 let cancelButton = app.buttons["Cancel"]
 let searchField = app.searchFields.firstMatch
 let tableViews = app.tables
+let tables = app.tables
 let navigationBars = app.navigationBars
 
 class WeatherUITests : XCTestCase {
@@ -47,7 +48,7 @@ class WeatherUITests : XCTestCase {
         return try! JSONDecoder().decode([String].self, from: jsonData)
     }()
 
-    lazy var iterationsCount = min(cityNames.count, 3)
+    lazy var iterationsCount = min(cityNames.count/*50*/, 3)
     
     func testRepeatedNavigation() {
         
@@ -69,6 +70,20 @@ class WeatherUITests : XCTestCase {
             tableViews.children(matching: .cell).element(boundBy: 0).tap()
             tableViews.cells.staticTexts[cityName].tap()
             navigationBars[cityName].buttons["Back"].tap()
+        }
+        debugButton.tap()
+    }
+    
+    func testRepeatedAddCurrentLocationAndOpenDetails() {
+        
+        mainStaticText.tap()
+        for _ in (0..<iterationsCount) {
+            addCityButton.tap()
+            addUIInterruptionMonitor(withDescription: "Location Permissions") { (alert) in
+                alert.buttons["Allow"].tap()
+                return true
+            }
+            tables/*@START_MENU_TOKEN@*/.cells.staticTexts["Always goes with you"]/*[[".cells.staticTexts[\"Always goes with you\"]",".staticTexts[\"Always goes with you\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
         }
         debugButton.tap()
     }
