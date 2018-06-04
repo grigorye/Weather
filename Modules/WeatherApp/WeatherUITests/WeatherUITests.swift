@@ -46,7 +46,7 @@ class WeatherUITests : XCTestCase {
         return try! JSONDecoder().decode([String].self, from: jsonData)
     }()
 
-    lazy var iterationsCount = min(cityNames.count, 20)
+    lazy var iterationsCount = min(cityNames.count, 3)
     
     func testRepeatedNavigation() {
         
