@@ -15,6 +15,7 @@ let addCityButton = app.tables.buttons["Add City"]
 let cancelButton = app.buttons["Cancel"]
 let searchField = app.searchFields.firstMatch
 let tableViews = app.tables
+let navigationBars = app.navigationBars
 
 class WeatherUITests : XCTestCase {
         
@@ -59,13 +60,15 @@ class WeatherUITests : XCTestCase {
         }
     }
     
-    func testRepeatedAddCity() {
+    func testRepeatedAddCityAndOpenDetails() {
         
         mainStaticText.tap()
         for cityName in cityNames[0..<iterationsCount] {
             addCityButton.tap()
             searchField.typeText(cityName)
             tableViews.children(matching: .cell).element(boundBy: 0).tap()
+            tableViews.cells.staticTexts[cityName].tap()
+            navigationBars[cityName].buttons["Back"].tap()
         }
         debugButton.tap()
     }
