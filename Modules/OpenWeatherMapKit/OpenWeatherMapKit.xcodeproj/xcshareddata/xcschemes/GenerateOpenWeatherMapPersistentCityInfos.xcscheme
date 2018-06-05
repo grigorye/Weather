@@ -63,7 +63,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "$(SRCROOT)OpenWeatherMapKit/OpenWeatherMapKit/CityQueryingImp/CoreData/CityInfos/CityInfos.sqlite"
+            argument = "$(SRCROOT)/OpenWeatherMapKit/CityQueryingImp/CoreData/CityInfos/CityInfos.sqlite"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
