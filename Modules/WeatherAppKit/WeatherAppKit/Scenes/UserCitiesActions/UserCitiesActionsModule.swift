@@ -7,6 +7,7 @@
 //
 
 import Swinject
+import UIKit
 
 extension UserCitiesActionsViewController : UserCitiesActionsView {}
 

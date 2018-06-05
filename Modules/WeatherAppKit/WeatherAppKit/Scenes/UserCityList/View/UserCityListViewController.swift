@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 import Then
+import UIKit
 
 class UserCityListViewController : UITableViewController, UserCityListView {
     

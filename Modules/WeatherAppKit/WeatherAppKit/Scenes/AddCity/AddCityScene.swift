@@ -7,6 +7,7 @@
 //
 
 import Swinject
+import UIKit
 
 func newAddCitySceneContainer(parent: Container?, registerSubmodules: (Container) -> Void = registerAddCitySubmodules) -> Container {
     

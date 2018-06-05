@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import UIKit
 
 protocol UserCityListItemView : class {
     
