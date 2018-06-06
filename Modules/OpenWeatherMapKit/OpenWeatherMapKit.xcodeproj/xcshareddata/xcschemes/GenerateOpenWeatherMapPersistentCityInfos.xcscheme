@@ -70,7 +70,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "DYLD_FALLBACK_LIBRARY_PATH"
-            value = "/Library/Developer/CommandLineTools/usr/lib/swift/macosx/"
+            value = "$(DEVELOPER_DIR)/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
