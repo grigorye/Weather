@@ -21,7 +21,7 @@ PODS:
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
   - SwiftLint (0.25.1)
-  - Swinject (2.4.0)
+  - Swinject (2.4.1)
   - SwinjectStoryboard (2.0.1):
     - Swinject (~> 2.4)
   - Then (2.3.0)
@@ -72,7 +72,7 @@ SPEC CHECKSUMS:
   RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
-  Swinject: a1364b0f66c2736bb03c1c7cab54809e16df25da
+  Swinject: f7f15a9672e99328c1f07f277091087917215700
   SwinjectStoryboard: ad2529218a1504cc888040ee56c13d7cb1cc7998
   Then: ee21c97b85ff6062b9b0080c9abb1eea46743345
 
