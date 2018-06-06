@@ -25,6 +25,7 @@ target 'WeatherApp' do
   
   shared_non_test_pods
 
+  pod 'SwinjectStoryboard', '~> 2.0.1'  
   pod 'RxDataSources'
   pod 'RxCocoa'
   pod 'RxCoreData'
