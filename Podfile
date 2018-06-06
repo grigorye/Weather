@@ -99,7 +99,7 @@ post_install do |installer|
 
       # Make macOS a valid configuration.
       configuration.build_settings['SUPPORTED_PLATFORMS'] = 'iphoneos iphonesimulator macosx'
-      configuration.build_settings['VALID_ARCHS'] = 'arm64 armv7 armv7s i386 x86_64'
+      configuration.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '10.13'
 
       # Remove custom SDKROOT so that it matches the one selected for the build (either iOS or macOS).
       configuration.build_settings.delete('SDKROOT')
