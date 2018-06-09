@@ -162,6 +162,7 @@
 		C4C8F0E1209B6AFE00E081B4 = {
 			isa = PBXGroup;
 			children = (
+				C48FE63320ACD478009094C9 /* README.md */,
 				C4C8F0EC209B6AFE00E081B4 /* WeatherApp */,
 				C4C8F106209B6B0000E081B4 /* WeatherTests */,
 				C4C8F111209B6B0000E081B4 /* WeatherUITests */,
@@ -214,7 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				C4C8F0F9209B6AFF00E081B4 /* Assets.xcassets */,
-				C48FE63320ACD478009094C9 /* README.md */,
 				C4C8F0ED209B6AFE00E081B4 /* AppDelegate.swift */,
 				C4CFD0F820A4645900A87DCC /* AppModule.swift */,
 				C4C8F0FB209B6AFF00E081B4 /* LaunchScreen.storyboard */,
