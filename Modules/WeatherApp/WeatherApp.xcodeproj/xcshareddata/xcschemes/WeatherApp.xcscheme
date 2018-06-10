@@ -48,6 +48,10 @@
                BlueprintName = "WeatherAppUITests"
                ReferencedContainer = "container:WeatherApp.xcodeproj">
             </BuildableReference>
+            <LocationScenarioReference
+               identifier = "Honolulu, HI, USA"
+               referenceType = "1">
+            </LocationScenarioReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
