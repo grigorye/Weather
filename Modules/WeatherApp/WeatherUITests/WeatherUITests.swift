@@ -17,6 +17,7 @@ let searchField = app.searchFields.firstMatch
 let tableFirstCell = app.tables.children(matching: .cell).element(boundBy: 0)
 let tableCells = app.tables.cells
 let map = app.maps.firstMatch
+let table = app.tables.firstMatch
 let navigationBars = app.navigationBars
 
 class WeatherUITests : XCTestCase {
@@ -85,6 +86,7 @@ class WeatherUITests : XCTestCase {
                 return true
             }
             tableCells.staticTexts["Always goes with you"].tap()
+            table.swipeDown()
         }
         debugButton.tap()
     }
