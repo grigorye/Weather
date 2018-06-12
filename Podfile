@@ -11,7 +11,14 @@ def shared_non_test_pods
   pod 'Then', '~> 2.3.0'
   pod 'SwiftLint', '~> 0.25.1'
   pod 'GZIP', '~> 1.2.1'
-  pod 'RxSwift', '~> 4.1.2'
+  pod 'RxSwift', '~> 4.2.0'
+end
+
+def app_pods
+  pod 'SwinjectStoryboard', '~> 2.0.1'  
+  pod 'RxDataSources', '~> 3.0.2'
+  pod 'RxCocoa', '~> 4.2.0'
+  pod 'RxCoreData', '~> 0.5.0'
 end
 
 def all_test_pods
@@ -23,12 +30,8 @@ end
 target 'WeatherApp' do
   project 'Modules/WeatherApp/WeatherApp.xcodeproj'
   
+  app_pods
   shared_non_test_pods
-
-  pod 'SwinjectStoryboard', '~> 2.0.1'  
-  pod 'RxDataSources'
-  pod 'RxCocoa'
-  pod 'RxCoreData'
 
   target 'WeatherAppTests' do
     inherit! :search_paths
@@ -44,12 +47,8 @@ end
 target 'WeatherAppKit' do
   project 'Modules/WeatherAppKit/WeatherAppKit.xcodeproj'
   
+  app_pods
   shared_non_test_pods
-
-  pod 'SwinjectStoryboard', '~> 2.0.1'  
-  pod 'RxDataSources'
-  pod 'RxCocoa'
-  pod 'RxCoreData'
 
   target 'WeatherAppKitTests' do
     inherit! :search_paths
