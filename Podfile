@@ -78,7 +78,7 @@ end
 post_install do |installer|
   # Patch RxSwift for RepeatWhen
   installer.pods_project.targets.each do |target|
-    if target.name =~ /^RxSwift-iOS/
+    if target.name =~ /^RxSwift/
       puts("Adding RepeatWhen to RxSwift")
       group = target.project.main_group.find_subpath("Pods/RxSwift", true)
       file_ref = group.new_reference("../../Pods-Extras/RxSwift/RepeatWhen.swift")
@@ -139,6 +139,15 @@ post_install do |installer|
     target.build_configurations.each do |configuration|
       #configuration.build_settings['CLANG_ENABLE_CODE_COVERAGE'] = 'NO'
       #configuration.build_settings['SWIFT_EXEC'] = '$(SRCROOT)/../Tools/SWIFT_EXEC-no-coverage'
+    end
+  end
+  # Enforce optimization for Xcode 10 beta.
+  installer.pods_project.targets.each do |target|
+    if target.name =~ /^RxCoreData$/
+      puts("Enforcing Swift optimization for RxCoreData/Xcode 10 beta")
+      target.build_configurations.each do |configuration|
+        configuration.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Osize'
+      end
     end
   end
 end
