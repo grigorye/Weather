@@ -20,6 +20,28 @@ let map = app.maps.firstMatch
 let table = app.tables.firstMatch
 let navigationBars = app.navigationBars
 
+func tableCellStaticText(_ identifier: String) -> XCUIElement {
+    return tableCells.staticTexts.existingMatch(identifier)
+}
+
+extension XCUIElementQuery {
+    
+    func existingMatch(_ identifier: String) -> XCUIElement {
+        return self.matching(identifier: identifier).lastExistingElement
+    }
+
+    var lastExistingElement: XCUIElement {
+        for i in (0..<self.count).reversed() {
+            let element = self.element(boundBy: i)
+            if element.exists {
+                return element
+            }
+        }
+        fatalError()
+    }
+    
+}
+
 class WeatherUITests : XCTestCase {
         
     override func setUp() {
@@ -70,7 +92,7 @@ class WeatherUITests : XCTestCase {
             addCityButton.tap()
             searchField.typeText(cityName)
             tableFirstCell.tap()
-            tableCells.staticTexts[cityName].tap()
+            tableCellStaticText(cityName).tap()
             navigationBars[cityName].buttons["Back"].tap()
         }
         debugButton.tap()
@@ -85,7 +107,7 @@ class WeatherUITests : XCTestCase {
                 alert.buttons["Allow"].tap()
                 return true
             }
-            tableCells.staticTexts["Always goes with you"].tap()
+            tableCellStaticText("Always goes with you").tap()
             table.swipeDown()
         }
         debugButton.tap()
@@ -96,7 +118,7 @@ class WeatherUITests : XCTestCase {
         mainStaticText.tap()
         for _ in (0..<iterationsCount) {
             addCityButton.tap()
-            tableCells.staticTexts["When in doubt"].tap()
+            tableCellStaticText("When in doubt").tap()
             map.swipeRight()
             navigationBars["WeatherAppKit.CitySelectionOnMapView"].buttons["Done"].tap()
         }
