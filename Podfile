@@ -9,7 +9,7 @@ def shared_non_test_pods
   pod 'Moya', '~> 11.0.2'
   pod 'Swinject', '~> 2.4.0'
   pod 'Then', '~> 2.3.0'
-  pod 'SwiftLint', '~> 0.25.1'
+  pod 'SwiftLint'
   pod 'GZIP', '~> 1.2.1'
   pod 'RxSwift', '~> 4.2.0'
 end
