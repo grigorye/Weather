@@ -141,13 +141,4 @@ post_install do |installer|
       #configuration.build_settings['SWIFT_EXEC'] = '$(SRCROOT)/../Tools/SWIFT_EXEC-no-coverage'
     end
   end
-  # Enforce optimization for Xcode 10 beta.
-  installer.pods_project.targets.each do |target|
-    if target.name =~ /^RxCoreData$/
-      puts("Enforcing Swift optimization for RxCoreData/Xcode 10 beta")
-      target.build_configurations.each do |configuration|
-        configuration.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Osize'
-      end
-    end
-  end
 end
