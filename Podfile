@@ -6,25 +6,25 @@ use_frameworks!
 
 def shared_non_test_pods
   pod 'Result'
-  pod 'Moya', '~> 11.0.2'
-  pod 'Swinject', '~> 2.4.0'
-  pod 'Then', '~> 2.3.0'
+  pod 'Moya'
+  pod 'Swinject'
+  pod 'Then'
   pod 'SwiftLint'
-  pod 'GZIP', '~> 1.2.1'
-  pod 'RxSwift', '~> 4.2.0'
+  pod 'GZIP'
+  pod 'RxSwift'
 end
 
 def app_pods
-  pod 'SwinjectStoryboard', '~> 2.0.1'  
-  pod 'RxDataSources', '~> 3.0.2'
-  pod 'RxCocoa', '~> 4.2.0'
-  pod 'RxCoreData', '~> 0.5.0'
+  pod 'SwinjectStoryboard'
+  pod 'RxDataSources'
+  pod 'RxCocoa'
+  pod 'RxCoreData'
 end
 
 def all_test_pods
-  pod 'Quick', '~> 1.3.0'
-  pod 'Nimble', '~> 7.1.1'
-  pod 'Then', '~> 2.3.0'
+  pod 'Quick'
+  pod 'Nimble'
+  pod 'Then'
 end
 
 target 'WeatherApp' do
