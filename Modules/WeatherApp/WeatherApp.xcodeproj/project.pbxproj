@@ -298,13 +298,16 @@
 				TargetAttributes = {
 					C4C8F0E9209B6AFE00E081B4 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 					};
 					C4C8F102209B6B0000E081B4 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 						TestTargetID = C4C8F0E9209B6AFE00E081B4;
 					};
 					C4C8F10D209B6B0000E081B4 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 						TestTargetID = C4C8F0E9209B6AFE00E081B4;
 					};
 				};

@@ -236,7 +236,7 @@
 		C476BD1220AC1B1600325393 /* PersistentUserCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentUserCity.swift; sourceTree = "<group>"; };
 		C476BD1520AC1B1600325393 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C476BD1620AC1B1600325393 /* CityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityProvider.swift; sourceTree = "<group>"; };
-		C476BD1720AC1B1600325393 /* CityProviderImp$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CityProviderImp$.swift"; sourceTree = "<group>"; };
+		C476BD1720AC1B1600325393 /* CityProviderImp$.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityProviderImp$.swift; sourceTree = "<group>"; };
 		C476BD1820AC1B1600325393 /* OpenWeatherMap$-CityProviderImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherMap$-CityProviderImp.swift"; sourceTree = "<group>"; };
 		C476BD1920AC1B1600325393 /* CityProviderImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityProviderImp.swift; sourceTree = "<group>"; };
 		C476BD1A20AC1B1600325393 /* CityProviderImpContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityProviderImpContainer.swift; sourceTree = "<group>"; };
@@ -247,7 +247,7 @@
 		C476BD2220AC1B1600325393 /* WeatherLocationPredicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocationPredicate.swift; sourceTree = "<group>"; };
 		C476BD2320AC1B1600325393 /* WeatherLocationPredicateSamplesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocationPredicateSamplesTests.swift; sourceTree = "<group>"; };
 		C476BD2620AC1B1600325393 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		C476BD2720AC1B1600325393 /* WeatherProviderImp$.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WeatherProviderImp$.swift"; sourceTree = "<group>"; };
+		C476BD2720AC1B1600325393 /* WeatherProviderImp$.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherProviderImp$.swift; sourceTree = "<group>"; };
 		C476BD2820AC1B1600325393 /* WeatherProvider+BatchRequestsImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherProvider+BatchRequestsImp.swift"; sourceTree = "<group>"; };
 		C476BD2920AC1B1600325393 /* WeatherProviderImpContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherProviderImpContainer.swift; sourceTree = "<group>"; };
 		C476BD2A20AC1B1600325393 /* OpenWeatherMap$-WeatherProviderImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherMap$-WeatherProviderImp.swift"; sourceTree = "<group>"; };
@@ -1115,9 +1115,11 @@
 				TargetAttributes = {
 					C476BCEB20AC175800325393 = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 1000;
 					};
 					C476BCF420AC175800325393 = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};

@@ -461,9 +461,11 @@
 					};
 					C49E3968209F9A7A0010EBAF = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 					};
 					C49E3971209F9A7A0010EBAF = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
